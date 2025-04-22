@@ -1,0 +1,124 @@
+<!-- testimonials.component.html -->
+<div class="container mx-auto my-24">
+  <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-4">
+      BEWERTUNGEN
+    </p>
+    <h2 class="text-heading md:text-subtitle mb-6">
+      Kunden<span class="text-primary">stimmen</span>
+    </h2>
+    <p class="text-body-base md:text-subheading text-text-muted">
+      Das sagen Kunden über die Zusammenarbeit. Ehrlich, direkt und immer mit
+      dem Blick aufs Wesentliche.
+    </p>
+  </div>
+
+  <div class="relative max-w-5xl mx-auto reveal-on-scroll">
+    <!-- Pfeil links -->
+    <button
+      class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 w-12 h-12 flex items-center justify-center text-white/50 hover:text-primary transition-colors rounded-full hover:bg-card/40 z-10 group"
+      (click)="prevTestimonial()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="transition-transform duration-300 group-hover:-translate-x-1"
+      >
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+
+    <!-- Testimonial Content -->
+    <div
+      class="bg-card p-10 md:p-16 rounded-xl border border-border/20 relative overflow-hidden group"
+    >
+      <!-- Decorative elements -->
+      <div
+        class="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+      ></div>
+
+      <!-- Subtle quote marks positioned in the corners -->
+      <div class="absolute top-6 left-6 text-4xl text-primary/10 leading-none">
+        "
+      </div>
+      <div
+        class="absolute bottom-6 right-6 text-4xl text-primary/10 leading-none"
+      >
+        "
+      </div>
+
+      <!-- Testimonial text -->
+      <p
+        class="text-lg md:text-xl text-white text-center leading-relaxed mb-8 px-8 relative"
+      >
+        {{ currentTestimonial.text }}
+      </p>
+
+      <!-- Author info with avatar (optional) -->
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+      >
+        <div
+          class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl"
+        >
+          {{ getInitials(currentTestimonial.author) }}
+        </div>
+        <div class="flex flex-col items-center sm:items-start">
+          <p class="text-primary font-medium">
+            {{ currentTestimonial.author }}
+          </p>
+          <p class="text-sm text-text-muted">
+            {{ currentTestimonial.company }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonial indicators -->
+      <div
+        class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 mt-8"
+      >
+        <ng-container *ngFor="let t of testimonials; let i = index">
+          <div
+            [ngClass]="{
+              'bg-primary': i === currentTestimonialIndex,
+              'bg-white/20': i !== currentTestimonialIndex
+            }"
+            class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300"
+            (click)="setTestimonial(i)"
+          ></div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Pfeil rechts -->
+    <button
+      class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 w-12 h-12 flex items-center justify-center text-white/50 hover:text-primary transition-colors rounded-full hover:bg-card/40 z-10 group"
+      (click)="nextTestimonial()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="transition-transform duration-300 group-hover:translate-x-1"
+      >
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+<!-- skills.component.html mit verbesserter Responsiveness -->
+<div class="container mx-auto">
+  <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-4">
+      Fähigkeiten
+    </p>
+    <h2 class="text-heading md:text-subtitle mb-6">
+      Meine <span class="text-primary">Fähigkeiten</span>
+    </h2>
+    <p class="text-body-base md:text-subheading text-text-muted">
+      In meiner Softwareentwicklung setze ich auf moderne Technologien, klare
+      Strukturen und agile Entwicklungsmethoden – für sauberen Code und
+      nachhaltige Lösungen.
+    </p>
+  </div>
+
+  <!-- Obere Reihe: 3 Karten - responsive mit 1 Spalte (Mobile), 3 Spalten (Desktop) -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
+    <!-- Programmiersprachen -->
+    <div class="reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0s' }">
+      <div
+        class="bg-card p-6 md:p-8 flex flex-col items-center text-center h-full border border-border rounded-xl transition-all duration-300 hover:border-primary/30 hover:bg-card-hover hover:shadow-lg hover:shadow-primary/5 group"
+      >
+        <div
+          class="flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110"
+        >
+          <img src="icons/code.svg" alt="Programmiersprachen" class="h-10" />
+        </div>
+        <h3
+          class="text-subheading font-semibold mb-4 transition-colors duration-300 group-hover:text-primary"
+        >
+          Programmiersprachen
+        </h3>
+        <div
+          class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
+        ></div>
+        <p class="text-body-base text-text-muted leading-relaxed">
+          Ich bin Web-Entwickler mit fundierten Kenntnissen in C#, JavaScript
+          sowie HTML und CSS.
+        </p>
+      </div>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.15s' }">
+      <div
+        class="bg-card p-6 md:p-8 flex flex-col items-center text-center h-full border border-border rounded-xl transition-all duration-300 hover:border-primary/30 hover:bg-card-hover hover:shadow-lg hover:shadow-primary/5 group"
+      >
+        <div
+          class="flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110"
+        >
+          <img src="icons/gear.svg" alt="Frameworks" class="h-10" />
+        </div>
+        <h3
+          class="text-subheading font-semibold mb-4 transition-colors duration-300 group-hover:text-primary"
+        >
+          Frameworks
+        </h3>
+        <div
+          class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
+        ></div>
+        <p class="text-body-base text-text-muted leading-relaxed">
+          Für die Entwicklung arbeite ich mit Angular, VueJs und ASP .NET für
+          vielseitige Webanwendungen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Technologien -->
+    <div class="reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.3s' }">
+      <div
+        class="bg-card p-6 md:p-8 flex flex-col items-center text-center h-full border border-border rounded-xl transition-all duration-300 hover:border-primary/30 hover:bg-card-hover hover:shadow-lg hover:shadow-primary/5 group"
+      >
+        <div
+          class="flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110"
+        >
+          <img src="icons/chip.svg" alt="Technologien" class="h-10" />
+        </div>
+        <h3
+          class="text-subheading font-semibold mb-4 transition-colors duration-300 group-hover:text-primary"
+        >
+          Technologien
+        </h3>
+        <div
+          class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
+        ></div>
+        <p class="text-body-base text-text-muted leading-relaxed">
+          Zudem bin ich vertraut mit Docker zur Containerisierung von
+          Anwendungen sowie Traefik und Nginx.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Untere Reihe: 2 Karten zentriert - responsive mit 1 Spalte (Mobile), 2 Spalten (Desktop) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+    <!-- Entwicklungsprozess -->
+    <div class="reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.45s' }">
+      <div
+        class="bg-card p-6 md:p-8 flex flex-col items-center text-center h-full border border-border rounded-xl transition-all duration-300 hover:border-primary/30 hover:bg-card-hover hover:shadow-lg hover:shadow-primary/5 group"
+      >
+        <div
+          class="flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110"
+        >
+          <img src="icons/process.svg" alt="Entwicklungsprozess" class="h-10" />
+        </div>
+        <h3
+          class="text-subheading font-semibold mb-4 transition-colors duration-300 group-hover:text-primary"
+        >
+          Entwicklungsprozess
+        </h3>
+        <div
+          class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
+        ></div>
+        <p class="text-body-base text-text-muted leading-relaxed">
+          Geübt im agilen Arbeiten nach Scrum-Methodik, um Projekte effizient
+          umzusetzen sowie dem Kanban-Board.
+        </p>
+      </div>
+    </div>
+
+    <!-- Datenbanken -->
+    <div class="reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.6s' }">
+      <div
+        class="bg-card p-6 md:p-8 flex flex-col items-center text-center h-full border border-border rounded-xl transition-all duration-300 hover:border-primary/30 hover:bg-card-hover hover:shadow-lg hover:shadow-primary/5 group"
+      >
+        <div
+          class="flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110"
+        >
+          <img src="icons/database.svg" alt="Datenbanken" class="h-10" />
+        </div>
+        <h3
+          class="text-subheading font-semibold mb-4 transition-colors duration-300 group-hover:text-primary text-primary"
+        >
+          Datenbanken
+        </h3>
+        <div
+          class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
+        ></div>
+        <p class="text-body-base text-text-muted leading-relaxed">
+          Für die Persistierung von Daten habe ich Erfahrung mit MySQL und
+          MongoDB für relationale und NoSQL-Datenbanklösungen.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

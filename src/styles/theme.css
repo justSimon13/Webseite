@@ -1,0 +1,33 @@
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif;
+
+  --text-title-hero: 72px;
+  --text-title-hero--line-height: 120%;
+  --text-title-page: 48px;
+  --text-title-page--line-height: 120%;
+  --text-subtitle: 32px;
+  --text-subtitle--line-height: 120%;
+  --text-heading: 24px;
+  --text-heading--line-height: 120%;
+  --text-subheading: 20px;
+  --text-subheading--line-height: 120%;
+  --text-body-base: 16px;
+  --text-body-base--line-height: 140%;
+  --text-body-small: 14px;
+  --text-body-small--line-height: 140%;
+  --text-body-code: 16px;
+  --text-body-code--line-height: 100%;
+
+  --color-white: #ffffff;
+  --color-primary: #4fc3f7;
+  --color-text-muted: #c0c0c0;
+  --color-border: #2a2f3a;
+  --color-card: #1d212b;
+  --color-body: #12141d;
+  --color-content: #151822;
+  --color-icon: #8c93a5;
+  --color-card-hover: #252a36;
+  --color-icon-hover: #4fc3f7;
+}

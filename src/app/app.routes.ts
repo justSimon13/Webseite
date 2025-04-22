@@ -2,13 +2,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { MyOfferComponent } from './pages/my-offer/my-offer.component';
+import { HomeComponent } from './features/home/home.component';
+import { MyOfferComponent } from './features/my-offer/my-offer.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent }, // Standard‑Route
-  { path: 'my-offer', component: MyOfferComponent },
-  { path: '**', redirectTo: '' }, // Fallback: immer zur Startseite
+  {
+    path: '',
+    loadComponent: () =>
+      import('./features/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'mein-angebot',
+    loadComponent: () =>
+      import('./features/my-offer/my-offer.component').then(
+        (m) => m.MyOfferComponent
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({

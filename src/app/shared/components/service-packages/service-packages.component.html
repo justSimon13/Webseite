@@ -1,0 +1,63 @@
+<!-- Verbesserte service-packages.component.html -->
+<div class="container mx-auto">
+  <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+    <p
+      class="text-primary font-medium tracking-wider uppercase text-sm mb-4 animate-fade-in"
+      style="animation-delay: 0.1s"
+    >
+      Produkt
+    </p>
+    <h2
+      class="text-heading md:text-subtitle mb-6 animate-fade-in"
+      style="animation-delay: 0.2s"
+    >
+      Leistungen im <span class="text-primary">Überblick</span>
+    </h2>
+    <p
+      class="text-body-base md:text-subheading text-text-muted animate-fade-in"
+      style="animation-delay: 0.3s"
+    >
+      Du willst eine Webseite erstellen lassen? Oder ein Shop mit WordPress oder
+      Shopify? Als erfahrener Software Developer, konnte ich mit folgenden
+      Punkten schon gut überzeugen
+    </p>
+  </div>
+
+  <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+    @for (item of items; track $index) {
+    <div
+      class="reveal-on-scroll"
+      [style]="'transition-delay: ' + $index * 0.15 + 's'"
+    >
+      <div
+        class="flex flex-col md:flex-row gap-6 group p-8 rounded-xl transition-all duration-500 hover:bg-card relative overflow-hidden"
+      >
+        <!-- Subtiler Hintergrund-Effekt -->
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        ></div>
+
+        <div
+          class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-xl bg-card border border-border mx-auto md:mx-0 flex-shrink-0 transition-all duration-300 group-hover:border-primary/30 group-hover:bg-card-hover group-hover:shadow-lg group-hover:shadow-primary/5 z-10"
+        >
+          <img
+            [src]="item.icon"
+            [alt]="item.title"
+            class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+        <div class="z-10">
+          <h3
+            class="text-subheading font-semibold mb-4 text-center md:text-left group-hover:text-primary transition-colors duration-300"
+          >
+            {{ item.title }}
+          </h3>
+          <p class="text-body-base text-text-muted leading-relaxed">
+            {{ item.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

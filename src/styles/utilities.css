@@ -1,0 +1,49 @@
+@layer utilities {
+  .client-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 500ms;
+    transition-property: transform;
+  }
+
+  .client-logo:hover {
+    z-index: 10;
+  }
+
+  .logo-container:hover {
+    animation: glow-pulse 2s infinite;
+  }
+
+  .nav-link {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 0 rgba(79, 195, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 10px 0 rgba(79, 195, 247, 0.4);
+  }
+}

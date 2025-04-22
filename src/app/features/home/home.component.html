@@ -1,0 +1,123 @@
+<!-- home.component.html -->
+<section class="w-full py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+  <div
+    class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16"
+  >
+    <div class="flex flex-col gap-6 lg:gap-8 max-w-2xl animate-fade-in">
+      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">
+        Fullstack Development
+      </p>
+      <h1 class="text-body-base md:text-subheading text-white">
+        Individuelle Webseiten &amp; Softwarelösungen für Unternehmen
+      </h1>
+      <div class="text-subtitle md:text-title-hero text-white font-bold">
+        Hi, ich bin <span class="text-primary animate-pulse-gentle">Simon</span>
+      </div>
+      <p class="text-body-base md:text-subheading text-text-muted">
+        Fullstack Developer mit Fokus auf individuelle Weblösungen für
+        Unternehmen. Ich begleite dich von der Idee bis zur fertigen Website –
+        technisch durchdacht, SEO-optimiert und mit klarem Designverständnis.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-4 md:mt-6">
+        <button
+          class="btn-primary border-2 border-primary text-primary px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 group"
+        >
+          <span class="inline-flex items-center gap-2">
+            Meine Angebote
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="border-2 border-transparent text-white/80 px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:text-white"
+        >
+          Kontakt
+        </button>
+      </div>
+    </div>
+    <div
+      class="flex-shrink-0 w-full max-w-md lg:max-w-lg mx-auto lg:mx-0 animate-fade-in-delay"
+    >
+      <div class="relative group">
+        <!-- Dunkler Hintergrund mit ausreichend Abstand -->
+        <div
+          class="absolute -z-10 -right-6 -bottom-6 w-full h-full bg-card rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:-translate-x-1"
+        ></div>
+
+        <!-- Subtiler Glow-Effekt -->
+        <div
+          class="absolute -z-20 -inset-0.5 bg-primary/5 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        ></div>
+
+        <!-- Hauptbild ohne Borders -->
+        <div
+          class="relative aspect-square overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.02]"
+        >
+          <img
+            src="profile.png"
+            alt="Simon"
+            class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="w-full relative">
+  <!-- Decorative divider -->
+  <div
+    class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-body to-transparent"
+  ></div>
+  <div
+    class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-content border border-border/30"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-primary animate-bounce-gentle"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </div>
+</div>
+
+<section class="w-full bg-content">
+  <div
+    class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 flex flex-col gap-24 md:gap-32 lg:gap-40"
+  >
+    <app-service-packages></app-service-packages>
+    <app-skills></app-skills>
+    <app-projects></app-projects>
+  </div>
+
+  <app-clients></app-clients>
+
+  <section class="w-full bg-content">
+    <div
+      class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 flex flex-col gap-24 md:gap-32 lg:gap-40"
+    >
+      <app-cta></app-cta>
+      <app-testimonials></app-testimonials>
+    </div>
+  </section>
+</section>
