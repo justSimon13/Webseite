@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cta-small.component.html',
-  styleUrls: ['./cta-small.component.css'],
 })
 export class CtaSmallComponent {
   openWidget(): void {

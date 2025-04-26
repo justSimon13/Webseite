@@ -11,7 +11,6 @@ interface Testimonial {
 @Component({
   selector: 'app-testimonials',
   templateUrl: './testimonials.component.html',
-  styleUrls: ['./testimonials.component.css'],
   imports: [CommonModule],
 })
 export class TestimonialsComponent implements OnInit {

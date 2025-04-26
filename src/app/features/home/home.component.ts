@@ -18,7 +18,6 @@ import { ScrollAnimationService } from '../../core/services/scroll-animation.ser
     CtaComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   constructor(private scrollAnimationService: ScrollAnimationService) {}

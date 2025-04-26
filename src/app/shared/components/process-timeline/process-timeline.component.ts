@@ -4,8 +4,5 @@ import { Component } from '@angular/core';
   selector: 'app-process-timeline',
   imports: [],
   templateUrl: './process-timeline.component.html',
-  styleUrl: './process-timeline.component.css'
 })
-export class ProcessTimelineComponent {
-
-}
+export class ProcessTimelineComponent {}

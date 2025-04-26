@@ -6,7 +6,6 @@ import { Project } from '../../models/project';
   selector: 'app-projects',
   imports: [CommonModule],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.css',
 })
 export class ProjectsComponent {
   project: Project = {

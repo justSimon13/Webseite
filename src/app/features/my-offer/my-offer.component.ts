@@ -16,7 +16,6 @@ import { ScrollAnimationService } from '../../core/services/scroll-animation.ser
     ClientsComponent,
   ],
   templateUrl: './my-offer.component.html',
-  styleUrl: './my-offer.component.css',
 })
 export class MyOfferComponent {
   constructor(private scrollAnimationService: ScrollAnimationService) {}

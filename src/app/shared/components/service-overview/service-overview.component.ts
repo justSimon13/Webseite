@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-service-overview',
   imports: [CommonModule],
   templateUrl: './service-overview.component.html',
-  styleUrl: './service-overview.component.css',
 })
 export class ServiceOverviewComponent {
   items: ServiceItem[] = [

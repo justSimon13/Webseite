@@ -7,7 +7,6 @@ import { CtaSmallComponent } from '../cta-small/cta-small.component';
   selector: 'app-skills',
   imports: [CommonModule, CtaSmallComponent],
   templateUrl: './skills.component.html',
-  styleUrl: './skills.component.css',
 })
 export class SkillsComponent {
   skills: Skill[] = [
