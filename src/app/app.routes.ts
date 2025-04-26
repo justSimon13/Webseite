@@ -2,9 +2,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './features/home/home.component';
-import { MyOfferComponent } from './features/my-offer/my-offer.component';
-
 export const routes: Routes = [
   {
     path: '',
@@ -16,6 +13,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/my-offer/my-offer.component').then(
         (m) => m.MyOfferComponent
+      ),
+  },
+  {
+    path: 'kontakt',
+    loadComponent: () =>
+      import('./features/contact/contact.component').then(
+        (m) => m.ContactComponent
       ),
   },
   {

@@ -1,63 +1,304 @@
-<!-- Verbesserte service-packages.component.html -->
-<div class="container mx-auto">
+<div id="service-packages" class="container mx-auto">
   <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
     <p
       class="text-primary font-medium tracking-wider uppercase text-sm mb-4 animate-fade-in"
       style="animation-delay: 0.1s"
     >
-      Produkt
+      Pakete
     </p>
     <h2
       class="text-heading md:text-subtitle mb-6 animate-fade-in"
       style="animation-delay: 0.2s"
     >
-      Leistungen im <span class="text-primary">Überblick</span>
+      Professionelle Webentwicklung für Unternehmen -
+      <span class="text-primary">Angebote im Vergleich</span>
     </h2>
     <p
       class="text-body-base md:text-subheading text-text-muted animate-fade-in"
       style="animation-delay: 0.3s"
     >
-      Du willst eine Webseite erstellen lassen? Oder ein Shop mit WordPress oder
-      Shopify? Als erfahrener Software Developer, konnte ich mit folgenden
-      Punkten schon gut überzeugen
+      Ob individuelle Webseite, Online-Shop oder Softwarelösung – hier findest
+      du das passende Paket für dein Unternehmen.
     </p>
   </div>
-
-  <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-    @for (item of items; track $index) {
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 reveal-on-scroll"
+  >
+    <!-- Package 1: Website Starter -->
     <div
-      class="reveal-on-scroll"
-      [style]="'transition-delay: ' + $index * 0.15 + 's'"
+      class="bg-card border border-border rounded-xl overflow-hidden group flex flex-col"
     >
       <div
-        class="flex flex-col md:flex-row gap-6 group p-8 rounded-xl transition-all duration-500 hover:bg-card relative overflow-hidden"
+        class="bg-gradient-to-r from-primary/10 to-transparent p-4 border-b border-border"
       >
-        <!-- Subtiler Hintergrund-Effekt -->
-        <div
-          class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        ></div>
-
-        <div
-          class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-xl bg-card border border-border mx-auto md:mx-0 flex-shrink-0 transition-all duration-300 group-hover:border-primary/30 group-hover:bg-card-hover group-hover:shadow-lg group-hover:shadow-primary/5 z-10"
-        >
-          <img
-            [src]="item.icon"
-            [alt]="item.title"
-            class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
-        <div class="z-10">
-          <h3
-            class="text-subheading font-semibold mb-4 text-center md:text-left group-hover:text-primary transition-colors duration-300"
-          >
-            {{ item.title }}
-          </h3>
-          <p class="text-body-base text-text-muted leading-relaxed">
-            {{ item.description }}
+        <h3 class="font-semibold text-white text-center">Website Starter</h3>
+        <p class="text-text-muted text-sm text-center">(Incl. CMS/Wordpres)</p>
+      </div>
+      <div class="p-6 flex-grow flex flex-col">
+        <div class="mb-4">
+          <p class="text-sm text-text-muted mb-1">Für wen ist das Paket?</p>
+          <p class="text-white/90 text-sm">
+            Für Einzelunternehmer & kleine Unternehmen, die eine professionelle
+            & gepflegte und skalierbare WordPress-Website benötigen
           </p>
+        </div>
+
+        <div class="mb-4 flex-grow">
+          <p class="text-sm text-text-muted mb-1">
+            Was beinhaltete dieses Paket?
+          </p>
+          <ul class="text-white/90 text-sm space-y-1">
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>WordPress oder statische Website</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Komplettes Webdesign</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Suchmaschinenoptimierung</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Mobile Optimierung & Responsiveness</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Setup von Plugins & Domain</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Basis-Design & Struktur</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Integration deiner Inhalte (Text & Bilder)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Einrichtung mit Admin-Zugang</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-border/30 mt-auto">
+          <p class="text-sm text-text-muted mb-1">Dauer:</p>
+          <p class="text-white/90 text-sm mb-2">Zwischen 1-2 Wochen</p>
+
+          <a
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7&a1=1'});return false;"
+            class="cursor-pointer block w-full text-center border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+          >
+            JETZT STARTEN
+          </a>
         </div>
       </div>
     </div>
-    }
+
+    <!-- Package 2: Business Shop Paket -->
+    <div
+      class="bg-card border border-border rounded-xl overflow-hidden group flex flex-col"
+    >
+      <div
+        class="bg-gradient-to-r from-primary/10 to-transparent p-4 border-b border-border"
+      >
+        <h3 class="font-semibold text-white text-center">
+          Business Shop Paket
+        </h3>
+        <p class="text-text-muted text-sm text-center">
+          (Shopify oder WooCommerce)
+        </p>
+      </div>
+      <div class="p-6 flex-grow flex flex-col">
+        <div class="mb-4">
+          <p class="text-sm text-text-muted mb-1">Für wen ist dieses Paket?</p>
+          <p class="text-white/90 text-sm">
+            Für Unternehmen mit Produkten, die einen Online Shop benötigen, der
+            komfortabel für Smartphone & Mobile optimiert ist
+          </p>
+        </div>
+
+        <div class="mb-4 flex-grow">
+          <p class="text-sm text-text-muted mb-1">
+            Was beinhaltete dieses Paket?
+          </p>
+          <ul class="text-white/90 text-sm space-y-1">
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Shopify oder WooCommerce</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Produkt- & Warenmanagement</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Zahlungsabwicklung & SSL</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Design-Anpassungen nach Wunsch</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Domain-Setup</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Inklusive 100 Produkte (WOO), 500€</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-border/30 mt-auto">
+          <p class="text-sm text-text-muted mb-1">Dauer:</p>
+          <p class="text-white/90 text-sm mb-2">Zwischen 2-3 Wochen</p>
+
+          <a
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7&a1=2'});return false;"
+            class="cursor-pointer block w-full text-center border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+          >
+            JETZT STARTEN
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 3: Smart Web-App -->
+    <div
+      class="bg-card border border-border rounded-xl overflow-hidden group flex flex-col"
+    >
+      <div
+        class="bg-gradient-to-r from-primary/10 to-transparent p-4 border-b border-border"
+      >
+        <h3 class="font-semibold text-white text-center">Smart Web-App</h3>
+        <p class="text-text-muted text-sm text-center">
+          (Individuelle Software & Hosting)
+        </p>
+      </div>
+      <div class="p-6 flex-grow flex flex-col">
+        <div class="mb-4">
+          <p class="text-sm text-text-muted mb-1">Für wen ist dieses Paket?</p>
+          <p class="text-white/90 text-sm">
+            Für Startups Kunden, die eine eigene Idee umsetzen, skalieren oder
+            unkompliziert entwickeln möchten
+          </p>
+        </div>
+
+        <div class="mb-4 flex-grow">
+          <p class="text-sm text-text-muted mb-1">
+            Was beinhaltete dieses Paket?
+          </p>
+          <ul class="text-white/90 text-sm space-y-1">
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Technische Konzeption</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>MVP-Entwicklung & Hosting</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Technisch saubere Umsetzung</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Konzept & Strategie für Mobile & Desktop</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span
+                >Kontinuierliche Weiterentwicklung (z. B. Updates, Optimierung,
+                Hosting)</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-border/30 mt-auto">
+          <p class="text-sm text-text-muted mb-1">Dauer:</p>
+          <p class="text-white/90 text-sm mb-2">Zwischen 4-6 Wochen</p>
+
+          <a
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7&a1=3'});return false;"
+            class="cursor-pointer block w-full text-center border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+          >
+            JETZT STARTEN
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 4: Individuelle Softwarelösung -->
+    <div
+      class="bg-card border border-border rounded-xl overflow-hidden group flex flex-col"
+    >
+      <div
+        class="bg-gradient-to-r from-primary/10 to-transparent p-4 border-b border-border"
+      >
+        <h3 class="font-semibold text-white text-center">
+          Individuelle Softwarelösung
+        </h3>
+        <p class="text-text-muted text-sm text-center">
+          (Maßgeschneiderte Webentwicklung)
+        </p>
+      </div>
+      <div class="p-6 flex-grow flex flex-col">
+        <div class="mb-4">
+          <p class="text-sm text-text-muted mb-1">Für wen ist dieses Paket?</p>
+          <p class="text-white/90 text-sm">
+            Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software
+            und Systeme
+          </p>
+        </div>
+
+        <div class="mb-4 flex-grow">
+          <p class="text-sm text-text-muted mb-1">
+            Was beinhaltete dieses Paket?
+          </p>
+          <ul class="text-white/90 text-sm space-y-1">
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Individuelle Anforderungen & Specs</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Skalierbare Architektur</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Technische Beratung</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Maßgeschneiderte Webentwicklung</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Integration in bestehende IT-Infrastruktur</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-primary mr-2">•</span>
+              <span>Laufende Technische Betreuung deiner Visualisierung</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-border/30 mt-auto">
+          <p class="text-sm text-text-muted mb-1">Dauer:</p>
+          <p class="text-white/90 text-sm mb-2">Nach Absprache</p>
+
+          <a
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7&a1=4'});return false;"
+            class="cursor-pointer block w-full text-center border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+          >
+            JETZT STARTEN
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

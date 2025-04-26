@@ -18,12 +18,13 @@
         Unternehmen. Ich begleite dich von der Idee bis zur fertigen Website –
         technisch durchdacht, SEO-optimiert und mit klarem Designverständnis.
       </p>
-      <div class="flex flex-wrap gap-4 mt-4 md:mt-6">
+      <div class="mt-4 md:mt-6">
         <button
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7'});return false;"
           class="btn-primary border-2 border-primary text-primary px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 group"
         >
           <span class="inline-flex items-center gap-2">
-            Meine Angebote
+            Erstgespräch vereinbaren
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -40,11 +41,28 @@
             </svg>
           </span>
         </button>
-        <button
-          class="border-2 border-transparent text-white/80 px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:text-white"
-        >
-          Kontakt
-        </button>
+        <div class="mt-4 flex items-center group">
+          <a
+            href="/mein-angebot"
+            class="text-text-muted text-sm hover:text-primary transition-colors duration-300"
+          >
+            Oder informiere dich über meine Angebote
+          </a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-primary opacity-0 transition-all duration-300 transform -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
       </div>
     </div>
     <div
@@ -101,23 +119,23 @@
   </div>
 </div>
 
-<section class="w-full bg-content">
+<div class="w-full bg-content">
   <div
     class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 flex flex-col gap-24 md:gap-32 lg:gap-40"
   >
-    <app-service-packages></app-service-packages>
+    <app-service-overview></app-service-overview>
     <app-skills></app-skills>
     <app-projects></app-projects>
   </div>
 
   <app-clients></app-clients>
 
-  <section class="w-full bg-content">
+  <div class="w-full bg-content">
     <div
       class="py-24 md:py-32 px-4 sm:px-6 lg:px-8 flex flex-col gap-24 md:gap-32 lg:gap-40"
     >
       <app-cta></app-cta>
       <app-testimonials></app-testimonials>
     </div>
-  </section>
-</section>
+  </div>
+</div>

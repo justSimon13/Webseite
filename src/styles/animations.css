@@ -36,6 +36,60 @@
   .animate-testimonial-fade {
     animation: testimonial-fade 0.5s ease-out forwards;
   }
+
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+  }
+  .rotate-180 {
+    transform: rotate(0deg);
+  }
+
+  .max-h-0 {
+    max-height: 0;
+  }
+
+  .max-h-\[500px\] {
+    max-height: 500px;
+  }
+
+  .bg-card {
+    &:hover:not([class*="border-primary"]) {
+      border-color: rgba(79, 195, 247, 0.2);
+    }
+  }
+
+  button.group {
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(79, 195, 247, 0.1);
+      border-color: rgba(79, 195, 247, 0.3);
+    }
+  }
+
+  input:focus,
+  textarea:focus {
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.2);
+  }
+
+  form:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 0 20px rgba(79, 195, 247, 0.15);
+  }
+
+  .bg-card:hover {
+    animation: subtle-pulse 2s infinite;
+  }
+}
+
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 195, 247, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(79, 195, 247, 0.1);
+  }
 }
 
 @keyframes fadeIn {

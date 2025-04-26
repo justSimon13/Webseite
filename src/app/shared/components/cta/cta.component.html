@@ -6,31 +6,34 @@
     <!-- Text-Bereich -->
     <div class="flex flex-col gap-6 lg:w-1/2">
       <div class="relative mb-2">
+        <!-- Decorative Quote Mark -->
         <span class="absolute -top-2 -left-3 text-4xl text-primary/20 font-bold"
           >"</span
         >
+
+        <!-- Main Heading -->
         <h2 class="text-subheading md:text-subtitle relative">
-          Du willst deine eigene individuelle Anwendung oder dein erstes
-          <span class="text-primary font-bold">MVP</span>?
+          Du willst dein digitales
+          <span class="text-primary font-bold">Projekt</span>
+          starten?
         </h2>
       </div>
+
+      <!-- Description Text -->
       <p class="text-body-base text-text-muted">
-        Kein Problem – schau dir hier mein Angebot an und buch dir ein
-        kostenloses Kennenlerngespräch. Gemeinsam finden wir die beste Lösung
-        für dein Projekt.
+        Egal ob Website, Onlineshop oder individuelle Anwendung – gemeinsam
+        finden wir die beste Lösung für dein Vorhaben.
       </p>
+
+      <!-- CTA Button and Alternative Link -->
       <div class="mt-8">
-        <a
-          href="/kontakt"
-          class="group relative inline-flex items-center gap-2 px-8 py-3 border border-primary text-primary rounded-full uppercase font-medium overflow-hidden"
+        <!-- Original Primary Button -->
+        <button
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7'});return false;"
+          class="btn-primary border-2 border-primary text-primary px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 group"
         >
-          <span
-            class="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"
-          ></span>
-          <span
-            class="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300"
-          >
-            BERATUNG BUCHEN
+          <span class="inline-flex items-center gap-2">
+            Erstgespräch vereinbaren
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -46,7 +49,31 @@
               />
             </svg>
           </span>
-        </a>
+        </button>
+
+        <!-- Improved Alternative Link -->
+        <div class="mt-4 flex items-center group">
+          <a
+            href="/mein-angebot"
+            class="text-text-muted text-sm hover:text-primary transition-colors duration-300"
+          >
+            Oder informiere dich über meine Angebote
+          </a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-primary opacity-0 transition-all duration-300 transform -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
       </div>
     </div>
 

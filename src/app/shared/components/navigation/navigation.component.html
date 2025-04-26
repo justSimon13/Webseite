@@ -67,7 +67,7 @@
 
       <!-- Contact Button - Optional extra element -->
       <a
-        href="mailto:kontakt@example.com"
+        routerLink="/kontakt"
         class="relative overflow-hidden border border-primary/80 text-primary rounded-full px-5 py-2 transition-all duration-300 hover:bg-primary hover:text-white group"
       >
         <span class="relative z-10 flex items-center gap-2">
@@ -154,6 +154,14 @@
           {{ item.label }}
         </a>
         }
+        <a
+          routerLink="kontakt"
+          routerLinkActive="text-primary"
+          class="text-white/80 hover:text-white transition-colors duration-300 py-3 px-4 border-l-2 border-transparent hover:border-primary/50"
+          (click)="toggleMobileMenu()"
+        >
+          Kontakt
+        </a>
       </nav>
 
       <!-- Mobile Social Links - Optional -->
@@ -210,4 +218,4 @@
 </div>
 
 <!-- Spacer to prevent content from hiding behind fixed navigation -->
-<div class="h-20"></div>
+<div class="h-8"></div>

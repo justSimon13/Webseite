@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { ServicePackagesComponent } from '../../shared/components/service-packages/service-packages.component';
+import { ServiceOverviewComponent } from '../../shared/components/service-overview/service-overview.component';
 import { SkillsComponent } from '../../shared/components/skills/skills.component';
 import { ProjectsComponent } from '../../shared/components/projects/projects.component';
 import { ClientsComponent } from '../../shared/components/clients/clients.component';
 import { CtaComponent } from '../../shared/components/cta/cta.component';
 import { TestimonialsComponent } from '../../shared/components/testimonials/testimonials.component';
+import { ScrollAnimationService } from '../../core/services/scroll-animation.service';
 
 @Component({
   selector: 'app-home',
   imports: [
-    ServicePackagesComponent,
+    ServiceOverviewComponent,
     SkillsComponent,
     ProjectsComponent,
     ClientsComponent,
@@ -19,4 +20,12 @@ import { TestimonialsComponent } from '../../shared/components/testimonials/test
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  constructor(private scrollAnimationService: ScrollAnimationService) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.scrollAnimationService.initScrollObserver();
+    }, 100);
+  }
+}

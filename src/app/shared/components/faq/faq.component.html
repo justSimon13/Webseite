@@ -1,1 +1,48 @@
-<p>faq works!</p>
+<div class="container mx-auto">
+  <div class="space-y-4">
+    <ng-container *ngFor="let faq of faqItems; let i = index">
+      <!-- FAQ Item -->
+      <div
+        class="bg-card border border-border/20 rounded-xl overflow-hidden transition-all duration-300"
+        [ngClass]="{ 'border-primary/30': faq.isOpen }"
+      >
+        <!-- Question Header -->
+        <div
+          class="flex justify-between items-center p-5 cursor-pointer"
+          (click)="toggleFaq(i)"
+        >
+          <h4 class="text-white font-medium">{{ faq.question }}</h4>
+          <div
+            class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-card border border-border/30 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-primary transition-transform duration-300"
+              [ngClass]="{ 'transform rotate-180': faq.isOpen }"
+            >
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Answer Content -->
+        <div
+          *ngIf="faq.isOpen"
+          class="border-t border-border/20 transition-all duration-500 ease-in-out"
+        >
+          <div class="p-5 pt-4 text-text-muted">
+            {{ faq.answer }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

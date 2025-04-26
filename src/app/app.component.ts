@@ -1,8 +1,9 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ScrollAnimationService } from './core/services/scroll-animation.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,14 @@ import { ScrollAnimationService } from './core/services/scroll-animation.service
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  constructor(private scrollAnimationService: ScrollAnimationService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.scrollAnimationService.initScrollObserver();
-    }, 100);
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo(0, 0);
+      });
 
     window.addEventListener('scroll', this.handleScroll);
   }
