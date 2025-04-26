@@ -6,9 +6,9 @@ import { FormsModule, NgForm } from '@angular/forms';
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './contact.component.html',
+  templateUrl: './contact-site.component.html',
 })
-export class ContactComponent {
+export class ContactSiteComponent {
   name: string = '';
   email: string = '';
   subject: string = '';

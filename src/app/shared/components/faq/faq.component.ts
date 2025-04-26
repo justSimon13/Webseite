@@ -17,13 +17,6 @@ export class FaqComponent {
   faqItems: FaqItem[] = [
     {
       question:
-        'Was kostet es, einen Onlineshop mit Shopify oder WooCommerce erstellen zu lassen?',
-      answer:
-        'Die meisten professionellen Onlineshops kosten zwischen 5.000 € und 10.000 €, abhängig vom Funktionsumfang, Design und den gewünschten Integrationen. Die Monatsrate Wartung kann zwischen 200€ - 500€ je nach Anbieter schwanken. Frag einfach nach einem konkreten Angebot.',
-      isOpen: true,
-    },
-    {
-      question:
         'Wie lange dauert es, eine Webseite oder Web-App zu entwickeln?',
       answer:
         'Je nach Umfang dauert die Umsetzung einer Webseite ca. 2-4 Wochen, bei einer App oder individualisierten Softwarelösungen kann es einige Monate in Anspruch nehmen.',

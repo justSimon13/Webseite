@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ServiceItem } from '../../models/service-item';
 import { CommonModule } from '@angular/common';
+import { ServiceItem } from '../../../../shared/models/service-item';
 
 @Component({
   selector: 'app-service-overview',

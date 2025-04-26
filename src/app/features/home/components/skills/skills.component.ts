@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Skill } from '../../models/skill';
 import { CommonModule } from '@angular/common';
-import { CtaSmallComponent } from '../cta-small/cta-small.component';
+import { CtaSmallComponent } from '../../../../shared/components/cta-small/cta-small.component';
+import { Skill } from '../../../../shared/models/skill';
 
 @Component({
   selector: 'app-skills',

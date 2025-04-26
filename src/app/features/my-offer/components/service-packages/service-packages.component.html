@@ -1,0 +1,91 @@
+<div id="service-packages" class="container mx-auto">
+  <!-- Intro-Text -->
+  <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+    <p
+      class="text-primary font-medium tracking-wider uppercase text-sm mb-4 animate-fade-in"
+      style="animation-delay: 0.1s"
+    >
+      Pakete
+    </p>
+    <h2
+      class="text-heading md:text-subtitle mb-6 animate-fade-in"
+      style="animation-delay: 0.2s"
+    >
+      Professionelle Webentwicklung für Unternehmen –
+      <span class="text-primary">Angebote im Vergleich</span>
+    </h2>
+    <p
+      class="text-body-base md:text-subheading text-text-muted animate-fade-in"
+      style="animation-delay: 0.3s"
+    >
+      Ob individuelle Webseite, Online-Shop oder Softwarelösung – hier findest
+      du das passende Paket für dein Unternehmen.
+    </p>
+  </div>
+
+  <!-- Grid: max-width und 3 Spalten -->
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-screen-lg reveal-on-scroll"
+  >
+    <ng-container *ngFor="let pkg of packages">
+      <div
+        *ngIf="pkg.enabled"
+        class="bg-card border border-border rounded-xl overflow-hidden flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+        [ngClass]="{ 'ring-2 ring-primary': pkg.featured }"
+      >
+        <!-- Header mit Flex: Titel links, Badge rechts oben -->
+        <div
+          class="bg-gradient-to-r from-primary/10 to-transparent pt-6 px-4 pb-4 border-b border-border flex justify-between items-start"
+        >
+          <!-- Titel & Subtitle -->
+          <div class="space-y-1">
+            <h3 class="font-semibold text-white">{{ pkg.title }}</h3>
+            <p class="text-text-muted text-sm">{{ pkg.subtitle }}</p>
+          </div>
+          <!-- Badge -->
+          <span
+            *ngIf="pkg.featured"
+            class="bg-primary text-[0.625rem] uppercase px-2 py-1 rounded-full font-semibold"
+          >
+            Empfohlen
+          </span>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6 flex-grow flex flex-col">
+          <!-- Für wen -->
+          <div class="mb-4">
+            <p class="text-sm text-text-muted mb-1">
+              Für wen ist dieses Paket?
+            </p>
+            <p class="text-white/90 text-sm">{{ pkg.targetUsers }}</p>
+          </div>
+          <!-- Features -->
+          <div class="mb-4 flex-grow">
+            <p class="text-sm text-text-muted mb-1">
+              Was beinhaltet dieses Paket?
+            </p>
+            <ul class="text-white/90 text-sm space-y-2">
+              <li *ngFor="let feat of pkg.features" class="flex items-start">
+                <span class="text-primary mr-3">•</span>
+                <span>{{ feat }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-6 border-t border-border/30">
+          <p class="text-sm text-text-muted mb-1">Dauer:</p>
+          <p class="text-white/90 text-sm mb-4">{{ pkg.duration }}</p>
+          <button
+            (click)="openCalendly(pkg.calendlyParam)"
+            class="w-full text-center border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+          >
+            JETZT STARTEN
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

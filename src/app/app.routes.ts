@@ -6,20 +6,22 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/home/home.component').then((m) => m.HomeComponent),
+      import('./features/home/home-site/home-site.component').then(
+        (m) => m.HomeSiteComponent
+      ),
   },
   {
     path: 'mein-angebot',
     loadComponent: () =>
-      import('./features/my-offer/my-offer.component').then(
-        (m) => m.MyOfferComponent
+      import('./features/my-offer/my-offer-site/my-offer-site.component').then(
+        (m) => m.MyOfferSiteComponent
       ),
   },
   {
     path: 'kontakt',
     loadComponent: () =>
-      import('./features/contact/contact.component').then(
-        (m) => m.ContactComponent
+      import('./features/contact/contact-site/contact-site.component').then(
+        (m) => m.ContactSiteComponent
       ),
   },
   {
