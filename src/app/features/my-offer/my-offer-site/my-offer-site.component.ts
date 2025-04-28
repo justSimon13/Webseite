@@ -4,7 +4,8 @@ import { ProcessStepsComponent } from '../components/process-steps/process-steps
 import { FaqComponent } from '../../../shared/components/faq/faq.component';
 import { ServicePackagesComponent } from '../components/service-packages/service-packages.component';
 import { ClientsComponent } from '../../home/components/clients/clients.component';
-import { ScrollAnimationService } from '../../../core/services/scroll-animation.service';
+import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { CalendlyService } from '../../../core/services/calendly/calendly.service';
 
 @Component({
   selector: 'app-my-offer',
@@ -18,11 +19,18 @@ import { ScrollAnimationService } from '../../../core/services/scroll-animation.
   templateUrl: './my-offer-site.component.html',
 })
 export class MyOfferSiteComponent {
-  constructor(private scrollAnimationService: ScrollAnimationService) {}
+  constructor(
+    private scrollAnimationService: ScrollAnimationService,
+    private calendlyService: CalendlyService
+  ) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.scrollAnimationService.initScrollObserver();
     }, 100);
+  }
+
+  openCalendly() {
+    this.calendlyService.openCalendly();
   }
 }

@@ -15,7 +15,7 @@
       </p>
       <div class="flex flex-wrap gap-4 mt-4 md:mt-6 justify-center">
         <a
-          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7'});return false;"
+          (click)="openCalendly()"
           class="btn-primary border-2 border-primary text-primary px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 group"
         >
           <span class="inline-flex items-center gap-2">
@@ -48,7 +48,6 @@
 </section>
 
 <div class="w-full relative">
-  <!-- Decorative divider -->
   <div
     class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-body to-transparent"
   ></div>

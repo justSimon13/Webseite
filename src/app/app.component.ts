@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { ScrollAnimationService } from './core/services/scroll-animation.service';
+import { ScrollAnimationService } from './core/services/scroll-animation/scroll-animation.service';
 import { filter } from 'rxjs';
 
 @Component({

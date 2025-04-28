@@ -1,21 +1,14 @@
 @layer utilities {
+  /* Client Logos */
   .client-logo {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition-duration: 500ms;
-    transition-property: transform;
+    @apply relative flex items-center justify-center transition-transform duration-500;
   }
 
   .client-logo:hover {
     z-index: 10;
   }
 
-  .logo-container:hover {
-    animation: glow-pulse 2s infinite;
-  }
-
+  /* Navigation Links */
   .nav-link {
     position: relative;
     overflow: hidden;
@@ -36,14 +29,37 @@
   .nav-link.active::after {
     width: 100%;
   }
-}
 
-@keyframes glow-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 5px 0 rgba(79, 195, 247, 0.2);
+  /* Button Group Hover */
+  button.group {
+    transition: all 0.3s ease;
   }
-  50% {
-    box-shadow: 0 0 10px 0 rgba(79, 195, 247, 0.4);
+
+  button.group:hover {
+    background-color: rgba(79, 195, 247, 0.1);
+    border-color: rgba(79, 195, 247, 0.3);
+  }
+
+  /* Input Focus */
+  input:focus,
+  textarea:focus {
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.2);
+  }
+
+  /* Basic Utilities */
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+  }
+
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .max-h-0 {
+    max-height: 0;
+  }
+
+  .max-h-\[500px\] {
+    max-height: 500px;
   }
 }

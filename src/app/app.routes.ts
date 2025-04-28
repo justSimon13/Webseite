@@ -25,6 +25,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'datenschutz',
+    loadComponent: () =>
+      import('./features/privacy-policy/privacy-policy.component').then(
+        (m) => m.PrivacyPolicyComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

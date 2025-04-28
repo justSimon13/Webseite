@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ServicePackage } from '../../../../shared/models/service-package';
 import { CommonModule } from '@angular/common';
-
-declare const Calendly: any;
+import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
 
 @Component({
   selector: 'app-service-packages',
@@ -10,6 +9,8 @@ declare const Calendly: any;
   imports: [CommonModule],
 })
 export class ServicePackagesComponent {
+  constructor(private calendlyService: CalendlyService) {}
+
   packages: ServicePackage[] = [
     {
       id: 1,
@@ -90,17 +91,7 @@ export class ServicePackagesComponent {
     },
   ];
 
-  // z.B. zum Togglen einzelner Pakete
-  togglePackage(id: number) {
-    const pkg = this.packages.find((p) => p.id === id);
-    if (pkg) {
-      pkg.enabled = !pkg.enabled;
-    }
-  }
-
-  openCalendly(param: string) {
-    Calendly.initPopupWidget({
-      url: `https://calendly.com/simonfischer-info/30min?background_color=12141d&text_color=ffffff&primary_color=4fc3f7&${param}`,
-    });
+  openCalendly(paket: string) {
+    this.calendlyService.openCalendly(paket);
   }
 }

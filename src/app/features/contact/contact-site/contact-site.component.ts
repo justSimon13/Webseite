@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { TestimonialsMiniComponent } from '../testimonials-mini/testimonials-mini.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TestimonialsMiniComponent],
   templateUrl: './contact-site.component.html',
 })
 export class ContactSiteComponent {
@@ -13,40 +16,50 @@ export class ContactSiteComponent {
   email: string = '';
   subject: string = '';
   message: string = '';
+  privacy: boolean = false;
+
+  sending: boolean = false;
+  sendSuccess: boolean = false;
+  sendError: boolean = false;
+
+  constructor(
+    private scrollAnimationService: ScrollAnimationService,
+    private http: HttpClient
+  ) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.scrollAnimationService.initScrollObserver();
+    }, 100);
+  }
 
   onSubmit(form: NgForm): void {
     if (form.valid) {
-      console.log('Form submitted successfully', {
+      this.sending = true;
+      this.sendSuccess = false;
+      this.sendError = false;
+
+      const formData = {
         name: this.name,
         email: this.email,
         subject: this.subject,
         message: this.message,
+      };
+
+      this.http.post('http://localhost:3000/contact', formData).subscribe({
+        next: (response) => {
+          console.log('Message sent successfully', response);
+          this.sendSuccess = true;
+          form.resetForm();
+        },
+        error: (error) => {
+          console.error('Error sending message', error);
+          this.sendError = true;
+        },
+        complete: () => {
+          this.sending = false;
+        },
       });
-
-      // Here you would typically call a service to send the form data
-      // this.contactService.sendMessage(this.name, this.email, this.subject, this.message)
-      //   .subscribe(response => {
-      //     console.log('Message sent!', response);
-      //     this.resetForm(form);
-      //   });
-
-      // For now, just reset the form
-      this.resetForm(form);
-
-      // You could also show a success message
-      alert(
-        'Vielen Dank für deine Nachricht! Ich werde mich in Kürze bei dir melden.'
-      );
-    } else {
-      console.log('Form is invalid');
     }
-  }
-
-  resetForm(form: NgForm): void {
-    form.resetForm();
-    this.name = '';
-    this.email = '';
-    this.subject = '';
-    this.message = '';
   }
 }

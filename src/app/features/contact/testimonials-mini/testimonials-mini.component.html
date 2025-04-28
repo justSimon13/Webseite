@@ -1,0 +1,17 @@
+<ng-container *ngIf="testimonials[currentIndex] as t">
+  <div
+    class="mt-8 pt-6 border-t border-border"
+    [ngClass]="{
+      'animate-testimonial-fade': showing,
+      'animate-testimonial-fade-out': !showing
+    }"
+  >
+    <blockquote class="text-text-muted italic text-sm">
+      "{{ t.text }}"
+    </blockquote>
+    <div class="mt-3">
+      <p class="text-white font-medium text-sm">{{ t.author }}</p>
+      <p class="text-primary/70 text-xs">{{ t.company }}</p>
+    </div>
+  </div>
+</ng-container>
