@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
-import { TestimonialsMiniComponent } from '../testimonials-mini/testimonials-mini.component';
+// import { TestimonialsMiniComponent } from '../testimonials-mini/testimonials-mini.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, TestimonialsMiniComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    // TestimonialsMiniComponent
+  ],
   templateUrl: './contact-site.component.html',
 })
 export class ContactSiteComponent {

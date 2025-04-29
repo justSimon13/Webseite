@@ -32,6 +32,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'impressum',
+    loadComponent: () =>
+      import('./features/imprint/imprint.component').then(
+        (m) => m.ImprintComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

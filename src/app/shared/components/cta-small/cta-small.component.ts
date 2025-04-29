@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CalendlyService } from '../../../core/services/calendly/calendly.service';
 
 @Component({
   selector: 'app-cta-small',
@@ -8,7 +9,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cta-small.component.html',
 })
 export class CtaSmallComponent {
-  openWidget(): void {
-    console.log('Opening booking widget...');
+  constructor(private calendlyService: CalendlyService) {}
+
+  openCalendly() {
+    this.calendlyService.openCalendly();
   }
 }

@@ -1,13 +1,9 @@
-<!-- footer.component.html -->
 <footer
   class="w-full bg-card/60 backdrop-blur-sm border-t border-border/20 pt-16 pb-8"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Footer Main Content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-      <!-- Column 1: Logo and About -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       <div class="flex flex-col">
-        <!-- Logo -->
         <a routerLink="/" class="mb-6 inline-block group">
           <div class="flex items-center gap-2">
             <div class="relative w-6 h-6 flex items-center justify-center">
@@ -35,18 +31,17 @@
           </div>
         </a>
 
-        <!-- About Text -->
         <p class="text-sm text-white/70 mb-4 leading-relaxed">
           Full-Stack Entwickler mit Fokus auf maßgeschneiderte Weblösungen für
           Unternehmen. Von der Idee bis zur Umsetzung – technisch durchdacht und
           mit klarem Designverständnis.
         </p>
 
-        <!-- Social Links -->
         <div class="flex gap-4 mt-2">
           <a
-            href="#"
+            href="https://github.com/justSimon13"
             class="text-white/50 hover:text-primary transition-colors duration-300"
+            aria-label="GitHub Profil"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +55,9 @@
             </svg>
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/simon-fischer-b5095230a"
             class="text-white/50 hover:text-primary transition-colors duration-300"
+            aria-label="LinkedIn Profil"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,8 +71,9 @@
             </svg>
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/simonscode/"
             class="text-white/50 hover:text-primary transition-colors duration-300"
+            aria-label="Instagram Profil"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,60 +89,7 @@
         </div>
       </div>
 
-      <!-- Column 2: Services -->
-      <div>
-        <h3 class="text-white font-medium mb-6 text-lg">Leistungen</h3>
-        <ul class="space-y-3">
-          <li>
-            <a
-              href="#"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              Webentwicklung
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              E-Commerce
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              Web Apps
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              Backend-Systeme
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              UI/UX Design
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Column 3: Quick Links -->
-      <div>
+      <div class="flex flex-col">
         <h3 class="text-white font-medium mb-6 text-lg">Navigation</h3>
         <ul class="space-y-3">
           <li>
@@ -159,45 +103,44 @@
           </li>
           <li>
             <a
-              routerLink="/mein-angebot"
+              routerLink="mein-angebot"
               class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
             >
               <span class="mr-2 text-primary/70">›</span>
-              Über mich
+              Mein Angebot
             </a>
           </li>
           <li>
             <a
-              routerLink="/projects"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              Projekte
-            </a>
-          </li>
-          <li>
-            <a
-              routerLink="/blog"
-              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
-            >
-              <span class="mr-2 text-primary/70">›</span>
-              Blog
-            </a>
-          </li>
-          <li>
-            <a
-              routerLink="/contact"
+              routerLink="kontakt"
               class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
             >
               <span class="mr-2 text-primary/70">›</span>
               Kontakt
             </a>
           </li>
+          <li>
+            <a
+              routerLink="impressum"
+              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
+            >
+              <span class="mr-2 text-primary/70">›</span>
+              Impressum
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="datenschutz"
+              class="text-white/70 hover:text-primary transition-colors duration-300 inline-flex items-center"
+            >
+              <span class="mr-2 text-primary/70">›</span>
+              Datenschutz
+            </a>
+          </li>
         </ul>
       </div>
 
-      <!-- Column 4: Contact Info -->
-      <div>
+      <div class="flex flex-col">
         <h3 class="text-white font-medium mb-6 text-lg">Kontakt</h3>
         <ul class="space-y-3">
           <li class="text-white/70 flex items-start">
@@ -221,13 +164,11 @@
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span
-              >Musterstraße 123<br />12345 Musterstadt<br />Deutschland</span
-            >
+            <span>Azenbergstraße 41<br />70174 Stuttgart<br />Deutschland</span>
           </li>
           <li>
             <a
-              href="mailto:kontakt@simondev.de"
+              href="mailto:info@simonfischer.dev"
               class="text-white/70 hover:text-primary transition-colors duration-300 flex items-center"
             >
               <svg
@@ -244,12 +185,12 @@
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              {{ "kontakt@simondev.de" }}
+              {{ "info@simonfischer.dev" }}
             </a>
           </li>
           <li>
             <a
-              href="tel:+4912345678"
+              href="tel:+491791351905"
               class="text-white/70 hover:text-primary transition-colors duration-300 flex items-center"
             >
               <svg
@@ -266,36 +207,29 @@
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                 />
               </svg>
-              +49 (0) 123 456 78
+              +49 179 1351905
             </a>
           </li>
         </ul>
       </div>
     </div>
 
-    <!-- Divider -->
     <div class="border-t border-border/10 my-8"></div>
 
-    <!-- Footer Bottom -->
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-white/50 text-sm">
-        &copy; 2025 SimonDev. Alle Rechte vorbehalten.
+        &copy; 2025 Simon Fischer Consulting. Alle Rechte vorbehalten.
       </p>
       <div class="flex gap-6 text-sm">
         <a
-          href="#"
+          routerLink="impressum"
           class="text-white/50 hover:text-primary transition-colors duration-300"
           >Impressum</a
         >
         <a
-          href="#"
+          routerLink="datenschutz"
           class="text-white/50 hover:text-primary transition-colors duration-300"
           >Datenschutz</a
-        >
-        <a
-          href="#"
-          class="text-white/50 hover:text-primary transition-colors duration-300"
-          >AGB</a
         >
       </div>
     </div>

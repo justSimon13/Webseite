@@ -1,11 +1,9 @@
-<!-- navigation.component.html -->
 <div
   class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-body/80 border-b border-border/10"
 >
   <div
     class="container h-20 flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-8"
   >
-    <!-- Verfeinertes, kompakteres Logo -->
     <a routerLink="/" class="group relative">
       <div
         class="absolute inset-0 bg-primary/10 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -13,9 +11,7 @@
       <div
         class="relative rounded-full border border-primary/80 overflow-hidden px-4 py-2 transition-all duration-300 group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/20"
       >
-        <!-- Logo-Icon und Text-Kombination -->
         <div class="flex items-center gap-2">
-          <!-- Logo-Icon mit Codesymbol -->
           <div class="relative w-6 h-6 flex items-center justify-center">
             <div
               class="absolute inset-0 bg-primary/20 rounded-md transform rotate-45 group-hover:rotate-90 transition-transform duration-500"
@@ -35,7 +31,6 @@
               />
             </svg>
           </div>
-          <!-- Logo-Text -->
           <span class="text-base font-medium text-primary">
             Simon<span class="text-white/90">Dev</span>
           </span>
@@ -43,7 +38,6 @@
       </div>
     </a>
 
-    <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center gap-8">
       <nav class="flex items-center gap-8">
         @for (item of navItems; track item.label) {
@@ -61,7 +55,6 @@
         }
       </nav>
 
-      <!-- Contact Button - Optional extra element -->
       <a
         routerLink="/kontakt"
         class="relative overflow-hidden border border-primary/80 text-primary rounded-full px-5 py-2 transition-all duration-300 hover:bg-primary hover:text-white group"
@@ -95,7 +88,6 @@
       </a>
     </div>
 
-    <!-- Mobile Menu Button -->
     <button
       class="md:hidden text-white/90 hover:text-primary transition-colors duration-300"
       (click)="toggleMobileMenu()"
@@ -134,7 +126,6 @@
     </button>
   </div>
 
-  <!-- Mobile Menu -->
   @if (isMobileMenuOpen) {
   <div class="md:hidden bg-card/95 backdrop-blur-sm border-t border-border/20">
     <div class="container px-4 py-5">
@@ -160,7 +151,6 @@
         </a>
       </nav>
 
-      <!-- Mobile Social Links - Optional -->
       <div class="flex gap-4 mt-6 px-4">
         <a
           href="#"
@@ -213,5 +203,4 @@
   }
 </div>
 
-<!-- Spacer to prevent content from hiding behind fixed navigation -->
 <div class="h-8"></div>

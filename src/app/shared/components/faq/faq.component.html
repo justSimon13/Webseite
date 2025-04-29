@@ -1,12 +1,10 @@
 <div class="container mx-auto">
   <div class="space-y-4">
     <ng-container *ngFor="let faq of faqItems; let i = index">
-      <!-- FAQ Item -->
       <div
         class="bg-card border border-border/20 rounded-xl overflow-hidden transition-all duration-300"
         [ngClass]="{ 'border-primary/30': faq.isOpen }"
       >
-        <!-- Question Header -->
         <div
           class="flex justify-between items-center p-5 cursor-pointer"
           (click)="toggleFaq(i)"
@@ -33,7 +31,6 @@
           </div>
         </div>
 
-        <!-- Answer Content -->
         <div
           *ngIf="faq.isOpen"
           class="border-t border-border/20 transition-all duration-500 ease-in-out"
