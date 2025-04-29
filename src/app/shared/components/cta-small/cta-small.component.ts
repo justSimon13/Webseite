@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
 
 @Component({

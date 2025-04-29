@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { ServicePackage } from '../../../../shared/models/service-package';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
+import { ServicePackage } from '../../../../shared/models/service-package';
 
 @Component({
   selector: 'app-service-packages',

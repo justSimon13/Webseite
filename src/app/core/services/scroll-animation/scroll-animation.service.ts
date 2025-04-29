@@ -5,6 +5,8 @@ import { Injectable, NgZone } from '@angular/core';
   providedIn: 'root',
 })
 export class ScrollAnimationService {
+  private readonly threshold = 0.1;
+
   constructor(private ngZone: NgZone) {}
 
   initScrollObserver(): void {
@@ -17,7 +19,7 @@ export class ScrollAnimationService {
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: this.threshold }
       );
 
       document.querySelectorAll('.reveal-on-scroll').forEach((el) => {

@@ -6,9 +6,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/home/home-site/home-site.component').then(
-        (m) => m.HomeSiteComponent
-      ),
+      import('./features/home/home-site/home-site.component').then((m) => m.HomeSiteComponent),
   },
   {
     path: 'mein-angebot',
@@ -27,15 +25,15 @@ export const routes: Routes = [
   {
     path: 'datenschutz',
     loadComponent: () =>
-      import('./features/privacy-policy/privacy-policy.component').then(
-        (m) => m.PrivacyPolicyComponent
+      import('./features/privacy-policy/privacy-policy-site/privacy-policy-site.component').then(
+        (m) => m.PrivacyPolicySiteComponent
       ),
   },
   {
     path: 'impressum',
     loadComponent: () =>
-      import('./features/imprint/imprint.component').then(
-        (m) => m.ImprintComponent
+      import('./features/imprint/imprint-site/imprint-site.component').then(
+        (m) => m.ImprintSiteComponent
       ),
   },
   {
@@ -45,9 +43,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
-  ],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

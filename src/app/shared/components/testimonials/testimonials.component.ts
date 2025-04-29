@@ -1,6 +1,6 @@
 // testimonials.component.ts
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 interface Testimonial {
   text: string;
@@ -13,7 +13,7 @@ interface Testimonial {
   templateUrl: './testimonials.component.html',
   imports: [CommonModule],
 })
-export class TestimonialsComponent implements OnInit {
+export class TestimonialsComponent {
   testimonials: Testimonial[] = [
     {
       text: 'Die Zusammenarbeit mit Simon war unkompliziert, schnell und absolut professionell. Besonders beeindruckt hat uns seine Fähigkeit, technische Themen verständlich zu erklären und zielgerichtet umzusetzen.',
@@ -37,18 +37,14 @@ export class TestimonialsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
   nextTestimonial(): void {
-    this.currentTestimonialIndex =
-      (this.currentTestimonialIndex + 1) % this.testimonials.length;
+    this.currentTestimonialIndex = (this.currentTestimonialIndex + 1) % this.testimonials.length;
     this.currentTestimonial = this.testimonials[this.currentTestimonialIndex];
   }
 
   prevTestimonial(): void {
     this.currentTestimonialIndex =
-      (this.currentTestimonialIndex - 1 + this.testimonials.length) %
-      this.testimonials.length;
+      (this.currentTestimonialIndex - 1 + this.testimonials.length) % this.testimonials.length;
     this.currentTestimonial = this.testimonials[this.currentTestimonialIndex];
   }
 

@@ -1,26 +1,15 @@
-import { Component } from '@angular/core';
-import { ClientsComponent } from '../components/clients/clients.component';
-import { CtaComponent } from '../../../shared/components/cta/cta.component';
-// import { TestimonialsComponent } from '../../../shared/components/testimonials/testimonials.component';
-import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
-import { SkillsComponent } from '../components/skills/skills.component';
-import { ProjectsComponent } from '../components/projects/projects.component';
-import { ServiceOverviewComponent } from '../components/service-overview/service-overview.component';
+import { Component, AfterViewInit } from '@angular/core';
+
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
+import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { HOME_IMPORTS } from '../home-shared';
 
 @Component({
-  selector: 'app-home',
-  imports: [
-    ServiceOverviewComponent,
-    SkillsComponent,
-    ProjectsComponent,
-    ClientsComponent,
-    // TestimonialsComponent,
-    CtaComponent,
-  ],
+  selector: 'app-home-site',
+  imports: [HOME_IMPORTS],
   templateUrl: './home-site.component.html',
 })
-export class HomeSiteComponent {
+export class HomeSiteComponent implements AfterViewInit {
   constructor(
     private scrollAnimationService: ScrollAnimationService,
     private calendlyService: CalendlyService

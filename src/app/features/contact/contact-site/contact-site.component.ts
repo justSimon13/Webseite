@@ -1,21 +1,18 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AfterViewInit, Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
-// import { TestimonialsMiniComponent } from '../testimonials-mini/testimonials-mini.component';
+import { CONTACT_IMPORTS } from '../contact-shared';
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    // TestimonialsMiniComponent
-  ],
+  selector: 'app-contact-site',
+  imports: [CONTACT_IMPORTS],
   templateUrl: './contact-site.component.html',
 })
-export class ContactSiteComponent {
+export class ContactSiteComponent implements AfterViewInit {
+  private readonly timeout = 100;
+
   name: string = '';
   email: string = '';
   subject: string = '';
@@ -34,7 +31,7 @@ export class ContactSiteComponent {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.scrollAnimationService.initScrollObserver();
-    }, 100);
+    }, this.timeout);
   }
 
   onSubmit(form: NgForm): void {
@@ -51,8 +48,7 @@ export class ContactSiteComponent {
       };
 
       this.http.post('http://localhost:3000/contact', formData).subscribe({
-        next: (response) => {
-          console.log('Message sent successfully', response);
+        next: () => {
           this.sendSuccess = true;
           form.resetForm();
         },

@@ -5,10 +5,7 @@
         class="bg-card border border-border/20 rounded-xl overflow-hidden transition-all duration-300"
         [ngClass]="{ 'border-primary/30': faq.isOpen }"
       >
-        <div
-          class="flex justify-between items-center p-5 cursor-pointer"
-          (click)="toggleFaq(i)"
-        >
+        <div class="flex justify-between items-center p-5 cursor-pointer" (click)="toggleFaq(i)">
           <h4 class="text-white font-medium">{{ faq.question }}</h4>
           <div
             class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-card border border-border/30 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"

@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Testimonial } from '../../../shared/models/testimonial';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Testimonial } from '../../../../shared/models/testimonial';
 
 @Component({
   selector: 'app-testimonials-mini',
@@ -29,16 +30,18 @@ export class TestimonialsMiniComponent implements OnInit, OnDestroy {
 
   currentIndex = 0;
   private intervalId!: number;
-  private readonly switchInterval = 5000; // ms
+  private switchInterval = 5000;
+  private animationDuration = 500;
+
   showing = true;
 
   ngOnInit() {
     this.intervalId = window.setInterval(() => {
-      this.showing = false; // Fade-Out
+      this.showing = false;
       setTimeout(() => {
         this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
-        this.showing = true; // Fade-In
-      }, 500); // Dauer der Fade-Out-Animation
+        this.showing = true;
+      }, this.animationDuration);
     }, this.switchInterval);
   }
 

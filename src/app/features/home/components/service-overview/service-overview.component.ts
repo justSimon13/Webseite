@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
 import { ServiceItem } from '../../../../shared/models/service-item';
 
 @Component({

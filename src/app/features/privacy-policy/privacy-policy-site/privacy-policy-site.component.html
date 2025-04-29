@@ -1,19 +1,14 @@
 <!-- privacy-policy.component.html -->
-<section
-  class="w-full py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-body overflow-hidden"
->
+<section class="w-full py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-body overflow-hidden">
   <div class="container mx-auto max-w-6xl">
     <!-- Header Section -->
     <div class="text-center mb-16 max-w-2xl mx-auto reveal-on-scroll">
-      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">
-        Informationen
-      </p>
+      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">Informationen</p>
       <h1 class="text-body-base md:text-subheading text-white mb-4">
         Datenschutz<span class="text-primary">erklärung</span>
       </h1>
       <p class="text-text-muted max-w-prose mx-auto">
-        Hier findest du alle wichtigen Informationen zum Datenschutz auf meiner
-        Website.
+        Hier findest du alle wichtigen Informationen zum Datenschutz auf meiner Website.
       </p>
     </div>
 
@@ -28,9 +23,7 @@
       >
         Datenschutz auf einen Blick
       </h2>
-      <div
-        class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
-      ></div>
+      <div class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"></div>
 
       <!-- Accordion für verschiedene Abschnitte -->
       <div class="space-y-6">
@@ -43,7 +36,7 @@
             <h3 class="text-white font-medium">Allgemeine Hinweise</h3>
             <svg
               [ngClass]="{
-                'rotate-180': activeSections.includes('generalInfo')
+                'rotate-180': activeSections.includes('generalInfo'),
               }"
               class="w-5 h-5 text-primary transition-transform duration-300"
               xmlns="http://www.w3.org/2000/svg"
@@ -61,16 +54,15 @@
             class="accordion-content mt-2 p-4 bg-card/50 rounded-lg border border-border/50"
             [ngClass]="{
               block: activeSections.includes('generalInfo'),
-              hidden: !activeSections.includes('generalInfo')
+              hidden: !activeSections.includes('generalInfo'),
             }"
           >
             <p class="text-text-muted mb-4">
-              Die folgenden Hinweise geben einen einfachen Überblick darüber,
-              was mit Ihren personenbezogenen Daten passiert, wenn Sie diese
-              Website besuchen. Personenbezogene Daten sind alle Daten, mit
-              denen Sie persönlich identifiziert werden können. Ausführliche
-              Informationen zum Thema Datenschutz entnehmen Sie unserer unter
-              diesem Text aufgeführten Datenschutzerklärung.
+              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
+              personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene
+              Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+              Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem
+              Text aufgeführten Datenschutzerklärung.
             </p>
           </div>
         </div>
@@ -81,12 +73,10 @@
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
             (click)="toggleSection('dataCollection')"
           >
-            <h3 class="text-white font-medium">
-              Datenerfassung auf dieser Website
-            </h3>
+            <h3 class="text-white font-medium">Datenerfassung auf dieser Website</h3>
             <svg
               [ngClass]="{
-                'rotate-180': activeSections.includes('dataCollection')
+                'rotate-180': activeSections.includes('dataCollection'),
               }"
               class="w-5 h-5 text-primary transition-transform duration-300"
               xmlns="http://www.w3.org/2000/svg"
@@ -104,41 +94,37 @@
             class="accordion-content mt-2 p-4 bg-card/50 rounded-lg border border-border/50"
             [ngClass]="{
               block: activeSections.includes('dataCollection'),
-              hidden: !activeSections.includes('dataCollection')
+              hidden: !activeSections.includes('dataCollection'),
             }"
           >
             <h4 class="text-white mb-3">
               Wer ist verantwortlich für die Datenerfassung auf dieser Website?
             </h4>
             <p class="text-text-muted mb-4">
-              Die Datenverarbeitung auf dieser Website erfolgt durch den
-              Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt
-              „Hinweis zur Verantwortlichen Stelle" in dieser
+              Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen
+              Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle" in dieser
               Datenschutzerklärung entnehmen.
             </p>
 
             <h4 class="text-white mb-3">Wie erfassen wir Ihre Daten?</h4>
             <p class="text-text-muted mb-4">
-              Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese
-              mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in
-              ein Kontaktformular eingeben.
+              Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei
+              kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.
             </p>
             <p class="text-text-muted mb-4">
-              Andere Daten werden automatisch oder nach Ihrer Einwilligung beim
-              Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor
-              allem technische Daten (z.B. Internetbrowser, Betriebssystem oder
-              Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt
-              automatisch, sobald Sie diese Website betreten.
+              Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website
+              durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B.
+              Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser
+              Daten erfolgt automatisch, sobald Sie diese Website betreten.
             </p>
 
             <h4 class="text-white mb-3">Wofür nutzen wir Ihre Daten?</h4>
             <p class="text-text-muted mb-4">
-              Ein Teil der Daten wird erhoben, um eine fehlerfreie
-              Bereitstellung der Website zu gewährleisten. Andere Daten können
-              zur Analyse Ihres Nutzerverhaltens verwendet werden. Sofern über
-              die Website Verträge geschlossen oder angebahnt werden können,
-              werden die übermittelten Daten auch für Vertragsangebote,
-              Bestellungen oder sonstige Auftragsanfragen verarbeitet.
+              Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu
+              gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet
+              werden. Sofern über die Website Verträge geschlossen oder angebahnt werden können,
+              werden die übermittelten Daten auch für Vertragsangebote, Bestellungen oder sonstige
+              Auftragsanfragen verarbeitet.
             </p>
           </div>
         </div>
@@ -149,9 +135,7 @@
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
             (click)="toggleSection('rights')"
           >
-            <h3 class="text-white font-medium">
-              Ihre Rechte bezüglich Ihrer Daten
-            </h3>
+            <h3 class="text-white font-medium">Ihre Rechte bezüglich Ihrer Daten</h3>
             <svg
               [ngClass]="{ 'rotate-180': activeSections.includes('rights') }"
               class="w-5 h-5 text-primary transition-transform duration-300"
@@ -170,26 +154,24 @@
             class="accordion-content mt-2 p-4 bg-card/50 rounded-lg border border-border/50"
             [ngClass]="{
               block: activeSections.includes('rights'),
-              hidden: !activeSections.includes('rights')
+              hidden: !activeSections.includes('rights'),
             }"
           >
             <p class="text-text-muted mb-4">
-              Sie haben jederzeit das Recht, unentgeltlich Auskunft über
-              Herkunft, Empfänger und Zweck Ihrer gespeicherten
-              personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht,
-              die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie
-              eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie
-              diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem
-              haben Sie das Recht, unter bestimmten Umständen die Einschränkung
-              der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
+              Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und
+              Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein
+              Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine
+              Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung
+              jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten
+              Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu
+              verlangen.
             </p>
             <p class="text-text-muted mb-4">
-              Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen
-              Aufsichtsbehörde zu.
+              Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
             </p>
             <p class="text-text-muted">
-              Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie
-              sich jederzeit an uns wenden.
+              Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns
+              wenden.
             </p>
           </div>
         </div>
@@ -219,15 +201,14 @@
             class="accordion-content mt-2 p-4 bg-card/50 rounded-lg border border-border/50"
             [ngClass]="{
               block: activeSections.includes('hosting'),
-              hidden: !activeSections.includes('hosting')
+              hidden: !activeSections.includes('hosting'),
             }"
           >
             <h4 class="text-white mb-3">IONOS</h4>
             <p class="text-text-muted mb-4">
-              Anbieter ist die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur
-              (nachfolgend IONOS). Wenn Sie unsere Website besuchen, erfasst
-              IONOS verschiedene Logfiles inklusive Ihrer IP-Adressen. Details
-              entnehmen Sie der Datenschutzerklärung von IONOS:
+              Anbieter ist die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur (nachfolgend IONOS).
+              Wenn Sie unsere Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer
+              IP-Adressen. Details entnehmen Sie der Datenschutzerklärung von IONOS:
             </p>
             <a
               href="https://www.ionos.de/terms-gtc/terms-privacy"
@@ -237,15 +218,13 @@
               >https://www.ionos.de/terms-gtc/terms-privacy</a
             >
             <p class="text-text-muted">
-              Die Verwendung von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1
-              lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer
-              möglichst zuverlässigen Darstellung unserer Website. Sofern eine
-              entsprechende Einwilligung abgefragt wurde, erfolgt die
-              Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a
-              DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die
-              Speicherung von Cookies oder den Zugriff auf Informationen im
-              Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des
-              TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
+              Die Verwendung von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir
+              haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer
+              Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die
+              Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs.
+              1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf
+              Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG
+              umfasst. Die Einwilligung ist jederzeit widerrufbar.
             </p>
           </div>
         </div>
@@ -259,7 +238,7 @@
             <h3 class="text-white font-medium">Verantwortliche Stelle</h3>
             <svg
               [ngClass]="{
-                'rotate-180': activeSections.includes('responsible')
+                'rotate-180': activeSections.includes('responsible'),
               }"
               class="w-5 h-5 text-primary transition-transform duration-300"
               xmlns="http://www.w3.org/2000/svg"
@@ -277,12 +256,11 @@
             class="accordion-content mt-2 p-4 bg-card/50 rounded-lg border border-border/50"
             [ngClass]="{
               block: activeSections.includes('responsible'),
-              hidden: !activeSections.includes('responsible')
+              hidden: !activeSections.includes('responsible'),
             }"
           >
             <p class="text-text-muted mb-4">
-              Die verantwortliche Stelle für die Datenverarbeitung auf dieser
-              Website ist:
+              Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
             </p>
             <div class="mb-4">
               <p class="text-white">Simon Fischer</p>
@@ -292,26 +270,21 @@
             <div class="mb-4">
               <p class="text-text-muted">
                 Telefon:
-                <a
-                  href="tel:+491791351905"
-                  class="text-primary hover:text-primary/80"
+                <a href="tel:+491791351905" class="text-primary hover:text-primary/80"
                   >+49 179 1351905</a
                 >
               </p>
               <p class="text-text-muted">
                 E-Mail:
-                <a
-                  href="mailto:info@simonfischer.dev"
-                  class="text-primary hover:text-primary/80"
-                  >{{ "info@simonfischer.dev" }}</a
-                >
+                <a href="mailto:info@simonfischer.dev" class="text-primary hover:text-primary/80">{{
+                  'info@simonfischer.dev'
+                }}</a>
               </p>
             </div>
             <p class="text-text-muted">
-              Verantwortliche Stelle ist die natürliche oder juristische Person,
-              die allein oder gemeinsam mit anderen über die Zwecke und Mittel
-              der Verarbeitung von personenbezogenen Daten (z.B. Namen,
-              E-Mail-Adressen o. Ä.) entscheidet.
+              Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder
+              gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von
+              personenbezogenen Daten (z.B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
             </p>
           </div>
         </div>
@@ -342,16 +315,15 @@
           class="accordion-content mt-2 p-4 bg-card/50 rounded-lg border border-border/50"
           [ngClass]="{
             block: activeSections.includes('plugins'),
-            hidden: !activeSections.includes('plugins')
+            hidden: !activeSections.includes('plugins'),
           }"
         >
           <!-- Google Fonts -->
           <h4 class="text-white mb-3">Google Fonts (lokales Hosting)</h4>
           <p class="text-text-muted mb-4">
-            Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so
-            genannte Google Fonts, die von Google bereitgestellt werden. Die
-            Google Fonts sind lokal installiert. Eine Verbindung zu Servern von
-            Google findet dabei nicht statt.
+            Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google
+            Fonts, die von Google bereitgestellt werden. Die Google Fonts sind lokal installiert.
+            Eine Verbindung zu Servern von Google findet dabei nicht statt.
           </p>
           <p class="text-text-muted mb-6">
             Weitere Informationen zu Google Fonts finden Sie unter
@@ -375,13 +347,13 @@
           <!-- Font Awesome -->
           <h4 class="text-white mb-3">Font Awesome (lokales Hosting)</h4>
           <p class="text-text-muted mb-4">
-            Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten
-            Font Awesome. Font Awesome ist lokal installiert. Eine Verbindung zu
-            Servern von Fonticons, Inc. findet dabei nicht statt.
+            Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten Font Awesome. Font
+            Awesome ist lokal installiert. Eine Verbindung zu Servern von Fonticons, Inc. findet
+            dabei nicht statt.
           </p>
           <p class="text-text-muted mb-6">
-            Weitere Informationen zu Font Awesome finden Sie in der
-            Datenschutzerklärung für Font Awesome unter:
+            Weitere Informationen zu Font Awesome finden Sie in der Datenschutzerklärung für Font
+            Awesome unter:
             <a
               href="https://fontawesome.com/privacy"
               target="_blank"
@@ -394,22 +366,20 @@
           <!-- Terminbuchung über Calendly -->
           <h4 class="text-white mb-3">Terminbuchung über Calendly</h4>
           <p class="text-text-muted mb-4">
-            Auf unserer Website haben Sie die Möglichkeit, Termine mit uns zu
-            buchen. Dafür nutzen wir den Dienst <strong>Calendly</strong>.
-            Anbieter ist Calendly, LLC, 271 17th St NW, Atlanta, GA 30363, USA.
+            Auf unserer Website haben Sie die Möglichkeit, Termine mit uns zu buchen. Dafür nutzen
+            wir den Dienst <strong>Calendly</strong>. Anbieter ist Calendly, LLC, 271 17th St NW,
+            Atlanta, GA 30363, USA.
           </p>
           <p class="text-text-muted mb-4">
-            Wenn Sie einen Termin buchen, werden personenbezogene Daten wie
-            Name, E-Mail-Adresse und Terminzeitpunkt verarbeitet. Die
-            Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b
-            DSGVO (Vertragserfüllung) sowie auf Grundlage unseres berechtigten
-            Interesses an einer effizienten Terminverwaltung (Art. 6 Abs. 1 lit.
-            f DSGVO).
+            Wenn Sie einen Termin buchen, werden personenbezogene Daten wie Name, E-Mail-Adresse und
+            Terminzeitpunkt verarbeitet. Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs.
+            1 lit. b DSGVO (Vertragserfüllung) sowie auf Grundlage unseres berechtigten Interesses
+            an einer effizienten Terminverwaltung (Art. 6 Abs. 1 lit. f DSGVO).
           </p>
           <p class="text-text-muted mb-6">
-            Calendly verarbeitet Ihre Daten auch in den USA. Der Schutz Ihrer
-            Daten wird durch Standardvertragsklauseln sichergestellt. Weitere
-            Informationen finden Sie in der Datenschutzerklärung von Calendly:
+            Calendly verarbeitet Ihre Daten auch in den USA. Der Schutz Ihrer Daten wird durch
+            Standardvertragsklauseln sichergestellt. Weitere Informationen finden Sie in der
+            Datenschutzerklärung von Calendly:
             <a
               href="https://calendly.com/de/pages/privacy"
               target="_blank"
@@ -422,24 +392,24 @@
           <!-- Audio- und Videokonferenzen -->
           <h4 class="text-white mb-3">Audio- und Videokonferenzen (Zoom)</h4>
           <p class="text-text-muted mb-4">
-            Für die Kommunikation mit unseren Kunden und Geschäftspartnern
-            setzen wir unter anderem Online-Konferenz-Tools ein.
+            Für die Kommunikation mit unseren Kunden und Geschäftspartnern setzen wir unter anderem
+            Online-Konferenz-Tools ein.
           </p>
           <p class="text-text-muted mb-4">
             <strong>Zoom</strong><br />
-            Anbieter: Zoom Video Communications, Inc., 55 Almaden Blvd, Suite
-            600, San Jose, CA 95113, USA.
+            Anbieter: Zoom Video Communications, Inc., 55 Almaden Blvd, Suite 600, San Jose, CA
+            95113, USA.
           </p>
           <p class="text-text-muted mb-4">
-            Bei der Nutzung von Zoom werden verschiedene personenbezogene Daten
-            verarbeitet. Die Datenverarbeitung erfolgt auf Grundlage von Art. 6
-            Abs. 1 lit. b DSGVO (Vertragserfüllung) sowie Art. 6 Abs. 1 lit. f
-            DSGVO (berechtigtes Interesse an einer effektiven Kommunikation).
+            Bei der Nutzung von Zoom werden verschiedene personenbezogene Daten verarbeitet. Die
+            Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO
+            (Vertragserfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer
+            effektiven Kommunikation).
           </p>
           <p class="text-text-muted mb-4">
-            Zoom überträgt personenbezogene Daten auch in die USA. Der Schutz
-            erfolgt über Standardvertragsklauseln der EU-Kommission. Weitere
-            Informationen finden Sie in der Datenschutzerklärung von Zoom:
+            Zoom überträgt personenbezogene Daten auch in die USA. Der Schutz erfolgt über
+            Standardvertragsklauseln der EU-Kommission. Weitere Informationen finden Sie in der
+            Datenschutzerklärung von Zoom:
             <a
               href="https://zoom.us/de-de/privacy.html"
               target="_blank"
@@ -453,10 +423,7 @@
     </div>
 
     <!-- Call to Action -->
-    <div
-      class="mt-16 text-center reveal-on-scroll"
-      [ngStyle]="{ 'transition-delay': '0.3s' }"
-    >
+    <div class="mt-16 text-center reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.3s' }">
       <div class="flex items-center justify-center group">
         <a
           href="/kontakt"
@@ -471,12 +438,7 @@
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-          />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </div>
     </div>

@@ -1,17 +1,13 @@
-<section
-  class="w-full py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-body overflow-hidden"
->
+<section class="w-full py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-body overflow-hidden">
   <div class="container mx-auto max-w-6xl">
     <div class="text-center mb-16 max-w-2xl mx-auto reveal-on-scroll">
-      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">
-        Kontakt
-      </p>
+      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">Kontakt</p>
       <h1 class="text-body-base md:text-subheading text-white mb-4">
         Lass uns <span class="text-primary">sprechen</span>
       </h1>
       <p class="text-text-muted max-w-prose mx-auto">
-        Hast du Fragen oder ein neues Projekt? Schreib mir oder ruf an – ich
-        freue mich auf deine Anfrage!
+        Hast du Fragen oder ein neues Projekt? Schreib mir oder ruf an – ich freue mich auf deine
+        Anfrage!
       </p>
     </div>
 
@@ -33,18 +29,10 @@
             class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"
           ></div>
 
-          <form
-            #contactForm="ngForm"
-            (ngSubmit)="onSubmit(contactForm)"
-            class="space-y-6"
-          >
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
-                <label
-                  for="name"
-                  class="text-sm font-medium text-white/80 block"
-                  >Name *</label
-                >
+                <label for="name" class="text-sm font-medium text-white/80 block">Name *</label>
                 <div class="relative">
                   <input
                     id="name"
@@ -56,20 +44,13 @@
                     class="w-full px-4 py-3 bg-card/80 border border-border rounded-lg placeholder-white/30 text-white focus:border-primary focus:outline-none transition-all duration-300"
                   />
                 </div>
-                <div
-                  *ngIf="contactForm.submitted && !name"
-                  class="text-red-400 text-xs"
-                >
+                <div *ngIf="contactForm.submitted && !name" class="text-red-400 text-xs">
                   Bitte gib deinen Namen ein.
                 </div>
               </div>
 
               <div class="space-y-2">
-                <label
-                  for="email"
-                  class="text-sm font-medium text-white/80 block"
-                  >E-Mail *</label
-                >
+                <label for="email" class="text-sm font-medium text-white/80 block">E-Mail *</label>
                 <div class="relative">
                   <input
                     id="email"
@@ -82,10 +63,7 @@
                   />
                 </div>
                 <div
-                  *ngIf="
-                    contactForm.submitted &&
-                    contactForm.controls['email']?.invalid
-                  "
+                  *ngIf="contactForm.submitted && contactForm.controls['email']?.invalid"
                   class="text-red-400 text-xs"
                 >
                   Bitte gib eine gültige E-Mail ein.
@@ -94,11 +72,7 @@
             </div>
 
             <div class="space-y-2">
-              <label
-                for="subject"
-                class="text-sm font-medium text-white/80 block"
-                >Betreff</label
-              >
+              <label for="subject" class="text-sm font-medium text-white/80 block">Betreff</label>
               <div class="relative">
                 <input
                   id="subject"
@@ -112,9 +86,7 @@
             </div>
 
             <div class="space-y-2">
-              <label
-                for="message"
-                class="text-sm font-medium text-white/80 block"
+              <label for="message" class="text-sm font-medium text-white/80 block"
                 >Nachricht *</label
               >
               <div class="relative">
@@ -128,10 +100,7 @@
                   class="w-full px-4 py-3 bg-card/80 border border-border rounded-lg placeholder-white/30 text-white focus:border-primary focus:outline-none transition-all duration-300"
                 ></textarea>
               </div>
-              <div
-                *ngIf="contactForm.submitted && !message"
-                class="text-red-400 text-xs"
-              >
+              <div *ngIf="contactForm.submitted && !message" class="text-red-400 text-xs">
                 Bitte gib deine Nachricht ein.
               </div>
             </div>
@@ -157,10 +126,7 @@
                   >
                   einverstanden. *
                 </label>
-                <div
-                  *ngIf="contactForm.submitted && !privacy"
-                  class="text-red-400 text-xs mt-1"
-                >
+                <div *ngIf="contactForm.submitted && !privacy" class="text-red-400 text-xs mt-1">
                   Bitte akzeptiere die Datenschutzerklärung.
                 </div>
               </div>
@@ -379,10 +345,7 @@
       </div>
     </div>
 
-    <div
-      class="mt-16 text-center reveal-on-scroll"
-      [ngStyle]="{ 'transition-delay': '0.3s' }"
-    >
+    <div class="mt-16 text-center reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.3s' }">
       <div class="flex items-center justify-center group">
         <a
           href="tel:+49123456789"
@@ -397,12 +360,7 @@
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-          />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </div>
     </div>

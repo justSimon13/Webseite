@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CtaSmallComponent } from '../../../../shared/components/cta-small/cta-small.component';
+import { Component } from '@angular/core';
+
+import { SHARED_COMPONENTS } from '../../../../shared/components/shared-components';
 import { Skill } from '../../../../shared/models/skill';
 
 @Component({
   selector: 'app-skills',
-  imports: [CommonModule, CtaSmallComponent],
+  imports: [CommonModule, SHARED_COMPONENTS],
   templateUrl: './skills.component.html',
 })
 export class SkillsComponent {
