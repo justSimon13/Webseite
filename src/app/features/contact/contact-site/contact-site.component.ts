@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { environment } from '../../../../environments/environment';
 import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
 import { CONTACT_IMPORTS } from '../contact-shared';
 
@@ -47,7 +48,7 @@ export class ContactSiteComponent implements AfterViewInit {
         message: this.message,
       };
 
-      this.http.post('http://localhost:3000/contact', formData).subscribe({
+      this.http.post(`${environment.apiUrl}/contact`, formData).subscribe({
         next: () => {
           this.sendSuccess = true;
           form.resetForm();

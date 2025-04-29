@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      target: dev
+    container_name: webseite_dev
+    ports:
+      - '4200:4200'
+    environment:
+      - NODE_ENV=development
+    networks:
+      - webnetz
+
+networks:
+  webnetz:
+    driver: bridge
