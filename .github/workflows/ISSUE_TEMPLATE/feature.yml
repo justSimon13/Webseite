@@ -1,0 +1,21 @@
+name: 🚀 Feature
+description: Neue Funktion oder Erweiterung
+title: '{title}' # Nutzer gibt nur reinen Titel ein
+labels: ['enhancement']
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Titel des Features
+      placeholder: z. B. "Neues Dashboard implementieren"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Beschreibung
+      placeholder: Was soll umgesetzt werden?
+  - type: hidden
+    id: prefix
+    attributes:
+      value: 'Feat'

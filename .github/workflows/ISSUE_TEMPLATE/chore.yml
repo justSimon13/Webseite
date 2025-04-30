@@ -1,0 +1,21 @@
+name: 🛠️ Chore
+description: Interne Aufgabe, Maintenance oder Setup
+title: '{title}'
+labels: ['chore']
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Titel der Aufgabe
+      placeholder: z. B. "Linter konfigurieren"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Beschreibung
+      placeholder: Was soll erledigt werden?
+  - type: hidden
+    id: prefix
+    attributes:
+      value: 'Chore'
