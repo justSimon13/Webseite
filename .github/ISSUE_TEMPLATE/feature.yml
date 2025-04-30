@@ -3,12 +3,6 @@ description: Neue Funktion oder Erweiterung
 title: 'Feat: '
 labels: ['enhancement']
 body:
-  - type: input
-    id: title
-    attributes:
-      label: Titel des Features
-    validations:
-      required: true
   - type: textarea
     id: description
     attributes:
