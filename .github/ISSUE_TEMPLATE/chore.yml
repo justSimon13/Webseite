@@ -15,7 +15,11 @@ body:
     attributes:
       label: Beschreibung
       placeholder: Was soll erledigt werden?
-  - type: hidden
+  - type: dropdown
     id: prefix
     attributes:
-      value: 'Chore'
+      label: Prefix (automatisch genutzt)
+      options:
+        - Chore
+    validations:
+      required: true

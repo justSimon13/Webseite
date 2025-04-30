@@ -15,7 +15,11 @@ body:
     attributes:
       label: Beschreibung
       placeholder: Was soll umgesetzt werden?
-  - type: hidden
+  - type: dropdown
     id: prefix
     attributes:
-      value: 'Feat'
+      label: Prefix (automatisch genutzt)
+      options:
+        - Feat
+    validations:
+      required: true

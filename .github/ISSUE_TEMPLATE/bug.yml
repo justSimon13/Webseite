@@ -7,7 +7,7 @@ body:
     id: title
     attributes:
       label: Titel des Fehlers
-      placeholder: z. B. "Login schlägt bei ungültiger E-Mail fehl"
+      placeholder: z.B. "Login schlägt bei ungültiger E-Mail fehl"
     validations:
       required: true
   - type: textarea
@@ -15,7 +15,11 @@ body:
     attributes:
       label: Beschreibung
       placeholder: Was ist passiert? Welche Auswirkungen?
-  - type: hidden
+  - type: dropdown
     id: prefix
     attributes:
-      value: 'Fix'
+      label: Prefix (automatisch genutzt)
+      options:
+        - Fix
+    validations:
+      required: true
