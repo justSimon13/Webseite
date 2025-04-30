@@ -1,0 +1,59 @@
+name: Auto WSFC Numbering (YAML Templates)
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  auto-number:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add WSFC Number to Issue Title
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.issue.number;
+
+            // Hole den aktuellen Issue
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber
+            });
+
+            const originalTitle = issue.title;
+
+            // Hole den vollständigen Body
+            const body = issue.body || "";
+
+            // Extrahiere den Prefix aus dem versteckten YAML-Feld
+            const prefixMatch = body.match(/prefix:\s*(\w+)/i);
+            const prefix = prefixMatch ? prefixMatch[1].charAt(0).toUpperCase() + prefixMatch[1].slice(1).toLowerCase() : 'Task';
+
+            // Liste alle Issues mit bestehendem WSFC-Code
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            const numbers = issues
+              .map(i => {
+                const match = i.title.match(/WSFC-(\d{3})/);
+                return match ? parseInt(match[1], 10) : null;
+              })
+              .filter(n => n !== null)
+              .sort((a, b) => b - a);
+
+            const nextNumber = numbers.length > 0 ? numbers[0] + 1 : 1;
+            const paddedNumber = String(nextNumber).padStart(3, '0');
+
+            const newTitle = `${prefix}[WSFC-${paddedNumber}]: ${originalTitle}`;
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              title: newTitle
+            });
