@@ -4,6 +4,9 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  issues: write
+
 jobs:
   auto-number:
     runs-on: ubuntu-latest
@@ -14,7 +17,6 @@ jobs:
           script: |
             const issueNumber = context.issue.number;
 
-            // Hole den aktuellen Issue
             const { data: issue } = await github.rest.issues.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -23,14 +25,12 @@ jobs:
 
             const originalTitle = issue.title;
 
-            // Hole den vollständigen Body
-            const body = issue.body || "";
+            const labels = issue.labels.map(l => l.name.toLowerCase());
+            let prefix = "Task";
+            if (labels.includes("bug")) prefix = "Fix";
+            else if (labels.includes("enhancement")) prefix = "Feat";
+            else if (labels.includes("chore")) prefix = "Chore";
 
-            // Extrahiere den Prefix aus dem versteckten YAML-Feld
-            const prefixMatch = body.match(/prefix:\s*(\w+)/i);
-            const prefix = prefixMatch ? prefixMatch[1].charAt(0).toUpperCase() + prefixMatch[1].slice(1).toLowerCase() : 'Task';
-
-            // Liste alle Issues mit bestehendem WSFC-Code
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
