@@ -9,11 +9,21 @@ import { IMPRINT_IMPORTS } from '../imprint-shared';
   templateUrl: './imprint-site.component.html',
 })
 export class ImprintSiteComponent implements AfterViewInit {
+  activeSections: string[] = ['companyData'];
+
   constructor(private scrollAnimationService: ScrollAnimationService) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.scrollAnimationService.initScrollObserver();
     }, 100);
+  }
+
+  toggleSection(section: string): void {
+    if (this.activeSections.includes(section)) {
+      this.activeSections = this.activeSections.filter((s) => s !== section);
+    } else {
+      this.activeSections.push(section);
+    }
   }
 }

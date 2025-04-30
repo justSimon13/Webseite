@@ -1,7 +1,5 @@
-<!-- privacy-policy.component.html -->
-<section class="w-full py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-body overflow-hidden">
+<section class="w-full py-16 md:py-24 lg:py-32 px-6 bg-body overflow-hidden">
   <div class="container mx-auto max-w-6xl">
-    <!-- Header Section -->
     <div class="text-center mb-16 max-w-2xl mx-auto reveal-on-scroll">
       <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">Informationen</p>
       <h1 class="text-body-base md:text-subheading text-white mb-4">
@@ -12,12 +10,10 @@
       </p>
     </div>
 
-    <!-- Main Content -->
     <div
       class="bg-card border border-border rounded-xl p-8 md:p-10 shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-card-hover hover:shadow-lg hover:shadow-primary/5 group reveal-on-scroll group"
       [ngStyle]="{ 'transition-delay': '0s' }"
     >
-      <!-- Überschrift mit Unterline-Animation -->
       <h2
         class="text-subheading font-semibold mb-4 transition-colors duration-300 group-hover:text-primary"
       >
@@ -25,9 +21,7 @@
       </h2>
       <div class="w-12 h-[2px] bg-primary mb-6 transition-all duration-300 group-hover:w-16"></div>
 
-      <!-- Accordion für verschiedene Abschnitte -->
       <div class="space-y-6">
-        <!-- Allgemeine Hinweise -->
         <div class="accordion-item">
           <div
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
@@ -67,7 +61,6 @@
           </div>
         </div>
 
-        <!-- Datenerfassung -->
         <div class="accordion-item">
           <div
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
@@ -129,7 +122,6 @@
           </div>
         </div>
 
-        <!-- Datenschutzrechte -->
         <div class="accordion-item">
           <div
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
@@ -176,7 +168,6 @@
           </div>
         </div>
 
-        <!-- Hosting -->
         <div class="accordion-item">
           <div
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
@@ -229,7 +220,6 @@
           </div>
         </div>
 
-        <!-- Verantwortliche Stelle -->
         <div class="accordion-item">
           <div
             class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
@@ -290,7 +280,6 @@
         </div>
       </div>
 
-      <!-- Plugins und Tools -->
       <div class="accordion-item mt-8">
         <div
           class="accordion-header cursor-pointer flex items-center justify-between p-4 border border-border rounded-lg hover:bg-card-hover transition-all duration-300"
@@ -318,7 +307,6 @@
             hidden: !activeSections.includes('plugins'),
           }"
         >
-          <!-- Google Fonts -->
           <h4 class="text-white mb-3">Google Fonts (lokales Hosting)</h4>
           <p class="text-text-muted mb-4">
             Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google
@@ -344,7 +332,6 @@
             >
           </p>
 
-          <!-- Font Awesome -->
           <h4 class="text-white mb-3">Font Awesome (lokales Hosting)</h4>
           <p class="text-text-muted mb-4">
             Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten Font Awesome. Font
@@ -363,7 +350,6 @@
             >
           </p>
 
-          <!-- Terminbuchung über Calendly -->
           <h4 class="text-white mb-3">Terminbuchung über Calendly</h4>
           <p class="text-text-muted mb-4">
             Auf unserer Website haben Sie die Möglichkeit, Termine mit uns zu buchen. Dafür nutzen
@@ -389,7 +375,6 @@
             >
           </p>
 
-          <!-- Audio- und Videokonferenzen -->
           <h4 class="text-white mb-3">Audio- und Videokonferenzen (Zoom)</h4>
           <p class="text-text-muted mb-4">
             Für die Kommunikation mit unseren Kunden und Geschäftspartnern setzen wir unter anderem
@@ -422,7 +407,6 @@
       </div>
     </div>
 
-    <!-- Call to Action -->
     <div class="mt-16 text-center reveal-on-scroll" [ngStyle]="{ 'transition-delay': '0.3s' }">
       <div class="flex items-center justify-center group">
         <a
