@@ -9,7 +9,7 @@ services:
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=traefik'
-      - 'traefik.http.routers.webseite.rule=Host(`development.simonfischer.dev`)'
+      - 'traefik.http.routers.webseite.rule=Host(`simonfischer.dev`)'
       - 'traefik.http.routers.tinyshop.entrypoints=websecure'
       - 'traefik.http.routers.tinyshop.tls.certresolver=basic'
       - 'traefik.http.services.webseite.loadbalancer.server.port=80'
