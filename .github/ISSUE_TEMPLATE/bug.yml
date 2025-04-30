@@ -1,5 +1,6 @@
 name: 🐞 Bug
 description: Fehler oder Problem melden
+title: 'Fix: '
 labels: ['bug']
 body:
   - type: input
@@ -8,21 +9,7 @@ body:
       label: Titel des Fehlers
     validations:
       required: true
-
   - type: textarea
     id: description
     attributes:
       label: Beschreibung
-
-  - type: markdown
-    attributes:
-      value: |
-        **Hinweis:** Dieses Issue wird automatisch als `Fix[WSFC-XXX]` nummeriert.
-
-  - type: input
-    id: prefix
-    attributes:
-      label: Prefix
-      default: 'Fix'
-    validations:
-      required: true

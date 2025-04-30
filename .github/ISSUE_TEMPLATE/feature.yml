@@ -1,5 +1,6 @@
 name: 🚀 Feature
 description: Neue Funktion oder Erweiterung
+title: 'Feat: '
 labels: ['enhancement']
 body:
   - type: input
@@ -8,21 +9,7 @@ body:
       label: Titel des Features
     validations:
       required: true
-
   - type: textarea
     id: description
     attributes:
       label: Beschreibung
-
-  - type: markdown
-    attributes:
-      value: |
-        **Hinweis:** Dieses Feature wird automatisch als `Feat[WSFC-XXX]` nummeriert.
-
-  - type: input
-    id: prefix
-    attributes:
-      label: Prefix
-      default: 'Feat'
-    validations:
-      required: true

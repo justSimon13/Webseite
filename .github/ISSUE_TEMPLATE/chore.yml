@@ -1,5 +1,6 @@
 name: 🛠️ Chore
-description: Interne Aufgabe oder Wartung
+description: Interne Aufgabe, Maintenance oder Setup
+title: 'Chore: '
 labels: ['chore']
 body:
   - type: input
@@ -8,21 +9,7 @@ body:
       label: Titel der Aufgabe
     validations:
       required: true
-
   - type: textarea
     id: description
     attributes:
       label: Beschreibung
-
-  - type: markdown
-    attributes:
-      value: |
-        **Hinweis:** Diese Aufgabe wird automatisch als `Chore[WSFC-XXX]` nummeriert.
-
-  - type: input
-    id: prefix
-    attributes:
-      label: Prefix
-      default: 'Chore'
-    validations:
-      required: true
