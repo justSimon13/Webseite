@@ -1,25 +1,28 @@
 name: 🐞 Bug
 description: Fehler oder Problem melden
-title: '{title}'
 labels: ['bug']
 body:
   - type: input
     id: title
     attributes:
       label: Titel des Fehlers
-      placeholder: z.B. "Login schlägt bei ungültiger E-Mail fehl"
     validations:
       required: true
+
   - type: textarea
     id: description
     attributes:
       label: Beschreibung
-      placeholder: Was ist passiert? Welche Auswirkungen?
-  - type: dropdown
+
+  - type: markdown
+    attributes:
+      value: |
+        **Hinweis:** Dieses Issue wird automatisch als `Fix[WSFC-XXX]` nummeriert.
+
+  - type: input
     id: prefix
     attributes:
-      label: Prefix (automatisch genutzt)
-      options:
-        - Fix
+      label: Prefix
+      default: 'Fix'
     validations:
       required: true

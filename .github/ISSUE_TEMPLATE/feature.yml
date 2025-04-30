@@ -1,25 +1,28 @@
 name: 🚀 Feature
 description: Neue Funktion oder Erweiterung
-title: '{title}' # Nutzer gibt nur reinen Titel ein
 labels: ['enhancement']
 body:
   - type: input
     id: title
     attributes:
       label: Titel des Features
-      placeholder: z. B. "Neues Dashboard implementieren"
     validations:
       required: true
+
   - type: textarea
     id: description
     attributes:
       label: Beschreibung
-      placeholder: Was soll umgesetzt werden?
-  - type: dropdown
+
+  - type: markdown
+    attributes:
+      value: |
+        **Hinweis:** Dieses Feature wird automatisch als `Feat[WSFC-XXX]` nummeriert.
+
+  - type: input
     id: prefix
     attributes:
-      label: Prefix (automatisch genutzt)
-      options:
-        - Feat
+      label: Prefix
+      default: 'Feat'
     validations:
       required: true

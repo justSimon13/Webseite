@@ -1,25 +1,28 @@
 name: 🛠️ Chore
-description: Interne Aufgabe, Maintenance oder Setup
-title: '{title}'
+description: Interne Aufgabe oder Wartung
 labels: ['chore']
 body:
   - type: input
     id: title
     attributes:
       label: Titel der Aufgabe
-      placeholder: z. B. "Linter konfigurieren"
     validations:
       required: true
+
   - type: textarea
     id: description
     attributes:
       label: Beschreibung
-      placeholder: Was soll erledigt werden?
-  - type: dropdown
+
+  - type: markdown
+    attributes:
+      value: |
+        **Hinweis:** Diese Aufgabe wird automatisch als `Chore[WSFC-XXX]` nummeriert.
+
+  - type: input
     id: prefix
     attributes:
-      label: Prefix (automatisch genutzt)
-      options:
-        - Chore
+      label: Prefix
+      default: 'Chore'
     validations:
       required: true
