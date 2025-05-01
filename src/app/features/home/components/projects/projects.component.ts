@@ -16,6 +16,6 @@ export class ProjectsComponent {
       'Der Tiny Shop ist ein fiktiver Onlineshop und zeigt, wie ein typisches Projekt bei mir aussehen kann.',
     liveUrl: 'https://tinyshop.simonfischer.dev/',
     githubUrl: 'https://github.com/justSimon13/Tiny-Shop',
-    imageUrl: '/tiny-shop.png',
+    imageUrl: '/assets/tiny-shop.png',
   };
 }
