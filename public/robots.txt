@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://simonfischer.dev/sitemap.xml
+Sitemap: https://simonfischer.dev/index/sitemap.xml
