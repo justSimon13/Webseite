@@ -1,6 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 
 import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { SeoService } from '../../../core/services/seo/seo.service';
 import { IMPRINT_IMPORTS } from '../imprint-shared';
 
 @Component({
@@ -8,10 +9,20 @@ import { IMPRINT_IMPORTS } from '../imprint-shared';
   imports: [IMPRINT_IMPORTS],
   templateUrl: './imprint-site.component.html',
 })
-export class ImprintSiteComponent implements AfterViewInit {
+export class ImprintSiteComponent implements AfterViewInit, OnInit {
   activeSections: string[] = ['companyData'];
 
-  constructor(private scrollAnimationService: ScrollAnimationService) {}
+  constructor(
+    private scrollAnimationService: ScrollAnimationService,
+    private seoService: SeoService
+  ) {}
+
+  ngOnInit(): void {
+    this.seoService.updateMeta(
+      'Impressum – Simon Fischer | Webentwicklung & IT-Dienstleistungen',
+      'Angaben gemäß § 5 TMG zu Simon Fischer – Webentwickler für Webseiten, Onlineshops & individuelle Softwarelösungen. Hier findest du die gesetzlich vorgeschriebenen Kontaktinformationen.'
+    );
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
