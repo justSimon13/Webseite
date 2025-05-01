@@ -27,5 +27,6 @@ RUN npm run build -- --configuration production
 FROM nginx:alpine AS prod
 COPY --from=build /app/dist/webseite/browser /usr/share/nginx/html
 COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./src/errors /usr/share/nginx/html/errors
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
