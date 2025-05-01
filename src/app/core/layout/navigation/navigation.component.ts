@@ -14,9 +14,8 @@ export class NavigationComponent {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
-  // Navigationselemente für einfachere Verwendung
   navItems = [
     { label: 'Home', path: '/', exact: true },
-    { label: 'Über mich', path: '/mein-angebot', exact: false },
+    { label: 'Mein Angebot', path: '/mein-angebot', exact: false },
   ];
 }

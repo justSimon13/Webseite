@@ -25,6 +25,8 @@ jobs:
 
             const originalTitle = issue.title;
 
+            originalTitle = originalTitle.replace(/^(Feat|Fix|Chore|Task|Refactor|Docs)\s*:\s*/i, '').trim();
+
             const labels = issue.labels.map(l => l.name.toLowerCase());
             let prefix = "Task";
             if (labels.includes("bug")) prefix = "Fix";

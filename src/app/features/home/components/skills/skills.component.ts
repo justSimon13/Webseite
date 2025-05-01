@@ -41,5 +41,11 @@ export class SkillsComponent {
       description:
         'Für die Persistierung von Daten habe ich Erfahrung mit MySQL und MongoDB für relationale und NoSQL‑Datenbanklösungen.',
     },
+    {
+      icon: 'icons/palette.svg',
+      title: 'UI/UX Design',
+      description:
+        'Ich verbinde funktionale Entwicklung mit ansprechendem Design und achte auf intuitive Benutzeroberflächen für optimale User Experience.',
+    },
   ];
 }
