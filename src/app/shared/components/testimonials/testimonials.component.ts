@@ -1,4 +1,3 @@
-// testimonials.component.ts
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 

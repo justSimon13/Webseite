@@ -1,4 +1,3 @@
-// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -35,6 +34,13 @@ export const routes: Routes = [
       import('./features/imprint/imprint-site/imprint-site.component').then(
         (m) => m.ImprintSiteComponent
       ),
+  },
+  {
+    path: 'gastronomie',
+    loadComponent: () =>
+      import(
+        './features/landing/gastro-landing/gastro-landing-site/gastro-landing-site.component'
+      ).then((m) => m.GastroLandingSiteComponent),
   },
   {
     path: '**',

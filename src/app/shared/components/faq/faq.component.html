@@ -1,5 +1,15 @@
 <div class="container mx-auto">
-  <div class="space-y-4">
+  <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3 md:mb-4">
+      {{ sectionTitle }}
+    </p>
+    <h2 class="text-heading md:text-subtitle mb-4 md:mb-6" [innerHTML]="sectionSubtitle"></h2>
+    <p class="text-body-base md:text-subheading text-text-muted">
+      {{ sectionDescription }}
+    </p>
+  </div>
+
+  <div class="space-y-4 max-w-4xl mx-auto">
     <ng-container *ngFor="let faq of faqItems; let i = index">
       <div
         class="bg-card border border-border/20 rounded-xl overflow-hidden transition-all duration-300"
