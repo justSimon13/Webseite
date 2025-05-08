@@ -1,0 +1,35 @@
+<div class="w-full bg-content py-16 md:py-24">
+  <div class="container mx-auto px-4">
+    <div class="mx-auto text-center max-w-2xl mb-12 reveal-on-scroll">
+      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3 md:mb-4">
+        {{ sectionTitle }}
+      </p>
+      <h2 class="text-heading md:text-subtitle mb-4 md:mb-6" [innerHTML]="sectionSubtitle"></h2>
+      <p class="text-body-base md:text-subheading text-text-muted">
+        {{ sectionDescription }}
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto reveal-on-scroll">
+      <div class="relative">
+        <div class="absolute left-8 top-10 bottom-10 w-0.5 bg-primary/20 hidden md:block"></div>
+
+        <div
+          *ngFor="let step of steps; let last = last"
+          class="flex flex-col md:flex-row items-start gap-6"
+          [ngClass]="{ 'mb-12': !last, group: true }"
+        >
+          <div
+            class="flex-shrink-0 w-16 h-16 flex items-center justify-center rounded-full bg-primary/10 border border-primary/30 text-primary text-xl font-bold transition-all duration-300 group-hover:bg-primary group-hover:text-white"
+          >
+            {{ step.number }}
+          </div>
+          <div class="pt-2">
+            <h3 class="text-lg font-bold text-white mb-2">{{ step.title }}</h3>
+            <p class="text-text-muted">{{ step.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

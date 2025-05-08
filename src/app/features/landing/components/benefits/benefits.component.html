@@ -1,0 +1,38 @@
+<!-- benefits.component.html -->
+<div class="container mx-auto px-4">
+  <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3 md:mb-4">
+      {{ sectionTitle }}
+    </p>
+    <h2 class="text-heading md:text-subtitle mb-4 md:mb-6" [innerHTML]="sectionSubtitle"></h2>
+    <p class="text-body-base md:text-subheading text-text-muted">
+      {{ sectionDescription }}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 reveal-on-scroll">
+    <div
+      *ngFor="let benefit of benefits"
+      class="bg-card border border-border rounded-xl p-6 transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+    >
+      <div class="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 text-primary"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            [attr.d]="benefit.icon"
+          />
+        </svg>
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2">{{ benefit.title }}</h3>
+      <p class="text-text-muted">{{ benefit.description }}</p>
+    </div>
+  </div>
+</div>
