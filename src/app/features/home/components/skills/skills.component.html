@@ -1,12 +1,9 @@
 <div class="container mx-auto">
-  <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3">Fähigkeiten</p>
-    <h2 class="text-heading md:text-subtitle mb-5">
-      Meine <span class="text-primary">Expertise</span>
-    </h2>
+  <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3">{{ sectionTitle }}</p>
+    <h2 class="text-heading md:text-subtitle mb-5" [innerHTML]="sectionSubtitle"></h2>
     <p class="text-body-base md:text-subheading text-text-muted max-w-2xl mx-auto">
-      In meiner Softwareentwicklung setze ich auf moderne Technologien, klare Strukturen und agile
-      Entwicklungsmethoden – für sauberen Code und nachhaltige Lösungen.
+      {{ sectionDescription }}
     </p>
   </div>
 

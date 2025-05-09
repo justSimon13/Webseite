@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { SHARED_COMPONENTS } from '../../../../shared/components/shared-components';
 import { Skill } from '../../../../shared/models/skill';
@@ -10,6 +10,11 @@ import { Skill } from '../../../../shared/models/skill';
   templateUrl: './skills.component.html',
 })
 export class SkillsComponent {
+  @Input() sectionTitle: string = 'Fähigkeiten';
+  @Input() sectionSubtitle: string = 'Meine <span class="text-primary">Expertise</span>';
+  @Input() sectionDescription: string =
+    'In meiner Softwareentwicklung setze ich auf moderne Technologien, klare Strukturen und agile Entwicklungsmethoden – für sauberen Code und nachhaltige Lösungen.';
+
   skills: Skill[] = [
     {
       icon: 'icons/code.svg',

@@ -3,12 +3,12 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
 import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
+import { ProcessStep } from '../../../../shared/components/process-steps-vertical/process-steps-vertical.component';
 import { ClientLogo } from '../../../../shared/models/client-logo';
 import { CtaConfig } from '../../../../shared/models/cta-config';
 import { FaqItem } from '../../../../shared/models/faq-item';
 import { SectionConfig } from '../../../../shared/models/section-config';
 import { ServicePackage } from '../../../../shared/models/service-package';
-import { ProcessStep } from '../../components/process-steps-vertical/process-steps-vertical.component';
 import { LANDING_IMPORTS } from '../../landing-shared';
 
 @Component({

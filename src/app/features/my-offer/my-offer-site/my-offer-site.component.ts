@@ -4,6 +4,7 @@ import { CalendlyService } from '../../../core/services/calendly/calendly.servic
 import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { FaqItem } from '../../../shared/models/faq-item';
+import { ProcessStep } from '../../../shared/models/process-step';
 import { ServicePackage } from '../../../shared/models/service-package';
 import { MY_OFFER_IMPORTS } from '../my-offer-shared';
 
@@ -118,6 +119,39 @@ export class MyOfferSiteComponent implements AfterViewInit, OnInit {
       answer:
         'Ja - Ich kümmere mich darum, dass deine Webseite unter allen technischen DSGVO-konform startet. Impressum, Datenschutzerklärung über die Datenspeicherung und weitere wichtige erklärische Anforderungen an Text und Rechten auf der anderen Seite sind ebenfalls zu beachten, hierfür empfehle ich zusätzlich eine rechtliche Prüfung durch einen Anwalt.',
       isOpen: false,
+    },
+  ];
+
+  processSteps: ProcessStep[] = [
+    {
+      number: 1,
+      title: 'Erstgespräch',
+      description:
+        'Wir sprechen gemeinsam über deine Ziele und Bedürfnisse um die beste Lösung zu finden.',
+    },
+    {
+      number: 2,
+      title: 'Anforderungen & Konzept',
+      description:
+        'Ich schaffe dir einen Jange (Engl. für Überblick) was du brauchst und erstelle gemeinsam mit dir einen Plan für die Umsetzung.',
+    },
+    {
+      number: 3,
+      title: 'Umsetzung & Abstimmung',
+      description:
+        'Ich kümmere mich um die technischen Belange der Entwicklung, halte dich auf dem Laufenden und sorge für reibungslose Abläufe.',
+    },
+    {
+      number: 4,
+      title: 'Launch & Übergabe',
+      description:
+        'Sobald wir den Launch erfolgreich durchgeführt haben, wirst du genau in die Bedienung eingewiesen und erhältst Dokumentation zum Nachschlagen.',
+    },
+    {
+      number: 5,
+      title: 'Support & Weiterentwicklung',
+      description:
+        'Auf Wunsch begleite ich dich langfristig mit technischem Support und Erweiterungen für deine wachsenden Features.',
     },
   ];
 

@@ -2,11 +2,11 @@
   <div
     class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16"
   >
-    <div class="flex flex-col gap-6 lg:gap-8 max-w-2xl animate-fade-in">
+    <div class="flex flex-col gap-6 lg:gap-8 max-w-3xl animate-fade-in">
       <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">
         Fullstack Development
       </p>
-      <h1 class="text-body-base md:text-subheading text-white">
+      <h1 class="text-body-base md:text-subheading text-white font-bold">
         Individuelle Webseiten &amp; Softwarelösungen für Unternehmen
       </h1>
       <div class="text-subtitle md:text-title-hero text-white font-bold">
@@ -108,18 +108,26 @@
 </div>
 
 <div class="w-full bg-content">
-  <div class="py-24 md:py-32 px-6 flex flex-col gap-24 md:gap-32 lg:gap-40">
-    <app-service-overview></app-service-overview>
-    <app-skills></app-skills>
-    <app-projects></app-projects>
+  <div class="container mx-auto pt-16 md:pt-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
+        <app-service-overview></app-service-overview>
+        <app-skills></app-skills>
+        <app-projects></app-projects>
+      </div>
+    </div>
   </div>
 
-  <app-clients></app-clients>
+  <div class="my-24 md:my-28 lg:my-48">
+    <app-clients></app-clients>
+  </div>
 
-  <div class="w-full bg-content">
-    <div class="py-24 md:py-32 px-6 flex flex-col gap-24 md:gap-32 lg:gap-40">
-      <app-cta></app-cta>
-      <!--<app-testimonials></app-testimonials>-->
+  <div class="container mx-auto pb-24 md:pb-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
+        <app-cta></app-cta>
+        <!--<app-testimonials></app-testimonials>-->
+      </div>
     </div>
   </div>
 </div>
