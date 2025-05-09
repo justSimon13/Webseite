@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
 
@@ -10,9 +10,17 @@ import { CalendlyService } from '../../../core/services/calendly/calendly.servic
   templateUrl: './cta-small.component.html',
 })
 export class CtaSmallComponent {
+  @Input() title: string = 'Neugierig auf meine Fähigkeiten?';
+  @Input() linkText: string = 'Lass uns sprechen';
+  @Input() calendlyParam: string = '';
+
   constructor(private calendlyService: CalendlyService) {}
 
   openCalendly() {
-    this.calendlyService.openCalendly();
+    if (!this.calendlyParam || this.calendlyParam === '') {
+      this.calendlyService.openCalendly();
+    } else {
+      this.calendlyService.openCalendly(this.calendlyParam);
+    }
   }
 }

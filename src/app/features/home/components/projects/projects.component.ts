@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Project } from '../../../../shared/models/project';
 
@@ -9,6 +9,11 @@ import { Project } from '../../../../shared/models/project';
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent {
+  @Input() sectionTitle: string = 'Projekte';
+  @Input() sectionSubtitle: string = 'Meine <span class="text-primary">Projekte</span>';
+  @Input() sectionDescription: string =
+    'Ein kleiner Einblick in vergangene Projekte – von Webshops bis zu individuellen Anwendungen. Weitere Referenzen teile ich gerne auf Anfrage.';
+
   project: Project = {
     title: 'Tiny Shop',
     technologies: 'ASP.NET Core MVC | C# | HTML | CSS | JavaScript',

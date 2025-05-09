@@ -4,18 +4,18 @@
   >
     <div class="flex flex-col gap-6 lg:gap-8 max-w-3xl animate-fade-in">
       <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">
-        Fullstack Development
+        Lieferdienst-Lösungen
       </p>
       <h1 class="text-body-base md:text-subheading text-white font-bold">
-        Individuelle Webseiten &amp; Softwarelösungen für Unternehmen
+        Digitale Lösungen für Lieferdienste – effizient, mobil & direkt einsatzbereit
       </h1>
       <div class="text-subtitle md:text-title-hero text-white font-bold">
-        Hi, ich bin <span class="text-primary animate-pulse-gentle">Simon</span>
+        Website, Shop & <span class="text-primary animate-pulse-gentle">App</span>
       </div>
       <p class="text-body-base md:text-subheading text-text-muted">
-        Fullstack Developer mit Fokus auf individuelle Weblösungen für Unternehmen. Ich begleite
-        dich von der Idee bis zur fertigen Website – technisch durchdacht, SEO-optimiert und mit
-        klarem Designverständnis.
+        Ob Getränkelieferung, Lebensmittelversand oder lokaler Lieferservice – ich helfe dir, dein
+        Angebot professionell online zu präsentieren. Mit modernen Webseiten, verkaufsstarken Shops
+        oder individuell entwickelten Web-Apps, die genau zu deinem Liefergeschäft passen.
       </p>
       <div class="mt-4 md:mt-6">
         <button
@@ -23,7 +23,7 @@
           class="btn-primary border-2 border-primary text-primary px-6 py-3 rounded-lg uppercase font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 group"
         >
           <span class="inline-flex items-center gap-2">
-            Erstgespräch vereinbaren
+            Kostenloses Erstgespräch vereinbaren
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -40,12 +40,15 @@
             </svg>
           </span>
         </button>
-        <div class="mt-4 flex items-center group">
+        <div
+          class="mt-4 flex items-center group xl:max-w-2/3 lg:max-w-full md:max-w-2/3 sm:max-w-2/3"
+        >
           <a
             href="/mein-angebot"
             class="text-text-muted text-sm hover:text-primary transition-colors duration-300"
           >
-            Oder informiere dich über meine Angebote
+            Oder informiere dich über meine Angebote – und finde die digitale Lösung, die zu deinem
+            Unternehmen passt.
           </a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,23 +68,21 @@
       </div>
     </div>
     <div
-      class="flex-shrink-0 w-full max-w-md lg:max-w-lg mx-auto lg:mx-0 animate-fade-in-delay lg:pr-6 md:pr-4"
+      class="flex-shrink-0 w-full max-w-md lg:max-w-lg sm:ml-0 mx-auto lg:mx-0 animate-fade-in-delay lg:pr-6 md:pr-4"
     >
       <div class="relative group">
         <div
           class="absolute -z-10 w-full h-full rounded-xl transition-all duration-300 group-hover:scale-105 md:group-hover:-translate-x-1 lg:-right-6 lg:-bottom-6 md:-right-4 md:-bottom-4 -right-0 -bottom-3 bg-card"
         ></div>
-
         <div
           class="absolute -z-20 -inset-0.5 bg-primary/5 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         ></div>
-
         <div
           class="relative aspect-square overflow-hidden rounded-xl transition-transform duration-300 origin-top group-hover:scale-[1.02]"
         >
           <img
             src="assets/profile.png"
-            alt="Simon"
+            alt="Lieferdienst Webseite Beispiel"
             class="w-full h-full object-cover transition-transform duration-700 ease-in-out origin-top group-hover:scale-105"
           />
         </div>
@@ -107,26 +108,50 @@
   </div>
 </div>
 
+<div class="bg-content px-6">
+  <app-client-divider></app-client-divider>
+</div>
+
 <div class="w-full bg-content">
-  <div class="container mx-auto pt-16 md:pt-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
-        <app-service-overview></app-service-overview>
-        <app-skills></app-skills>
-        <app-projects></app-projects>
-      </div>
+  <div class="container mx-auto pt-16 md:pt-24 pb-24 md:pb-32 px-6">
+    <div class="mb-48">
+      <app-service-packages
+        [sectionTitle]="servicePackagesConfig.sectionTitle"
+        [sectionSubtitle]="servicePackagesConfig.sectionSubtitle"
+        [sectionDescription]="servicePackagesConfig.sectionDescription"
+        [packages]="servicePackages"
+      >
+      </app-service-packages>
     </div>
-  </div>
 
-  <div class="my-24 md:my-28 lg:my-48">
-    <app-clients></app-clients>
-  </div>
-
-  <div class="container mx-auto pb-24 md:pb-32 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
-        <app-cta></app-cta>
-        <!--<app-testimonials></app-testimonials>-->
+        <app-benefits
+          [sectionTitle]="benefitsConfig.sectionTitle"
+          [sectionSubtitle]="benefitsConfig.sectionSubtitle"
+          [sectionDescription]="benefitsConfig.sectionDescription"
+          [benefits]="lieferdienstBenefits"
+        >
+        </app-benefits>
+
+        <app-process-steps-vertical
+          [sectionTitle]="processConfig.sectionTitle"
+          [sectionSubtitle]="processConfig.sectionSubtitle"
+          [sectionDescription]="processConfig.sectionDescription"
+          [steps]="processSteps"
+        >
+        </app-process-steps-vertical>
+
+        <app-cta
+          [title]="ctaConfig.title"
+          [description]="ctaConfig.description"
+          [buttonText]="ctaConfig.buttonText"
+          [linkText]="ctaConfig.linkText"
+          [linkUrl]="ctaConfig.linkUrl"
+        >
+        </app-cta>
+
+        <app-faq [faqItems]="lieferdienstFaqItems"> </app-faq>
       </div>
     </div>
   </div>

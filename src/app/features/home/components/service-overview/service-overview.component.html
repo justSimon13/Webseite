@@ -4,17 +4,18 @@
       class="text-primary font-medium tracking-wider uppercase text-sm mb-4 animate-fade-in"
       style="animation-delay: 0.1s"
     >
-      Produkt
+      {{ sectionTitle }}
     </p>
-    <h2 class="text-heading md:text-subtitle mb-6 animate-fade-in" style="animation-delay: 0.2s">
-      Leistungen im <span class="text-primary">Überblick</span>
-    </h2>
+    <h2
+      class="text-heading md:text-subtitle mb-6 animate-fade-in"
+      style="animation-delay: 0.2s"
+      [innerHTML]="sectionSubtitle"
+    ></h2>
     <p
       class="text-body-base md:text-subheading text-text-muted animate-fade-in"
       style="animation-delay: 0.3s"
     >
-      Du willst eine Webseite erstellen lassen? Oder ein Shop mit WordPress oder Shopify? Als
-      erfahrener Software Developer, konnte ich mit folgenden Punkten schon gut überzeugen
+      {{ sectionDescription }}
     </p>
   </div>
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ServiceItem } from '../../../../shared/models/service-item';
 
@@ -9,6 +9,11 @@ import { ServiceItem } from '../../../../shared/models/service-item';
   templateUrl: './service-overview.component.html',
 })
 export class ServiceOverviewComponent {
+  @Input() sectionTitle: string = 'Produkt';
+  @Input() sectionSubtitle: string = 'Leistungen im <span class="text-primary">Überblick</span>';
+  @Input() sectionDescription: string =
+    'Du willst eine Webseite erstellen lassen? Oder ein Shop mit WordPress oder Shopify? Als erfahrener Software Developer, konnte ich mit folgenden Punkten schon gut überzeugen';
+
   items: ServiceItem[] = [
     {
       icon: 'icons/puzzle.svg',

@@ -1,16 +1,25 @@
-<div class="container mx-auto my-24">
+<div class="container mx-auto">
   <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
-    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-4">BEWERTUNGEN</p>
-    <h2 class="text-heading md:text-subtitle mb-6">
-      Kunden<span class="text-primary">stimmen</span>
-    </h2>
-    <p class="text-body-base md:text-subheading text-text-muted">
-      Das sagen Kunden über die Zusammenarbeit. Ehrlich, direkt und immer mit dem Blick aufs
-      Wesentliche.
+    <p
+      class="text-primary font-medium tracking-wider uppercase text-sm mb-4 animate-fade-in"
+      style="animation-delay: 0.1s"
+    >
+      {{ sectionTitle }}
+    </p>
+    <h2
+      class="text-heading md:text-subtitle mb-6 animate-fade-in"
+      style="animation-delay: 0.2s"
+      [innerHTML]="sectionSubtitle"
+    ></h2>
+    <p
+      class="text-body-base md:text-subheading text-text-muted animate-fade-in"
+      style="animation-delay: 0.3s"
+    >
+      {{ sectionDescription }}
     </p>
   </div>
 
-  <div class="relative max-w-5xl mx-auto reveal-on-scroll">
+  <div class="relative reveal-on-scroll">
     <button
       class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 w-12 h-12 flex items-center justify-center text-white/50 hover:text-primary transition-colors rounded-full hover:bg-card/40 z-10 group"
       (click)="prevTestimonial()"

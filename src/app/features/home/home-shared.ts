@@ -1,4 +1,3 @@
-import { ClientsComponent } from './components/clients/clients.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ServiceOverviewComponent } from './components/service-overview/service-overview.component';
 import { SkillsComponent } from './components/skills/skills.component';
@@ -8,6 +7,5 @@ export const HOME_IMPORTS = [
   ServiceOverviewComponent,
   SkillsComponent,
   ProjectsComponent,
-  ClientsComponent,
   SHARED_COMPONENTS,
 ];

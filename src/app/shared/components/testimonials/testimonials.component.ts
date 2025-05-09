@@ -1,6 +1,5 @@
-// testimonials.component.ts
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 interface Testimonial {
   text: string;
@@ -14,6 +13,11 @@ interface Testimonial {
   imports: [CommonModule],
 })
 export class TestimonialsComponent {
+  @Input() sectionTitle: string = 'BEWERTUNGEN';
+  @Input() sectionSubtitle: string = 'Kunden<span class="text-primary">stimmen</span>';
+  @Input() sectionDescription: string =
+    'Das sagen Kunden über die Zusammenarbeit. Ehrlich, direkt und immer mit dem Blick aufs Wesentliche.';
+
   testimonials: Testimonial[] = [
     {
       text: 'Die Zusammenarbeit mit Simon war unkompliziert, schnell und absolut professionell. Besonders beeindruckt hat uns seine Fähigkeit, technische Themen verständlich zu erklären und zielgerichtet umzusetzen.',
