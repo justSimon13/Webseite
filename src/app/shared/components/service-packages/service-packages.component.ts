@@ -19,6 +19,17 @@ export class ServicePackagesComponent {
 
   constructor(private calendlyService: CalendlyService) {}
 
+  get enabledGridClasses(): { [key: string]: boolean } {
+    const count = this.packages?.filter((p) => p.enabled).length || 0;
+
+    return {
+      'xl:grid-cols-3': count === 3,
+      'xl:grid-cols-4': count >= 4,
+      'max-w-5xl mx-auto': count <= 3,
+      'max-w-full lg:grid-cols-2': count > 3,
+    };
+  }
+
   openCalendly(paket: string) {
     this.calendlyService.openCalendly(paket);
   }

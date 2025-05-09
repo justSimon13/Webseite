@@ -79,10 +79,11 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
       subtitle: 'Für anspruchsvolle Lösungen',
       targetUsers: 'Für komplexe Anforderungen im Gastronomiebereich',
       features: [
-        'Online-Reservierungssystem',
-        'Küchendisposition, Warenwirtschaft, QR-Bestellung',
-        'App-ähnliche Funktionen oder Schnittstellen',
-        'Maßgeschneiderte Lösungen für komplexe Anforderungen',
+        'Entwicklung individueller Weblösungen nach Bedarf',
+        'Technisches Konzept basierend auf deinem Workflow',
+        'Anbindung an bestehende Systeme oder Schnittstellen',
+        'Optional: Bestellprozesse, Produktverwaltung, Tourenplanung',
+        'Umsetzung erfolgt flexibel & nach Absprache',
       ],
       duration: 'Nach Absprache',
       calendlyParam: 'a1=4',
@@ -98,7 +99,7 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
       'Von der ersten Idee bis zum fertigen digitalen Auftritt – ein klarer Weg zu deiner individuellen Gastro-Lösung.',
   };
 
-  gastroProcessSteps: ProcessStep[] = [
+  processSteps: ProcessStep[] = [
     {
       number: 1,
       title: 'Kostenloses Erstgespräch',
@@ -124,9 +125,10 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
     },
     {
       number: 5,
-      title: 'Weiterentwicklung & Support (optional)',
+      title: 'Weiterentwicklung & Support',
       description:
         'Auf Wunsch begleite ich dich nach dem Launch weiter – z. B. bei Updates, Erweiterungen oder SEO.',
+      highlight: 'optional',
     },
   ];
 
@@ -142,21 +144,33 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
 
   gastroFaqItems: FaqItem[] = [
     {
-      question: 'Kann ich auch später noch etwas dazubuchen?',
-      answer:
-        'Ja – alle Lösungen sind modular aufgebaut. Du kannst mit der Website starten und später z.B. den Onlineshop ergänzen. Ich gestalte die Architektur von Anfang an so, dass Erweiterungen problemlos möglich sind.',
-      isOpen: false,
-    },
-    {
-      question: 'Ist mein Shop oder meine Seite rechtssicher?',
-      answer:
-        'Ich nutze Generatoren von eRecht24 für Impressum und Datenschutz. Für AGBs empfehle ich anwaltliche Prüfung. Alle relevanten rechtlichen Aspekte werden während der Entwicklung berücksichtigt.',
-      isOpen: false,
-    },
-    {
       question: 'Wie schnell bin ich online?',
       answer:
-        'In der Regel ist dein Projekt innerhalb von 2–4 Wochen online – je nach Paket und Vorbereitung. Bei dringendem Bedarf kann in manchen Fällen auch eine schnellere Umsetzung ermöglicht werden.',
+        'In der Regel ist deine digitale Lösung innerhalb von <strong>2–3 Wochen</strong> fertig – je nach Umfang und Vorbereitung. Du bekommst eine <strong>mobil optimierte</strong>, <strong>technisch saubere</strong> Umsetzung, die direkt einsatzbereit ist. In einem <strong>kostenlosen Erstgespräch</strong> klären wir, was für deinen Betrieb sinnvoll ist.',
+      isOpen: false,
+    },
+    {
+      question: 'Kann ich später noch etwas dazubuchen?',
+      answer:
+        'Natürlich – deine Lösung ist <strong>flexibel erweiterbar</strong>. Ob <em>Speisekarte</em>, <em>Onlineshop</em>, <em>Zusatzfunktionen</em> oder <em>neue Inhalte</em> – wir können jederzeit ausbauen.',
+      isOpen: false,
+    },
+    {
+      question: 'Ist meine Seite DSGVO-konform?',
+      answer:
+        'Ja – <strong>Impressum</strong>, <strong>Datenschutzerklärung</strong> und (auf Wunsch) <strong>AGB</strong> erstelle ich mit <a href="https://www.e-recht24.de/" target="_blank" rel="noopener noreferrer">eRecht24</a>. Ich achte darauf, dass deine Seite alle rechtlich nötigen Inhalte enthält.',
+      isOpen: false,
+    },
+    {
+      question: 'Kann ich Inhalte später selbst ändern?',
+      answer:
+        'Das hängt vom gewählten Paket ab:<br /><br /><strong>Website oder Onlineshop</strong> (z. B. mit WordPress oder Shopify): Du kannst <em>Texte, Bilder und Produkte</em> später selbst ändern – mit verständlicher Einführung.<br /><br /><strong>Individuelle Weblösungen</strong> (ohne CMS): Änderungen übernehme ich – dafür ist die Lösung besonders schlank und auf deinen Betrieb zugeschnitten.',
+      isOpen: false,
+    },
+    {
+      question: 'Für welche Betriebe ist das Angebot geeignet?',
+      answer:
+        'Die Lösungen richten sich an <strong>Restaurants, Lieferdienste, Imbisse, Cafés, Caterer, Foodtrucks</strong> oder <strong>Feinkostläden</strong> – also alle, die ihr gastronomisches Angebot <em>professionell online präsentieren oder verkaufen</em> wollen.',
       isOpen: false,
     },
   ];
@@ -169,8 +183,8 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.seoService.updateMeta(
-      'Digitale Lösungen für die Gastronomie – Website, Shop & App',
-      'Moderne Webseiten, Onlineshops und Web-Apps für Restaurants, Lieferdienste und Feinkostbetriebe – individuell umgesetzt, mobil optimiert & SEO-ready.'
+      'Gastronomie Website & Onlineshop erstellen lassen | Simon Fischer',
+      'Digitale Lösungen für Gastronomie – Website, Shop oder App erstellen lassen. Klar strukturiert, mobil optimiert & SEO-ready.'
     );
   }
 

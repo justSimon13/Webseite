@@ -9,7 +9,7 @@
     </p>
   </div>
 
-  <div class="space-y-4 max-w-4xl mx-auto">
+  <div class="space-y-4">
     <ng-container *ngFor="let faq of faqItems; let i = index">
       <div
         class="bg-card border border-border/20 rounded-xl overflow-hidden transition-all duration-300"
@@ -42,9 +42,7 @@
           *ngIf="faq.isOpen"
           class="border-t border-border/20 transition-all duration-500 ease-in-out"
         >
-          <div class="p-5 pt-4 text-text-muted">
-            {{ faq.answer }}
-          </div>
+          <div class="p-5 pt-4 text-text-muted" [innerHTML]="faq.answer"></div>
         </div>
       </div>
     </ng-container>

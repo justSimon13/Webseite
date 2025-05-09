@@ -1,21 +1,22 @@
+<!-- lieferdienst-landing-site.component.html -->
 <div class="w-full py-16 md:py-24 lg:py-32 px-6">
   <div
     class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 relative z-10"
   >
     <div class="flex flex-col gap-6 lg:gap-8 max-w-3xl animate-fade-in">
       <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">
-        Gastronomie-Lösungen
+        Lieferdienst-Lösungen
       </p>
       <h1 class="text-subtitle md:text-title-hero text-white font-bold">
         Website, Shop & <span class="text-primary animate-pulse-gentle">App</span>
       </h1>
       <h2 class="text-body-base md:text-subheading text-white">
-        Digitale Lösungen für die Gastronomie – individuell, modern & effizient
+        Digitale Lösungen für Lieferdienste – effizient, mobil & direkt einsatzbereit
       </h2>
       <p class="text-body-base md:text-subheading text-text-muted">
-        Ob Restaurant, Lieferdienst oder Feinkostladen – ich unterstütze dich dabei, deine Angebote
-        professionell online zu präsentieren. Du bekommst eine moderne Website, einen strukturierten
-        Onlineshop oder eine flexible Web-App – genau passend zu deinem Betrieb.
+        Ob Getränkelieferung, Lebensmittelversand oder lokaler Lieferservice – ich helfe dir, dein
+        Angebot professionell online zu präsentieren. Mit modernen Webseiten, verkaufsstarken Shops
+        oder individuell entwickelten Web-Apps, die genau zu deinem Liefergeschäft passen.
       </p>
       <div class="mt-4 md:mt-6">
         <button
@@ -82,7 +83,7 @@
         >
           <img
             src="assets/profile.png"
-            alt="Restaurant Website Showcase"
+            alt="Lieferdienst Webseite Beispiel"
             class="w-full h-full object-cover transition-transform duration-700 ease-in-out origin-top group-hover:scale-105"
           />
         </div>
@@ -126,7 +127,13 @@
 
     <div class="max-w-5xl mx-auto">
       <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
-        <app-benefits> </app-benefits>
+        <app-benefits
+          [sectionTitle]="benefitsConfig.sectionTitle"
+          [sectionSubtitle]="benefitsConfig.sectionSubtitle"
+          [sectionDescription]="benefitsConfig.sectionDescription"
+          [benefits]="lieferdienstBenefits"
+        >
+        </app-benefits>
 
         <app-process-steps-vertical
           [sectionTitle]="processConfig.sectionTitle"
@@ -145,7 +152,7 @@
         >
         </app-cta>
 
-        <app-faq [faqItems]="gastroFaqItems"> </app-faq>
+        <app-faq [faqItems]="lieferdienstFaqItems"> </app-faq>
       </div>
     </div>
   </div>

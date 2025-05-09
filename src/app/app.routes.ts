@@ -43,6 +43,14 @@ export const routes: Routes = [
       ).then((m) => m.GastroLandingSiteComponent),
   },
   {
+    path: 'lieferdienst',
+    loadComponent: () =>
+      import(
+        './features/landing/liefer-landing/liefer-landing-site/liefer-landing-site.component'
+      ).then((m) => m.LieferLandingSiteComponent),
+    title: 'Digitale Lösungen für Lieferdienste – Website, Shop & App erstellen lassen',
+  },
+  {
     path: '**',
     redirectTo: '',
   },
