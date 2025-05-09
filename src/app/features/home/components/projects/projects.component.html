@@ -1,12 +1,9 @@
 <div class="container mx-auto">
   <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
-    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-4">Projekte</p>
-    <h2 class="text-heading md:text-subtitle mb-6">
-      Meine <span class="text-primary">Projekte</span>
-    </h2>
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-4">{{ sectionTitle }}</p>
+    <h2 class="text-heading md:text-subtitle mb-6" [innerHTML]="sectionSubtitle"></h2>
     <p class="text-body-base md:text-subheading text-text-muted">
-      Ein kleiner Einblick in vergangene Projekte – von Webshops bis zu individuellen Anwendungen.
-      Weitere Referenzen teile ich gerne auf Anfrage.
+      {{ sectionDescription }}
     </p>
   </div>
 

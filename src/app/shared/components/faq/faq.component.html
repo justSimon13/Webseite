@@ -1,15 +1,25 @@
 <div class="container mx-auto">
   <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
-    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3 md:mb-4">
+    <p
+      class="text-primary font-medium tracking-wider uppercase text-sm mb-4 animate-fade-in"
+      style="animation-delay: 0.1s"
+    >
       {{ sectionTitle }}
     </p>
-    <h2 class="text-heading md:text-subtitle mb-4 md:mb-6" [innerHTML]="sectionSubtitle"></h2>
-    <p class="text-body-base md:text-subheading text-text-muted">
+    <h2
+      class="text-heading md:text-subtitle mb-6 animate-fade-in"
+      style="animation-delay: 0.2s"
+      [innerHTML]="sectionSubtitle"
+    ></h2>
+    <p
+      class="text-body-base md:text-subheading text-text-muted animate-fade-in"
+      style="animation-delay: 0.3s"
+    >
       {{ sectionDescription }}
     </p>
   </div>
 
-  <div class="space-y-4">
+  <div class="space-y-4 reveal-on-scroll">
     <ng-container *ngFor="let faq of faqItems; let i = index">
       <div
         class="bg-card border border-border/20 rounded-xl overflow-hidden transition-all duration-300"

@@ -25,7 +25,7 @@ export class ServicePackagesComponent {
     return {
       'xl:grid-cols-3': count === 3,
       'xl:grid-cols-4': count >= 4,
-      'max-w-5xl mx-auto': count <= 3,
+      'max-w-6xl mx-auto': count <= 3,
       'max-w-full lg:grid-cols-2': count > 3,
     };
   }

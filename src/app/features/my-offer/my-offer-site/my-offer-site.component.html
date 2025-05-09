@@ -1,6 +1,7 @@
 <section class="w-full py-16 md:py-24 lg:py-32 px-6">
   <div class="container mx-auto flex flex-col items-center text-center">
     <div class="flex flex-col gap-6 lg:gap-8 max-w-3xl animate-fade-in">
+      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">Produkte</p>
       <h1 class="text-subtitle md:text-title-hero text-white font-bold">
         <p class="text-body-base md:text-subheading text-white mb-8">
           Webentwicklung & digitale Lösungen
@@ -64,18 +65,30 @@
   </div>
 </div>
 
-<section class="w-full bg-content">
-  <div class="py-24 md:py-32 px-6 flex flex-col gap-24 md:gap-32 lg:gap-40">
-    <app-service-packages [packages]="servicePackages"></app-service-packages>
-    <app-process-steps></app-process-steps>
+<div class="bg-content px-6">
+  <app-client-divider></app-client-divider>
+</div>
+
+<div class="w-full bg-content">
+  <div class="container mx-auto pt-16 md:pt-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
+        <app-service-packages [packages]="servicePackages"></app-service-packages>
+        <app-process-steps-vertical [steps]="processSteps"></app-process-steps-vertical>
+      </div>
+    </div>
   </div>
 
-  <app-clients></app-clients>
+  <div class="my-24 md:my-28 lg:my-48">
+    <app-clients></app-clients>
+  </div>
 
-  <section class="w-full bg-content">
-    <div class="py-24 md:py-32 px-6 flex flex-col gap-24 md:gap-32 lg:gap-40">
-      <app-cta></app-cta>
-      <app-faq [faqItems]="faqItems"></app-faq>
+  <div class="container mx-auto pb-24 md:pb-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
+        <app-cta></app-cta>
+        <app-faq [faqItems]="faqItems"></app-faq>
+      </div>
     </div>
-  </section>
-</section>
+  </div>
+</div>
