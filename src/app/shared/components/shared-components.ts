@@ -1,3 +1,4 @@
+import { ClientsComponent } from './clients/clients.component';
 import { CtaComponent } from './cta/cta.component';
 import { CtaSmallComponent } from './cta-small/cta-small.component';
 import { FaqComponent } from './faq/faq.component';
@@ -10,4 +11,5 @@ export const SHARED_COMPONENTS = [
   FaqComponent,
   TestimonialsComponent,
   ServicePackagesComponent,
+  ClientsComponent,
 ];
