@@ -23,7 +23,7 @@ jobs:
               issue_number: issueNumber
             });
 
-            const originalTitle = issue.title;
+            let originalTitle = issue.title;
 
             originalTitle = originalTitle.replace(/^(Feat|Fix|Chore|Task|Refactor|Docs)\s*:\s*/i, '').trim();
 
