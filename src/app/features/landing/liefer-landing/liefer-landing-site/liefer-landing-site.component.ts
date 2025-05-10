@@ -27,14 +27,19 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
   servicePackages: ServicePackage[] = [
     {
       id: 1,
-      title: 'Website Starter',
-      subtitle: 'Ideal für lokale Lieferdienste oder Kurierbetriebe',
+      title: 'Webseiten Starter',
+      subtitle: 'Incl. CMS/Wordpress',
       targetUsers:
-        'Für kleine und mittelgroße Lieferdienste, die eine professionelle Online-Präsenz benötigen',
+        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
       features: [
-        'Mobilfreundliche Website mit Leistungen & Kontakt',
-        'Öffnungszeiten & Liefergebiete',
-        'Optional: Anfrageformular oder Call-to-Action',
+        'WordPress oder statische Webseite',
+        'Komplettes Webdesign',
+        'Suchmaschinenoptimierung',
+        'Mobile Optimierung & Responsiveness',
+        'Setup von Plugins & Domain',
+        'Basis-Design & Struktur',
+        'Integration deiner Inhalte (Text & Bilder)',
+        'Einrichtung mit Admin-Zugang',
       ],
       duration: 'Zwischen 1-2 Wochen',
       calendlyParam: 'a1=1',
@@ -44,49 +49,57 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
     {
       id: 2,
       title: 'Business Shop Paket',
-      subtitle: 'Für Lieferdienste mit regelmäßigem Sortiment',
-      targetUsers: 'Für Getränke-, Feinkost- und andere Lieferdienste mit festem Produktangebot',
+      subtitle: 'Shopify oder WooCommerce',
+      targetUsers:
+        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist',
       features: [
-        'Onlineshop mit Shopify oder WooCommerce',
-        'Lieferoptionen über Plugins (z.B. Zapiet, Delivery Slots)',
-        'Produktvarianten, Bestellfenster, Zahlungsintegration',
+        'Shopify oder WooCommerce',
+        'Produkt- & Warenmanagement',
+        'Zahlungsabwicklung & SSL',
+        'Design-Anpassungen nach Wunsch',
+        'Domain-Setup',
       ],
       duration: 'Zwischen 2-3 Wochen',
       calendlyParam: 'a1=2',
       enabled: true,
-      featured: true,
+      featured: false,
     },
     {
       id: 3,
-      title: 'Quick MVP / Starter-App',
-      subtitle: 'Ideal für einfache Bestellsysteme',
-      targetUsers: 'Für Lieferdienste mit Fokus auf schnelle, einfache Bestellabwicklung',
+      title: 'Smart Web-App',
+      subtitle: 'Individuelle Software & Hosting',
+      targetUsers:
+        'Für Startups, die eine eigene Idee umsetzen, skalieren oder unkompliziert entwickeln möchten',
       features: [
-        'Umsetzung z.B. mit Firebase',
-        'Für digitale Bestellzettel, Tagesaktionen oder Wiederbesteller',
-        'Schnelle Implementierung & leichte Bedienung',
+        'Technische Konzeption',
+        'MVP-Entwicklung & Hosting',
+        'Technisch saubere Umsetzung',
+        'Konzept & Strategie für Mobile & Desktop',
+        'Kontinuierliche Weiterentwicklung (Updates, Optimierung, Hosting)',
       ],
-      duration: 'Zwischen 2-4 Wochen',
+      duration: 'Zwischen 4-6 Wochen',
       calendlyParam: 'a1=3',
       enabled: false,
       featured: false,
     },
     {
       id: 4,
-      title: 'Individuelle Webentwicklung',
-      subtitle: 'Für anspruchsvolle Lösungen',
-      targetUsers: 'Für komplexe Anforderungen im Gastronomiebereich',
+      title: 'Individuelle Softwarelösung',
+      subtitle: 'Maßgeschneiderte Webentwicklung',
+      targetUsers:
+        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme',
       features: [
-        'Entwicklung individueller Weblösungen nach Bedarf',
-        'Technisches Konzept basierend auf deinem Workflow',
-        'Anbindung an bestehende Systeme oder Schnittstellen',
-        'Optional: Bestellprozesse, Produktverwaltung, Tourenplanung',
-        'Umsetzung erfolgt flexibel & nach Absprache',
+        'Individuelle Anforderungen & Specs',
+        'Skalierbare Architektur',
+        'Technische Beratung',
+        'Maßgeschneiderte Webentwicklung',
+        'Integration in bestehende IT-Infrastruktur',
+        'Laufende technische Betreuung',
       ],
       duration: 'Nach Absprache',
-      calendlyParam: 'a1=4',
+      calendlyParam: 'a1=3',
       enabled: true,
-      featured: false,
+      featured: true,
     },
   ];
 
@@ -102,7 +115,7 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
       number: 1,
       title: 'Kostenloses Erstgespräch',
       description:
-        'Wir besprechen, welche Lösung zu deinem Lieferangebot passt – von der einfachen Website bis zum vollwertigen Shop.',
+        'Wir besprechen, welche Lösung zu deinem Lieferangebot passt – von der einfachen Webseite bis zum vollwertigen Shop.',
     },
     {
       number: 2,
@@ -120,7 +133,7 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
       number: 4,
       title: 'Go Live & Einführung',
       description:
-        'Deine Website oder dein Shop geht online – du bekommst eine verständliche Einführung zur späteren Pflege.',
+        'Deine Webseite oder dein Shop geht online – du bekommst eine verständliche Einführung zur späteren Pflege.',
     },
     {
       number: 5,
@@ -257,7 +270,7 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.seoService.updateMeta(
-      'Digitale Lösungen für Lieferdienste – Website, Shop & App erstellen lassen',
+      'Digitale Lösungen für Lieferdienste – Webseite, Shop & App erstellen lassen',
       'Webseite, Onlineshop oder App für deinen Lieferdienst – modern, mobil optimiert & auf dein Sortiment abgestimmt. Ideal für Getränke-, Lebensmittel- & Kurierdienste.'
     );
   }

@@ -26,15 +26,19 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
   servicePackages: ServicePackage[] = [
     {
       id: 1,
-      title: 'Website Starter',
-      subtitle: 'Ideal für Lokale, Cafés & Imbissbetriebe',
+      title: 'Webseiten Starter',
+      subtitle: 'Incl. CMS/Wordpress',
       targetUsers:
-        'Für Restaurants, Cafés und kleine Gastronomiebetriebe, die eine professionelle Online-Präsenz benötigen',
+        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
       features: [
-        'Moderne, mobilfreundliche Webseite',
-        'Kontakt & Öffnungszeiten',
-        'Google Maps Integration',
-        'Optional: Speisekarte, Bewertungen, Reservierung',
+        'WordPress oder statische Webseite',
+        'Komplettes Webdesign',
+        'Suchmaschinenoptimierung',
+        'Mobile Optimierung & Responsiveness',
+        'Setup von Plugins & Domain',
+        'Basis-Design & Struktur',
+        'Integration deiner Inhalte (Text & Bilder)',
+        'Einrichtung mit Admin-Zugang',
       ],
       duration: 'Zwischen 1-2 Wochen',
       calendlyParam: 'a1=1',
@@ -43,52 +47,58 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
     },
     {
       id: 2,
-      title: 'Business Shop',
-      subtitle: 'Perfekt für Feinkost, Lieferdienste & Takeaway',
-      targetUsers: 'Für Gastronomiebetriebe, die ihre Produkte online verkaufen möchten',
+      title: 'Business Shop Paket',
+      subtitle: 'Shopify oder WooCommerce',
+      targetUsers:
+        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist',
       features: [
-        'Onlineshop mit Shopify oder WooCommerce',
-        'Abholung oder Lieferung mit Zeitfenstern',
-        'Mobil & SEO-optimiert',
-        'Bestellvorgang mit Zahlungsmöglichkeiten',
+        'Shopify oder WooCommerce',
+        'Produkt- & Warenmanagement',
+        'Zahlungsabwicklung & SSL',
+        'Design-Anpassungen nach Wunsch',
+        'Domain-Setup',
       ],
       duration: 'Zwischen 2-3 Wochen',
       calendlyParam: 'a1=2',
       enabled: true,
-      featured: true,
+      featured: false,
     },
     {
       id: 3,
-      title: 'Quick MVP / Starter-App',
-      subtitle: 'Für einfache digitale Tools',
-      targetUsers: 'Für Gastronomiebetriebe mit spezifischen digitalen Anforderungen',
+      title: 'Smart Web-App',
+      subtitle: 'Individuelle Software & Hosting',
+      targetUsers:
+        'Für Startups, die eine eigene Idee umsetzen, skalieren oder unkompliziert entwickeln möchten',
       features: [
-        'Umsetzung z.B. mit Firebase',
-        'Ideal für kleine Lösungen mit geringem Budget',
-        'Tageskarten, Bestellmasken o. Ä.',
-        'Schnelle Implementierung & leichte Bedienung',
+        'Technische Konzeption',
+        'MVP-Entwicklung & Hosting',
+        'Technisch saubere Umsetzung',
+        'Konzept & Strategie für Mobile & Desktop',
+        'Kontinuierliche Weiterentwicklung (Updates, Optimierung, Hosting)',
       ],
-      duration: 'Zwischen 2-4 Wochen',
+      duration: 'Zwischen 4-6 Wochen',
       calendlyParam: 'a1=3',
       enabled: false,
       featured: false,
     },
     {
       id: 4,
-      title: 'Individuelle Webentwicklung',
-      subtitle: 'Für anspruchsvolle Lösungen',
-      targetUsers: 'Für komplexe Anforderungen im Gastronomiebereich',
+      title: 'Individuelle Softwarelösung',
+      subtitle: 'Maßgeschneiderte Webentwicklung',
+      targetUsers:
+        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme',
       features: [
-        'Entwicklung individueller Weblösungen nach Bedarf',
-        'Technisches Konzept basierend auf deinem Workflow',
-        'Anbindung an bestehende Systeme oder Schnittstellen',
-        'Optional: Bestellprozesse, Produktverwaltung, Tourenplanung',
-        'Umsetzung erfolgt flexibel & nach Absprache',
+        'Individuelle Anforderungen & Specs',
+        'Skalierbare Architektur',
+        'Technische Beratung',
+        'Maßgeschneiderte Webentwicklung',
+        'Integration in bestehende IT-Infrastruktur',
+        'Laufende technische Betreuung',
       ],
       duration: 'Nach Absprache',
-      calendlyParam: 'a1=4',
+      calendlyParam: 'a1=3',
       enabled: true,
-      featured: false,
+      featured: true,
     },
   ];
 
@@ -109,7 +119,7 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
       number: 2,
       title: 'Entscheidung für das passende Setup',
       description:
-        'Ob Website, Shop oder App – du bekommst eine klare Empfehlung, was sinnvoll und realistisch ist.',
+        'Ob Webseite, Shop oder App – du bekommst eine klare Empfehlung, was sinnvoll und realistisch ist.',
     },
     {
       number: 3,
@@ -132,11 +142,50 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
     },
   ];
 
+  gastroBenefits = [
+    {
+      icon: 'M5 3a2 2 0 00-2 2v2a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z M3 13a2 2 0 012-2h14a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6z',
+      title: 'Digitale Speisekarte',
+      description:
+        'Präsentiere deine Gerichte modern und ansprechend – auch auf mobilen Geräten und ohne PDF.',
+    },
+    {
+      icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+      title: 'Weniger Anrufe & Missverständnisse',
+      description:
+        'Reservierungen, Öffnungszeiten oder Kontaktdaten sind direkt auf der Seite – für mehr Klarheit.',
+    },
+    {
+      icon: 'M7 7h10M7 11h10M7 15h5',
+      title: 'Klare Struktur',
+      description:
+        'Informationen wie Öffnungszeiten, Kontakt oder Menüs sind logisch aufgebaut und sofort auffindbar.',
+    },
+    {
+      icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
+      title: 'Mobilfreundlich',
+      description:
+        'Ob am Smartphone oder Tablet – deine Gäste finden sich überall problemlos zurecht.',
+    },
+    {
+      icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+      title: 'Mehr Gäste & Reservierungen',
+      description:
+        'Mit einem professionellen Auftritt wirst du besser gefunden und steigerst die Chance auf neue Gäste.',
+    },
+    {
+      icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
+      title: 'Wächst mit deinem Betrieb',
+      description:
+        'Ob digitaler Start oder Erweiterung – deine Lösung passt sich flexibel deinem Wachstum an.',
+    },
+  ];
+
   ctaConfig: CtaConfig = {
     title:
       'Du willst dein digitales <span class="text-primary font-bold">Gastronomieprojekt</span> starten?',
     description:
-      'Egal ob Restaurant-Website, Onlineshop für Lieferdienste oder individuelle Anwendung für deinen Gastronomie-Betrieb – gemeinsam finden wir die beste Lösung für dein Vorhaben.',
+      'Egal ob Restaurant-Webseite, Onlineshop für Lieferdienste oder individuelle Anwendung für deinen Gastronomie-Betrieb – gemeinsam finden wir die beste Lösung für dein Vorhaben.',
     buttonText: 'Erstgespräch vereinbaren',
     linkText: 'Oder informiere dich über meine Angebote',
     linkUrl: '/mein-angebot',
@@ -164,7 +213,7 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
     {
       question: 'Kann ich Inhalte später selbst ändern?',
       answer:
-        'Das hängt vom gewählten Paket ab:<br /><br /><strong>Website oder Onlineshop</strong> (z. B. mit WordPress oder Shopify): Du kannst <em>Texte, Bilder und Produkte</em> später selbst ändern – mit verständlicher Einführung.<br /><br /><strong>Individuelle Weblösungen</strong> (ohne CMS): Änderungen übernehme ich – dafür ist die Lösung besonders schlank und auf deinen Betrieb zugeschnitten.',
+        'Das hängt vom gewählten Paket ab:<br /><br /><strong>Webseite oder Onlineshop</strong> (z. B. mit WordPress oder Shopify): Du kannst <em>Texte, Bilder und Produkte</em> später selbst ändern – mit verständlicher Einführung.<br /><br /><strong>Individuelle Weblösungen</strong> (ohne CMS): Änderungen übernehme ich – dafür ist die Lösung besonders schlank und auf deinen Betrieb zugeschnitten.',
       isOpen: false,
     },
     {
@@ -183,8 +232,8 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.seoService.updateMeta(
-      'Gastronomie Website & Onlineshop erstellen lassen | Simon Fischer',
-      'Digitale Lösungen für Gastronomie – Website, Shop oder App erstellen lassen. Klar strukturiert, mobil optimiert & SEO-ready.'
+      'Gastronomie Webseite & Onlineshop erstellen lassen | Simon Fischer',
+      'Digitale Lösungen für Gastronomie – Webseite, Shop oder App erstellen lassen. Klar strukturiert, mobil optimiert & SEO-ready.'
     );
   }
 
