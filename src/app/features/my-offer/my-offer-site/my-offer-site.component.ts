@@ -17,12 +17,12 @@ export class MyOfferSiteComponent implements AfterViewInit, OnInit {
   servicePackages: ServicePackage[] = [
     {
       id: 1,
-      title: 'Website Starter',
+      title: 'Webseiten Starter',
       subtitle: 'Incl. CMS/Wordpress',
       targetUsers:
-        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare WordPress-Website benötigen',
+        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
       features: [
-        'WordPress oder statische Website',
+        'WordPress oder statische Webseite',
         'Komplettes Webdesign',
         'Suchmaschinenoptimierung',
         'Mobile Optimierung & Responsiveness',
@@ -48,7 +48,6 @@ export class MyOfferSiteComponent implements AfterViewInit, OnInit {
         'Zahlungsabwicklung & SSL',
         'Design-Anpassungen nach Wunsch',
         'Domain-Setup',
-        'Inklusive 100 Produkte (WOO), 500€',
       ],
       duration: 'Zwischen 2-3 Wochen',
       calendlyParam: 'a1=2',
@@ -88,7 +87,7 @@ export class MyOfferSiteComponent implements AfterViewInit, OnInit {
         'Laufende technische Betreuung',
       ],
       duration: 'Nach Absprache',
-      calendlyParam: 'a1=4',
+      calendlyParam: 'a1=3',
       enabled: true,
       featured: true,
     },
