@@ -14,7 +14,7 @@ export class BenefitsComponent {
   @Input() sectionSubtitle: string =
     'Vorteile für dein <span class="text-primary">Unternehmen</span>';
   @Input() sectionDescription: string =
-    'Was eine moderne Website oder ein Onlineshop für deinen Betrieb bewirken kann.';
+    'Was eine moderne Webseite oder ein Onlineshop für deinen Betrieb bewirken kann.';
 
   @Input() benefits: Benefit[] = [];
 }

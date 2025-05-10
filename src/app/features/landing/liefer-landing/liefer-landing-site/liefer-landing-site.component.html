@@ -10,7 +10,7 @@
         Digitale Lösungen für Lieferdienste – effizient, mobil & direkt einsatzbereit
       </h1>
       <div class="text-subtitle md:text-title-hero text-white font-bold">
-        Website, Shop & <span class="text-primary animate-pulse-gentle">App</span>
+        Webseite, Shop & <span class="text-primary animate-pulse-gentle">App</span>
       </div>
       <p class="text-body-base md:text-subheading text-text-muted">
         Ob Getränkelieferung, Lebensmittelversand oder lokaler Lieferservice – ich helfe dir, dein
@@ -126,13 +126,7 @@
 
     <div class="max-w-6xl mx-auto">
       <div class="flex flex-col gap-24 md:gap-28 lg:gap-48">
-        <app-benefits
-          [sectionTitle]="benefitsConfig.sectionTitle"
-          [sectionSubtitle]="benefitsConfig.sectionSubtitle"
-          [sectionDescription]="benefitsConfig.sectionDescription"
-          [benefits]="lieferdienstBenefits"
-        >
-        </app-benefits>
+        <app-benefits [benefits]="lieferdienstBenefits"> </app-benefits>
 
         <app-process-steps-vertical
           [sectionTitle]="processConfig.sectionTitle"

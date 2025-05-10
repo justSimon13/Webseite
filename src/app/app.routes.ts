@@ -48,7 +48,6 @@ export const routes: Routes = [
       import(
         './features/landing/liefer-landing/liefer-landing-site/liefer-landing-site.component'
       ).then((m) => m.LieferLandingSiteComponent),
-    title: 'Digitale Lösungen für Lieferdienste – Website, Shop & App erstellen lassen',
   },
   {
     path: '**',
