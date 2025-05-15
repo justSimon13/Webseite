@@ -20,6 +20,7 @@ export class ContactSiteComponent implements AfterViewInit, OnInit {
   subject: string = '';
   message: string = '';
   privacy: boolean = false;
+  contactCode: string = '';
 
   sending: boolean = false;
   sendSuccess: boolean = false;
@@ -45,6 +46,11 @@ export class ContactSiteComponent implements AfterViewInit, OnInit {
   }
 
   onSubmit(form: NgForm): void {
+    if (this.contactCode?.trim()) {
+      console.warn('Honeypot ausgefüllt – Spamverdacht, Anfrage abgebrochen.');
+      return;
+    }
+
     if (form.valid) {
       this.sending = true;
       this.sendSuccess = false;
@@ -55,6 +61,7 @@ export class ContactSiteComponent implements AfterViewInit, OnInit {
         email: this.email,
         subject: this.subject,
         message: this.message,
+        contactCode: this.contactCode,
       };
 
       this.http.post(`${environment.apiUrl}/contact`, formData).subscribe({
@@ -63,7 +70,7 @@ export class ContactSiteComponent implements AfterViewInit, OnInit {
           form.resetForm();
         },
         error: (error) => {
-          console.error('Error sending message', error);
+          console.error('Fehler beim Senden der Nachricht:', error);
           this.sendError = true;
         },
         complete: () => {
