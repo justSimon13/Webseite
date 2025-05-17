@@ -1,4 +1,3 @@
-// scroll-animation.service.ts
 import { Injectable, NgZone } from '@angular/core';
 
 @Injectable({
