@@ -1,6 +1,8 @@
 import { Component, OnInit, afterNextRender } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
+import { RenderService } from '../../../../core/services/render/render.service';
+import { SchemaService } from '../../../../core/services/schema/schema.service';
 import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
 import { CtaConfig } from '../../../../shared/models/cta-config';
@@ -226,21 +228,42 @@ export class GastroLandingSiteComponent implements OnInit {
 
   constructor(
     private seoService: SeoService,
-    private scrollAnimationService: ScrollAnimationService,
-    private calendlyService: CalendlyService
+    private renderService: RenderService,
+    private calendlyService: CalendlyService,
+    private schemaService: SchemaService
   ) {
-    afterNextRender(() => {
-      setTimeout(() => {
-        this.scrollAnimationService.initScrollObserver();
-      }, 100);
-    });
+    this.renderService.initScrollAnimation();
   }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Gastronomie Webseite & Onlineshop erstellen lassen | Simon Fischer',
-      'Digitale Lösungen für Gastronomie – Webseite, Shop oder App erstellen lassen. Klar strukturiert, mobil optimiert & SEO-ready.'
+      'Digitale Lösungen für Gastronomie – Webseite, Shop oder App erstellen lassen. Klar strukturiert, mobil optimiert & SEO-ready.',
+      '/gastronomie'
     );
+
+    // Service Schema für Gastronomie-Lösungen
+    this.schemaService.addServiceSchema({
+      name: 'Digitale Lösungen für Gastronomie',
+      description:
+        'Professionelle Webseiten, Shops und Apps für Gastronomiebetriebe - modern, effizient und mobil optimiert.',
+      image: 'https://simonfischer.dev/assets/gastro-preview.jpg',
+    });
+
+    // FAQ Schema für die Gastronomie-FAQs
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: this.gastroFaqItems.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+    this.schemaService.addSchemaTag(faqSchema);
   }
 
   openCalendly(packageType?: string): void {

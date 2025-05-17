@@ -1,6 +1,8 @@
 import { Component, OnInit, afterNextRender } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
+import { RenderService } from '../../../../core/services/render/render.service';
+import { SchemaService } from '../../../../core/services/schema/schema.service';
 import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
 import { ProcessStep } from '../../../../shared/components/process-steps-vertical/process-steps-vertical.component';
@@ -264,21 +266,58 @@ export class LieferLandingSiteComponent implements OnInit {
 
   constructor(
     private seoService: SeoService,
-    private scrollAnimationService: ScrollAnimationService,
-    private calendlyService: CalendlyService
+    private renderService: RenderService,
+    private calendlyService: CalendlyService,
+    private schemaService: SchemaService
   ) {
-    afterNextRender(() => {
-      setTimeout(() => {
-        this.scrollAnimationService.initScrollObserver();
-      }, 100);
-    });
+    this.renderService.initScrollAnimation();
   }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
-      'Digitale Lösungen für Lieferdienste – Webseite, Shop & App erstellen lassen',
-      'Webseite, Onlineshop oder App für deinen Lieferdienst – modern, mobil optimiert & auf dein Sortiment abgestimmt. Ideal für Getränke-, Lebensmittel- & Kurierdienste.'
+      'Lieferdienst Webseite & Onlineshop erstellen lassen | Simon Fischer',
+      'Digitale Lösungen für Lieferdienste – von der Webseite bis zum vollwertigen Shop. Modern, effizient & mobil optimiert.',
+      '/lieferdienst'
     );
+
+    // Service Schema für Lieferdienst-Lösungen
+    this.schemaService.addServiceSchema({
+      name: 'Digitale Lösungen für Lieferdienste',
+      description:
+        'Professionelle Webseiten und Onlineshops für Lieferdienste - von der einfachen Webseite bis zum vollwertigen Shop.',
+      image: 'https://simonfischer.dev/assets/lieferdienst-preview.jpg',
+    });
+
+    // FAQ Schema für die Lieferdienst-FAQs
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: this.lieferdienstFaqItems.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+    this.schemaService.addSchemaTag(faqSchema);
+
+    // Process Schema für den Prozessablauf
+    const processSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Wie erstelle ich eine Lieferdienst-Webseite?',
+      description:
+        'Schritt-für-Schritt Prozess zur Erstellung einer professionellen Webseite oder eines Onlineshops für Ihren Lieferdienst.',
+      step: this.processSteps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.title,
+        text: step.description,
+      })),
+    };
+    this.schemaService.addSchemaTag(processSchema);
   }
 
   openCalendly(packageType?: string): void {

@@ -1,7 +1,8 @@
-import { Component, OnInit, afterNextRender } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
-import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { RenderService } from '../../../core/services/render/render.service';
+import { SchemaService } from '../../../core/services/schema/schema.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { FaqItem } from '../../../shared/models/faq-item';
 import { ProcessStep } from '../../../shared/models/process-step';
@@ -156,21 +157,57 @@ export class MyOfferSiteComponent implements OnInit {
 
   constructor(
     private seoService: SeoService,
-    private scrollAnimationService: ScrollAnimationService,
-    private calendlyService: CalendlyService
+    private renderService: RenderService,
+    private calendlyService: CalendlyService,
+    private schemaService: SchemaService
   ) {
-    afterNextRender(() => {
-      setTimeout(() => {
-        this.scrollAnimationService.initScrollObserver();
-      }, 100);
-    });
+    this.renderService.initScrollAnimation();
   }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Pakete für Webentwicklung & Onlineshops | Lösungen für Unternehmen',
-      'Webseite, Onlineshop oder App entwickeln lassen? Hier findest du passende Angebote – individuell, effizient & DSGVO-konform.'
+      'Webseite, Onlineshop oder App entwickeln lassen? Hier findest du passende Angebote – individuell, effizient & DSGVO-konform.',
+      '/mein-angebot'
     );
+
+    this.servicePackages.forEach((servicePackage) => {
+      this.schemaService.addServiceSchema({
+        name: servicePackage.title,
+        description: servicePackage.targetUsers,
+        image: 'https://simonfischer.dev/assets/service-preview.jpg',
+      });
+    });
+
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: this.faqItems.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+    this.schemaService.addSchemaTag(faqSchema);
+
+    // Process Schema
+    const processSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Wie läuft ein Webentwicklungsprojekt ab?',
+      description:
+        'Der Prozess von der ersten Idee bis zur fertigen Webseite oder Software-Lösung.',
+      step: this.processSteps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.title,
+        text: step.description,
+      })),
+    };
+    this.schemaService.addSchemaTag(processSchema);
   }
 
   openCalendly() {
