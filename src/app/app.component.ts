@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { NavigationComponent } from './core/layout/navigation/navigation.component';
+import { RenderService } from './core/services/render/render.service';
 
 const SCROLL_THRESHOLD = 50;
 
@@ -14,19 +15,24 @@ const SCROLL_THRESHOLD = 50;
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit, OnDestroy {
-  constructor(private router: Router) {}
+export class AppComponent implements OnDestroy {
+  constructor(
+    private router: Router,
+    private renderService: RenderService
+  ) {
+    this.renderService.executeAfterRender(() => {
+      this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+        window.scrollTo(0, 0);
+      });
 
-  ngOnInit(): void {
-    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
-      window.scrollTo(0, 0);
+      window.addEventListener('scroll', this.handleScroll);
     });
-
-    window.addEventListener('scroll', this.handleScroll);
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.handleScroll);
+    if (this.renderService.isBrowser()) {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
   }
 
   handleScroll = (): void => {

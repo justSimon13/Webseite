@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, afterNextRender } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
 import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
@@ -15,7 +15,7 @@ import { LANDING_IMPORTS } from '../../landing-shared';
   imports: [LANDING_IMPORTS],
   templateUrl: './gastro-landing-site.component.html',
 })
-export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
+export class GastroLandingSiteComponent implements OnInit {
   servicePackagesConfig: SectionConfig = {
     sectionTitle: 'Angebote',
     sectionSubtitle: 'Meine Angebote für <span class="text-primary">Gastronomiebetriebe</span>',
@@ -228,19 +228,19 @@ export class GastroLandingSiteComponent implements OnInit, AfterViewInit {
     private seoService: SeoService,
     private scrollAnimationService: ScrollAnimationService,
     private calendlyService: CalendlyService
-  ) {}
+  ) {
+    afterNextRender(() => {
+      setTimeout(() => {
+        this.scrollAnimationService.initScrollObserver();
+      }, 100);
+    });
+  }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Gastronomie Webseite & Onlineshop erstellen lassen | Simon Fischer',
       'Digitale Lösungen für Gastronomie – Webseite, Shop oder App erstellen lassen. Klar strukturiert, mobil optimiert & SEO-ready.'
     );
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.scrollAnimationService.initScrollObserver();
-    }, 100);
   }
 
   openCalendly(packageType?: string): void {

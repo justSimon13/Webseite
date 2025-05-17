@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit, afterNextRender } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
 import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
@@ -16,7 +16,7 @@ import { LANDING_IMPORTS } from '../../landing-shared';
   imports: [LANDING_IMPORTS],
   templateUrl: './liefer-landing-site.component.html',
 })
-export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
+export class LieferLandingSiteComponent implements OnInit {
   servicePackagesConfig: SectionConfig = {
     sectionTitle: 'Angebote',
     sectionSubtitle: 'Meine Angebote für <span class="text-primary">Lieferdienste</span>',
@@ -266,19 +266,19 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
     private seoService: SeoService,
     private scrollAnimationService: ScrollAnimationService,
     private calendlyService: CalendlyService
-  ) {}
+  ) {
+    afterNextRender(() => {
+      setTimeout(() => {
+        this.scrollAnimationService.initScrollObserver();
+      }, 100);
+    });
+  }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Digitale Lösungen für Lieferdienste – Webseite, Shop & App erstellen lassen',
       'Webseite, Onlineshop oder App für deinen Lieferdienst – modern, mobil optimiert & auf dein Sortiment abgestimmt. Ideal für Getränke-, Lebensmittel- & Kurierdienste.'
     );
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.scrollAnimationService.initScrollObserver();
-    }, 100);
   }
 
   openCalendly(packageType?: string): void {
