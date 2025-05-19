@@ -1,9 +1,8 @@
-import { Component, OnInit, afterNextRender } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
 import { RenderService } from '../../../../core/services/render/render.service';
 import { SchemaService } from '../../../../core/services/schema/schema.service';
-import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
 import { ProcessStep } from '../../../../shared/components/process-steps-vertical/process-steps-vertical.component';
 import { ClientLogo } from '../../../../shared/models/client-logo';
@@ -29,10 +28,10 @@ export class LieferLandingSiteComponent implements OnInit {
   servicePackages: ServicePackage[] = [
     {
       id: 1,
-      title: 'Webseiten Starter',
+      title: 'Lieferdienst Webseite',
       subtitle: 'Incl. CMS/Wordpress',
       targetUsers:
-        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
+        'Professionelle One-Pager-Webseite für Getränkelieferdienste – mobil optimiert, lokal auffindbar & schnell geladen.',
       features: [
         'WordPress oder statische Webseite',
         'Komplettes Webdesign',
@@ -50,10 +49,10 @@ export class LieferLandingSiteComponent implements OnInit {
     },
     {
       id: 2,
-      title: 'Business Shop Paket',
+      title: 'Business Shop für Lieferdienste',
       subtitle: 'Shopify oder WooCommerce',
       targetUsers:
-        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist',
+        'Onlineshop mit Lieferzeit-Plugins, QR-Bestellung und Kundenverwaltung – speziell für Lieferdienste mit Produktkatalog.',
       features: [
         'Shopify oder WooCommerce',
         'Produkt- & Warenmanagement',
@@ -67,29 +66,11 @@ export class LieferLandingSiteComponent implements OnInit {
       featured: false,
     },
     {
-      id: 3,
-      title: 'Smart Web-App',
-      subtitle: 'Individuelle Software & Hosting',
-      targetUsers:
-        'Für Startups, die eine eigene Idee umsetzen, skalieren oder unkompliziert entwickeln möchten',
-      features: [
-        'Technische Konzeption',
-        'MVP-Entwicklung & Hosting',
-        'Technisch saubere Umsetzung',
-        'Konzept & Strategie für Mobile & Desktop',
-        'Kontinuierliche Weiterentwicklung (Updates, Optimierung, Hosting)',
-      ],
-      duration: 'Zwischen 4-6 Wochen',
-      calendlyParam: 'a1=3',
-      enabled: false,
-      featured: false,
-    },
-    {
       id: 4,
-      title: 'Individuelle Softwarelösung',
+      title: 'Digitale Lösung für Lieferdienste',
       subtitle: 'Maßgeschneiderte Webentwicklung',
       targetUsers:
-        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme',
+        'Web-App für Routenplanung, Bestellabwicklung und Live-Verfügbarkeiten – ideal für Lieferdienste mit eigenem Fuhrpark.',
       features: [
         'Individuelle Anforderungen & Specs',
         'Skalierbare Architektur',
@@ -280,44 +261,9 @@ export class LieferLandingSiteComponent implements OnInit {
       '/lieferdienst'
     );
 
-    // Service Schema für Lieferdienst-Lösungen
-    this.schemaService.addServiceSchema({
-      name: 'Digitale Lösungen für Lieferdienste',
-      description:
-        'Professionelle Webseiten und Onlineshops für Lieferdienste - von der einfachen Webseite bis zum vollwertigen Shop.',
-      image: 'https://simonfischer.dev/assets/lieferdienst-preview.jpg',
-    });
-
-    // FAQ Schema für die Lieferdienst-FAQs
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: this.lieferdienstFaqItems.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
-    };
-    this.schemaService.addSchemaTag(faqSchema);
-
-    // Process Schema für den Prozessablauf
-    const processSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      name: 'Wie erstelle ich eine Lieferdienst-Webseite?',
-      description:
-        'Schritt-für-Schritt Prozess zur Erstellung einer professionellen Webseite oder eines Onlineshops für Ihren Lieferdienst.',
-      step: this.processSteps.map((step, index) => ({
-        '@type': 'HowToStep',
-        position: index + 1,
-        name: step.title,
-        text: step.description,
-      })),
-    };
-    this.schemaService.addSchemaTag(processSchema);
+    this.schemaService.clearSchemas();
+    this.schemaService.addLocalBusinessSchema();
+    this.schemaService.addBranchSpecificOfferSchema('lieferdienst');
   }
 
   openCalendly(packageType?: string): void {

@@ -21,7 +21,7 @@ export class MyOfferSiteComponent implements OnInit {
       title: 'Webseiten Starter',
       subtitle: 'Incl. CMS/Wordpress',
       targetUsers:
-        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
+        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen.',
       features: [
         'WordPress oder statische Webseite',
         'Komplettes Webdesign',
@@ -39,10 +39,10 @@ export class MyOfferSiteComponent implements OnInit {
     },
     {
       id: 2,
-      title: 'Business Shop Paket',
+      title: 'Business Shop',
       subtitle: 'Shopify oder WooCommerce',
       targetUsers:
-        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist',
+        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist.',
       features: [
         'Shopify oder WooCommerce',
         'Produkt- & Warenmanagement',
@@ -56,29 +56,11 @@ export class MyOfferSiteComponent implements OnInit {
       featured: false,
     },
     {
-      id: 3,
-      title: 'Smart Web-App',
-      subtitle: 'Individuelle Software & Hosting',
-      targetUsers:
-        'Für Startups, die eine eigene Idee umsetzen, skalieren oder unkompliziert entwickeln möchten',
-      features: [
-        'Technische Konzeption',
-        'MVP-Entwicklung & Hosting',
-        'Technisch saubere Umsetzung',
-        'Konzept & Strategie für Mobile & Desktop',
-        'Kontinuierliche Weiterentwicklung (Updates, Optimierung, Hosting)',
-      ],
-      duration: 'Zwischen 4-6 Wochen',
-      calendlyParam: 'a1=3',
-      enabled: false,
-      featured: false,
-    },
-    {
       id: 4,
       title: 'Individuelle Softwarelösung',
       subtitle: 'Maßgeschneiderte Webentwicklung',
       targetUsers:
-        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme',
+        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme.',
       features: [
         'Individuelle Anforderungen & Specs',
         'Skalierbare Architektur',
@@ -171,43 +153,9 @@ export class MyOfferSiteComponent implements OnInit {
       '/mein-angebot'
     );
 
-    this.servicePackages.forEach((servicePackage) => {
-      this.schemaService.addServiceSchema({
-        name: servicePackage.title,
-        description: servicePackage.targetUsers,
-        image: 'https://simonfischer.dev/assets/service-preview.jpg',
-      });
-    });
-
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: this.faqItems.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
-    };
-    this.schemaService.addSchemaTag(faqSchema);
-
-    // Process Schema
-    const processSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      name: 'Wie läuft ein Webentwicklungsprojekt ab?',
-      description:
-        'Der Prozess von der ersten Idee bis zur fertigen Webseite oder Software-Lösung.',
-      step: this.processSteps.map((step, index) => ({
-        '@type': 'HowToStep',
-        position: index + 1,
-        name: step.title,
-        text: step.description,
-      })),
-    };
-    this.schemaService.addSchemaTag(processSchema);
+    this.schemaService.clearSchemas();
+    this.schemaService.addLocalBusinessSchema();
+    this.schemaService.addOfferCatalogSchema();
   }
 
   openCalendly() {
