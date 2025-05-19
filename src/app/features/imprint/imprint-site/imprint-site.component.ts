@@ -1,6 +1,6 @@
-import { Component, OnInit, afterNextRender } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { RenderService } from '../../../core/services/render/render.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { IMPRINT_IMPORTS } from '../imprint-shared';
 
@@ -13,14 +13,10 @@ export class ImprintSiteComponent implements OnInit {
   activeSections: string[] = ['companyData'];
 
   constructor(
-    private scrollAnimationService: ScrollAnimationService,
+    private renderService: RenderService,
     private seoService: SeoService
   ) {
-    afterNextRender(() => {
-      setTimeout(() => {
-        this.scrollAnimationService.initScrollObserver();
-      }, 100);
-    });
+    this.renderService.initScrollAnimation();
   }
 
   ngOnInit(): void {
