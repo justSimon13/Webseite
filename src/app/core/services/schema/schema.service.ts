@@ -16,18 +16,41 @@ export class SchemaService {
   ) {}
 
   /**
-   * Fügt strukturierte Daten für eine lokale Dienstleistung hinzu
+   * Entfernt alle vorhandenen Schema-Tags
+   */
+  clearSchemas(): void {
+    if (!this.renderService.isBrowser()) return;
+
+    const existingSchemas = document.querySelectorAll('script[type="application/ld+json"]');
+    existingSchemas.forEach((tag) => tag.remove());
+  }
+
+  /**
+   * Fügt strukturierte Daten für das Unternehmen hinzu (Homepage)
    */
   addLocalBusinessSchema(): void {
     const schema = {
       '@context': 'https://schema.org',
-      '@type': 'ProfessionalService',
-      name: this.config.business.name,
-      image: this.config.business.image,
+      '@type': 'LocalBusiness',
       '@id': this.config.business.url,
+      name: this.config.business.name,
+      description: this.config.business.description,
+      image: this.config.business.image,
       url: this.config.business.url,
       telephone: this.config.business.telephone,
-      description: this.config.business.description,
+      email: this.config.business.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: this.config.business.address.street,
+        addressLocality: this.config.business.address.city,
+        postalCode: this.config.business.address.postalCode,
+        addressCountry: this.config.business.address.country,
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: this.config.business.geo.latitude,
+        longitude: this.config.business.geo.longitude,
+      },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: this.config.business.openingHours.days,
@@ -40,49 +63,52 @@ export class SchemaService {
   }
 
   /**
-   * Fügt strukturierte Daten für einen Service/Dienstleistung hinzu
+   * Fügt ein Angebotskatalog-Schema hinzu (für die Angebotsseite)
    */
-  addServiceSchema(service: {
-    name: string;
-    description: string;
-    price?: string;
-    image?: string;
-  }): void {
+  addOfferCatalogSchema(): void {
     const schema = {
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: service.name,
-      description: service.description,
-      provider: {
-        '@type': 'ProfessionalService',
-        name: this.config.business.name,
-        url: this.config.business.url,
-      },
-      ...(service.price && {
-        offers: {
-          '@type': 'Offer',
-          price: service.price,
-          priceCurrency: 'EUR',
+      '@type': 'OfferCatalog',
+      name: this.config.services.main.name,
+      itemListElement: this.config.services.main.offers.map((offer) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          ...offer,
         },
-      }),
-      ...(service.image && { image: service.image }),
+      })),
     };
 
     this.addSchemaTag(schema);
   }
 
   /**
-   * Fügt ein benutzerdefiniertes Schema zur Seite hinzu
-   * @param schema Das Schema-Objekt, das hinzugefügt werden soll
+   * Fügt ein branchenspezifisches Angebots-Schema hinzu (für Landingpages)
    */
-  addSchemaTag(schema: object): void {
+  addBranchSpecificOfferSchema(branchType: 'gastro' | 'lieferdienst'): void {
+    const branchServices = this.config.services[branchType];
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'OfferCatalog',
+      name: branchServices.name,
+      itemListElement: branchServices.offers.map((offer) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          ...offer,
+        },
+      })),
+    };
+
+    this.addSchemaTag(schema);
+  }
+
+  /**
+   * Fügt ein einzelnes Schema als separates Script-Tag hinzu
+   */
+  private addSchemaTag(schema: object): void {
     if (!this.renderService.isBrowser()) return;
 
-    // Entferne vorhandene Schema-Tags
-    const existingSchemas = document.querySelectorAll('script[type="application/ld+json"]');
-    existingSchemas.forEach((tag) => tag.remove());
-
-    // Füge neues Schema hinzu
     const script = document.createElement('script');
     script.setAttribute('type', 'application/ld+json');
     script.textContent = JSON.stringify(schema);

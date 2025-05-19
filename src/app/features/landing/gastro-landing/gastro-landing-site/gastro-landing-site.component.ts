@@ -1,9 +1,8 @@
-import { Component, OnInit, afterNextRender } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
 import { RenderService } from '../../../../core/services/render/render.service';
 import { SchemaService } from '../../../../core/services/schema/schema.service';
-import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
 import { CtaConfig } from '../../../../shared/models/cta-config';
 import { FaqItem } from '../../../../shared/models/faq-item';
@@ -28,10 +27,10 @@ export class GastroLandingSiteComponent implements OnInit {
   servicePackages: ServicePackage[] = [
     {
       id: 1,
-      title: 'Webseiten Starter',
+      title: 'Gastronomie Webseite',
       subtitle: 'Incl. CMS/Wordpress',
       targetUsers:
-        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
+        'Maßgeschneiderte Restaurant-Webseite mit Speisekarte, Reservierungssystem und mobiloptimiertem Design – perfekt für Restaurants & Cafés.',
       features: [
         'WordPress oder statische Webseite',
         'Komplettes Webdesign',
@@ -49,10 +48,10 @@ export class GastroLandingSiteComponent implements OnInit {
     },
     {
       id: 2,
-      title: 'Business Shop Paket',
+      title: 'Online-Shop für Gastronomie',
       subtitle: 'Shopify oder WooCommerce',
       targetUsers:
-        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist',
+        'Shop-System zur Bestellung von Speisen und Getränken – inkl. Lieferzeiten, Tischbestellung via QR-Code und Kundenverwaltung.',
       features: [
         'Shopify oder WooCommerce',
         'Produkt- & Warenmanagement',
@@ -66,29 +65,11 @@ export class GastroLandingSiteComponent implements OnInit {
       featured: false,
     },
     {
-      id: 3,
-      title: 'Smart Web-App',
-      subtitle: 'Individuelle Software & Hosting',
-      targetUsers:
-        'Für Startups, die eine eigene Idee umsetzen, skalieren oder unkompliziert entwickeln möchten',
-      features: [
-        'Technische Konzeption',
-        'MVP-Entwicklung & Hosting',
-        'Technisch saubere Umsetzung',
-        'Konzept & Strategie für Mobile & Desktop',
-        'Kontinuierliche Weiterentwicklung (Updates, Optimierung, Hosting)',
-      ],
-      duration: 'Zwischen 4-6 Wochen',
-      calendlyParam: 'a1=3',
-      enabled: false,
-      featured: false,
-    },
-    {
       id: 4,
-      title: 'Individuelle Softwarelösung',
+      title: 'Digitale Gastro-Lösung',
       subtitle: 'Maßgeschneiderte Webentwicklung',
       targetUsers:
-        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme',
+        'Individuelle Softwarelösungen für Küche, Bestellabwicklung, Mitarbeiterprozesse und QR-Systeme in der Gastronomie.',
       features: [
         'Individuelle Anforderungen & Specs',
         'Skalierbare Architektur',
@@ -242,28 +223,9 @@ export class GastroLandingSiteComponent implements OnInit {
       '/gastronomie'
     );
 
-    // Service Schema für Gastronomie-Lösungen
-    this.schemaService.addServiceSchema({
-      name: 'Digitale Lösungen für Gastronomie',
-      description:
-        'Professionelle Webseiten, Shops und Apps für Gastronomiebetriebe - modern, effizient und mobil optimiert.',
-      image: 'https://simonfischer.dev/assets/gastro-preview.jpg',
-    });
-
-    // FAQ Schema für die Gastronomie-FAQs
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: this.gastroFaqItems.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
-    };
-    this.schemaService.addSchemaTag(faqSchema);
+    this.schemaService.clearSchemas();
+    this.schemaService.addLocalBusinessSchema();
+    this.schemaService.addBranchSpecificOfferSchema('gastro');
   }
 
   openCalendly(packageType?: string): void {
