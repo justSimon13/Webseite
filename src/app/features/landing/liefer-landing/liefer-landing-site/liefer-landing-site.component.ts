@@ -1,7 +1,9 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
-import { ScrollAnimationService } from '../../../../core/services/scroll-animation/scroll-animation.service';
+import { PackagesService } from '../../../../core/services/packages/packages.service';
+import { RenderService } from '../../../../core/services/render/render.service';
+import { SchemaService } from '../../../../core/services/schema/schema.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
 import { ProcessStep } from '../../../../shared/components/process-steps-vertical/process-steps-vertical.component';
 import { ClientLogo } from '../../../../shared/models/client-logo';
@@ -16,7 +18,7 @@ import { LANDING_IMPORTS } from '../../landing-shared';
   imports: [LANDING_IMPORTS],
   templateUrl: './liefer-landing-site.component.html',
 })
-export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
+export class LieferLandingSiteComponent implements OnInit, OnDestroy {
   servicePackagesConfig: SectionConfig = {
     sectionTitle: 'Angebote',
     sectionSubtitle: 'Meine Angebote für <span class="text-primary">Lieferdienste</span>',
@@ -24,84 +26,7 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
       'Entdecke maßgeschneiderte digitale Lösungen, die perfekt zu den Anforderungen deines Lieferdienstes passen.',
   };
 
-  servicePackages: ServicePackage[] = [
-    {
-      id: 1,
-      title: 'Webseiten Starter',
-      subtitle: 'Incl. CMS/Wordpress',
-      targetUsers:
-        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen',
-      features: [
-        'WordPress oder statische Webseite',
-        'Komplettes Webdesign',
-        'Suchmaschinenoptimierung',
-        'Mobile Optimierung & Responsiveness',
-        'Setup von Plugins & Domain',
-        'Basis-Design & Struktur',
-        'Integration deiner Inhalte (Text & Bilder)',
-        'Einrichtung mit Admin-Zugang',
-      ],
-      duration: 'Zwischen 1-2 Wochen',
-      calendlyParam: 'a1=1',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 2,
-      title: 'Business Shop Paket',
-      subtitle: 'Shopify oder WooCommerce',
-      targetUsers:
-        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist',
-      features: [
-        'Shopify oder WooCommerce',
-        'Produkt- & Warenmanagement',
-        'Zahlungsabwicklung & SSL',
-        'Design-Anpassungen nach Wunsch',
-        'Domain-Setup',
-      ],
-      duration: 'Zwischen 2-3 Wochen',
-      calendlyParam: 'a1=2',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 3,
-      title: 'Smart Web-App',
-      subtitle: 'Individuelle Software & Hosting',
-      targetUsers:
-        'Für Startups, die eine eigene Idee umsetzen, skalieren oder unkompliziert entwickeln möchten',
-      features: [
-        'Technische Konzeption',
-        'MVP-Entwicklung & Hosting',
-        'Technisch saubere Umsetzung',
-        'Konzept & Strategie für Mobile & Desktop',
-        'Kontinuierliche Weiterentwicklung (Updates, Optimierung, Hosting)',
-      ],
-      duration: 'Zwischen 4-6 Wochen',
-      calendlyParam: 'a1=3',
-      enabled: false,
-      featured: false,
-    },
-    {
-      id: 4,
-      title: 'Individuelle Softwarelösung',
-      subtitle: 'Maßgeschneiderte Webentwicklung',
-      targetUsers:
-        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme',
-      features: [
-        'Individuelle Anforderungen & Specs',
-        'Skalierbare Architektur',
-        'Technische Beratung',
-        'Maßgeschneiderte Webentwicklung',
-        'Integration in bestehende IT-Infrastruktur',
-        'Laufende technische Betreuung',
-      ],
-      duration: 'Nach Absprache',
-      calendlyParam: 'a1=3',
-      enabled: true,
-      featured: true,
-    },
-  ];
+  servicePackages: ServicePackage[] = [];
 
   processConfig = {
     sectionTitle: 'PROZESS',
@@ -264,21 +189,30 @@ export class LieferLandingSiteComponent implements AfterViewInit, OnInit {
 
   constructor(
     private seoService: SeoService,
-    private scrollAnimationService: ScrollAnimationService,
-    private calendlyService: CalendlyService
-  ) {}
+    private renderService: RenderService,
+    private calendlyService: CalendlyService,
+    private schemaService: SchemaService,
+    private packagesService: PackagesService
+  ) {
+    this.renderService.initScrollAnimation();
+  }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
-      'Digitale Lösungen für Lieferdienste – Webseite, Shop & App erstellen lassen',
-      'Webseite, Onlineshop oder App für deinen Lieferdienst – modern, mobil optimiert & auf dein Sortiment abgestimmt. Ideal für Getränke-, Lebensmittel- & Kurierdienste.'
+      'Lieferdienst Webseite & Onlineshop erstellen lassen | Simon Fischer',
+      'Digitale Lösungen für Lieferdienste – von der Webseite bis zum vollwertigen Shop. Modern, effizient & mobil optimiert.',
+      '/lieferdienst'
     );
+
+    this.servicePackages = this.packagesService.getPackagesByCategory('delivery');
+
+    this.schemaService.clearSchemas();
+    this.schemaService.addLocalBusinessSchema();
+    this.schemaService.addBranchSpecificOfferSchema('delivery');
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.scrollAnimationService.initScrollObserver();
-    }, 100);
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   openCalendly(packageType?: string): void {
