@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
-import { environment } from '../../../../environments/environment';
+import { localBusinessConfig } from '../../config/local-business.config';
+import { packagesConfig } from '../../config/packages.config';
 import { RenderService } from '../render/render.service';
 
+/**
+ * Service für die Verwaltung von Schema.org strukturierten Daten
+ *
+ * Dieser Service fügt strukturierte Daten (JSON-LD) zu den Seiten hinzu,
+ * um Suchmaschinen besser zu verstehen, welche Inhalte auf der Seite vorhanden sind.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class SchemaService {
-  private readonly config = environment.schema;
-
   constructor(
     private meta: Meta,
     private renderService: RenderService
@@ -32,30 +37,30 @@ export class SchemaService {
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      '@id': this.config.business.url,
-      name: this.config.business.name,
-      description: this.config.business.description,
-      image: this.config.business.image,
-      url: this.config.business.url,
-      telephone: this.config.business.telephone,
-      email: this.config.business.email,
+      '@id': localBusinessConfig.url,
+      name: localBusinessConfig.name,
+      description: localBusinessConfig.description,
+      image: localBusinessConfig.image,
+      url: localBusinessConfig.url,
+      telephone: localBusinessConfig.telephone,
+      email: localBusinessConfig.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: this.config.business.address.street,
-        addressLocality: this.config.business.address.city,
-        postalCode: this.config.business.address.postalCode,
-        addressCountry: this.config.business.address.country,
+        streetAddress: localBusinessConfig.address.street,
+        addressLocality: localBusinessConfig.address.city,
+        postalCode: localBusinessConfig.address.postalCode,
+        addressCountry: localBusinessConfig.address.country,
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: this.config.business.geo.latitude,
-        longitude: this.config.business.geo.longitude,
+        latitude: localBusinessConfig.geo.latitude,
+        longitude: localBusinessConfig.geo.longitude,
       },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: this.config.business.openingHours.days,
-        opens: this.config.business.openingHours.opens,
-        closes: this.config.business.openingHours.closes,
+        dayOfWeek: localBusinessConfig.openingHours.days,
+        opens: localBusinessConfig.openingHours.opens,
+        closes: localBusinessConfig.openingHours.closes,
       },
     };
 
@@ -69,14 +74,21 @@ export class SchemaService {
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'OfferCatalog',
-      name: this.config.services.main.name,
-      itemListElement: this.config.services.main.offers.map((offer) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          ...offer,
-        },
-      })),
+      name: 'Digitale Lösungen für Unternehmen',
+      itemListElement: packagesConfig
+        .filter((pkg) => pkg.enabled && pkg.category === 'web')
+        .map((pkg) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: pkg.title,
+            description: pkg.description,
+            audience: {
+              '@type': 'Audience',
+              audienceType: pkg.targetUsers,
+            },
+          },
+        })),
     };
 
     this.addSchemaTag(schema);
@@ -85,17 +97,27 @@ export class SchemaService {
   /**
    * Fügt ein branchenspezifisches Angebots-Schema hinzu (für Landingpages)
    */
-  addBranchSpecificOfferSchema(branchType: 'gastro' | 'lieferdienst'): void {
-    const branchServices = this.config.services[branchType];
+  addBranchSpecificOfferSchema(branchType: 'gastro' | 'delivery'): void {
+    const branchPackages = packagesConfig.filter(
+      (pkg) => pkg.enabled && pkg.category === branchType
+    );
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'OfferCatalog',
-      name: branchServices.name,
-      itemListElement: branchServices.offers.map((offer) => ({
+      name:
+        branchType === 'gastro'
+          ? 'Digitale Lösungen für Gastronomie'
+          : 'Digitale Lösungen für Lieferdienste',
+      itemListElement: branchPackages.map((pkg) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          ...offer,
+          name: pkg.title,
+          description: pkg.description,
+          audience: {
+            '@type': 'Audience',
+            audienceType: pkg.targetUsers,
+          },
         },
       })),
     };

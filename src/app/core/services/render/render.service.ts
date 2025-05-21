@@ -34,6 +34,15 @@ export class RenderService {
   }
 
   /**
+   * Destroys the scroll animation
+   */
+  destroyScrollAnimation(): void {
+    if (!this.isBrowser()) return;
+
+    this.scrollAnimationService.destroyScrollObserver();
+  }
+
+  /**
    * Führt eine Funktion nach dem nächsten Render aus
    * @param callback Die auszuführende Funktion
    * @param timeout Optional: Verzögerung in Millisekunden (Standard: 100)

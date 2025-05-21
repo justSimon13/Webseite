@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
 import { RenderService } from '../../../core/services/render/render.service';
@@ -11,7 +11,7 @@ import { HOME_IMPORTS } from '../home-shared';
   imports: [HOME_IMPORTS],
   templateUrl: './home-site.component.html',
 })
-export class HomeSiteComponent implements OnInit {
+export class HomeSiteComponent implements OnInit, OnDestroy {
   constructor(
     private seoService: SeoService,
     private calendlyService: CalendlyService,
@@ -28,7 +28,12 @@ export class HomeSiteComponent implements OnInit {
       '/'
     );
 
+    this.schemaService.clearSchemas();
     this.schemaService.addLocalBusinessSchema();
+  }
+
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   openCalendly() {
