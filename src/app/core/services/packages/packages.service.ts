@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { ServicePackage } from '../../../shared/models/service-package';
 import { packagesConfig } from '../../config/packages.config';
-import { ServicePackage } from '../../models/package.model';
 
-/**
- * Service für die Verwaltung der Service-Pakete
- *
- * Dieser Service stellt die Paket-Konfiguration bereit und bietet Methoden
- * zum Filtern und Abrufen von Paketen basierend auf verschiedenen Kriterien.
- */
 @Injectable({
   providedIn: 'root',
 })

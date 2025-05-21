@@ -4,7 +4,7 @@
 export const localBusinessConfig = {
   '@type': 'LocalBusiness',
   '@context': 'https://schema.org',
-  name: 'Simon Fischer Consulting',
+  name: 'Fischer IT Solutions',
   image: 'https://simonfischer.dev/assets/profile.jpg',
   url: 'https://simonfischer.dev',
   telephone: '+49 179 1351905',
