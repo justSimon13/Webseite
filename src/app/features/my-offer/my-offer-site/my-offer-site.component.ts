@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
+import { PackagesService } from '../../../core/services/packages/packages.service';
 import { RenderService } from '../../../core/services/render/render.service';
 import { SchemaService } from '../../../core/services/schema/schema.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
@@ -14,67 +15,8 @@ import { MY_OFFER_IMPORTS } from '../my-offer-shared';
   imports: [MY_OFFER_IMPORTS],
   templateUrl: './my-offer-site.component.html',
 })
-export class MyOfferSiteComponent implements OnInit {
-  servicePackages: ServicePackage[] = [
-    {
-      id: 1,
-      title: 'Webseiten Starter',
-      subtitle: 'Incl. CMS/Wordpress',
-      targetUsers:
-        'Für Einzelunternehmer & kleine Unternehmen, die eine professionelle & gepflegte und skalierbare Webseite benötigen.',
-      features: [
-        'WordPress oder statische Webseite',
-        'Komplettes Webdesign',
-        'Suchmaschinenoptimierung',
-        'Mobile Optimierung & Responsiveness',
-        'Setup von Plugins & Domain',
-        'Basis-Design & Struktur',
-        'Integration deiner Inhalte (Text & Bilder)',
-        'Einrichtung mit Admin-Zugang',
-      ],
-      duration: 'Zwischen 1-2 Wochen',
-      calendlyParam: 'a1=1',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 2,
-      title: 'Business Shop',
-      subtitle: 'Shopify oder WooCommerce',
-      targetUsers:
-        'Für Unternehmen mit Produkten, die einen Online Shop benötigen, der komfortabel für Smartphone & Mobile optimiert ist.',
-      features: [
-        'Shopify oder WooCommerce',
-        'Produkt- & Warenmanagement',
-        'Zahlungsabwicklung & SSL',
-        'Design-Anpassungen nach Wunsch',
-        'Domain-Setup',
-      ],
-      duration: 'Zwischen 2-3 Wochen',
-      calendlyParam: 'a1=2',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 4,
-      title: 'Individuelle Softwarelösung',
-      subtitle: 'Maßgeschneiderte Webentwicklung',
-      targetUsers:
-        'Für komplexe Anforderungen, APIs, individuelle Anwendungen, Software und Systeme.',
-      features: [
-        'Individuelle Anforderungen & Specs',
-        'Skalierbare Architektur',
-        'Technische Beratung',
-        'Maßgeschneiderte Webentwicklung',
-        'Integration in bestehende IT-Infrastruktur',
-        'Laufende technische Betreuung',
-      ],
-      duration: 'Nach Absprache',
-      calendlyParam: 'a1=3',
-      enabled: true,
-      featured: true,
-    },
-  ];
+export class MyOfferSiteComponent implements OnInit, OnDestroy {
+  servicePackages: ServicePackage[] = [];
 
   faqItems: FaqItem[] = [
     {
@@ -141,7 +83,8 @@ export class MyOfferSiteComponent implements OnInit {
     private seoService: SeoService,
     private renderService: RenderService,
     private calendlyService: CalendlyService,
-    private schemaService: SchemaService
+    private schemaService: SchemaService,
+    private packagesService: PackagesService
   ) {
     this.renderService.initScrollAnimation();
   }
@@ -149,13 +92,19 @@ export class MyOfferSiteComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Pakete für Webentwicklung & Onlineshops | Lösungen für Unternehmen',
-      'Webseite, Onlineshop oder App entwickeln lassen? Hier findest du passende Angebote – individuell, effizient & DSGVO-konform.',
+      'Webseite, Onlineshop oder App entwickeln lassen? Hier findest du passende Angebote – individuell & effizient.',
       '/mein-angebot'
     );
+
+    this.servicePackages = this.packagesService.getPackagesByCategory('web');
 
     this.schemaService.clearSchemas();
     this.schemaService.addLocalBusinessSchema();
     this.schemaService.addOfferCatalogSchema();
+  }
+
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   openCalendly() {

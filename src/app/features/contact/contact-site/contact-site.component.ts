@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { environment } from '../../../../environments/environment';
 import { RenderService } from '../../../core/services/render/render.service';
+import { SchemaService } from '../../../core/services/schema/schema.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { CONTACT_IMPORTS } from '../contact-shared';
 
@@ -12,7 +13,7 @@ import { CONTACT_IMPORTS } from '../contact-shared';
   imports: [CONTACT_IMPORTS],
   templateUrl: './contact-site.component.html',
 })
-export class ContactSiteComponent implements OnInit {
+export class ContactSiteComponent implements OnInit, OnDestroy {
   name = '';
   email = '';
   subject = '';
@@ -26,7 +27,8 @@ export class ContactSiteComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private seoService: SeoService,
-    private renderService: RenderService
+    private renderService: RenderService,
+    private schemaService: SchemaService
   ) {
     this.renderService.initScrollAnimation();
   }
@@ -36,6 +38,12 @@ export class ContactSiteComponent implements OnInit {
       'Kontakt – Simon Fischer | Jetzt Projekt anfragen oder unverbindlich beraten lassen',
       'Du hast Fragen oder möchtest ein Projekt starten? Hier erreichst du Simon Fischer – für individuelle Webseiten, Onlineshops oder Softwarelösungen. Schnell & unkompliziert.'
     );
+
+    this.schemaService.clearSchemas();
+  }
+
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   onSubmit(form: NgForm): void {

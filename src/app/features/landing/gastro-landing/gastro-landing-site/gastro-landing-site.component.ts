@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
+import { PackagesService } from '../../../../core/services/packages/packages.service';
 import { RenderService } from '../../../../core/services/render/render.service';
 import { SchemaService } from '../../../../core/services/schema/schema.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
@@ -16,7 +17,7 @@ import { LANDING_IMPORTS } from '../../landing-shared';
   imports: [LANDING_IMPORTS],
   templateUrl: './gastro-landing-site.component.html',
 })
-export class GastroLandingSiteComponent implements OnInit {
+export class GastroLandingSiteComponent implements OnInit, OnDestroy {
   servicePackagesConfig: SectionConfig = {
     sectionTitle: 'Angebote',
     sectionSubtitle: 'Meine Angebote für <span class="text-primary">Gastronomiebetriebe</span>',
@@ -24,66 +25,7 @@ export class GastroLandingSiteComponent implements OnInit {
       'Entdecke maßgeschneiderte digitale Lösungen, die perfekt zu den Anforderungen deines gastronomischen Betriebs passen.',
   };
 
-  servicePackages: ServicePackage[] = [
-    {
-      id: 1,
-      title: 'Gastronomie Webseite',
-      subtitle: 'Incl. CMS/Wordpress',
-      targetUsers:
-        'Maßgeschneiderte Restaurant-Webseite mit Speisekarte, Reservierungssystem und mobiloptimiertem Design – perfekt für Restaurants & Cafés.',
-      features: [
-        'WordPress oder statische Webseite',
-        'Komplettes Webdesign',
-        'Suchmaschinenoptimierung',
-        'Mobile Optimierung & Responsiveness',
-        'Setup von Plugins & Domain',
-        'Basis-Design & Struktur',
-        'Integration deiner Inhalte (Text & Bilder)',
-        'Einrichtung mit Admin-Zugang',
-      ],
-      duration: 'Zwischen 1-2 Wochen',
-      calendlyParam: 'a1=1',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 2,
-      title: 'Online-Shop für Gastronomie',
-      subtitle: 'Shopify oder WooCommerce',
-      targetUsers:
-        'Shop-System zur Bestellung von Speisen und Getränken – inkl. Lieferzeiten, Tischbestellung via QR-Code und Kundenverwaltung.',
-      features: [
-        'Shopify oder WooCommerce',
-        'Produkt- & Warenmanagement',
-        'Zahlungsabwicklung & SSL',
-        'Design-Anpassungen nach Wunsch',
-        'Domain-Setup',
-      ],
-      duration: 'Zwischen 2-3 Wochen',
-      calendlyParam: 'a1=2',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 4,
-      title: 'Digitale Gastro-Lösung',
-      subtitle: 'Maßgeschneiderte Webentwicklung',
-      targetUsers:
-        'Individuelle Softwarelösungen für Küche, Bestellabwicklung, Mitarbeiterprozesse und QR-Systeme in der Gastronomie.',
-      features: [
-        'Individuelle Anforderungen & Specs',
-        'Skalierbare Architektur',
-        'Technische Beratung',
-        'Maßgeschneiderte Webentwicklung',
-        'Integration in bestehende IT-Infrastruktur',
-        'Laufende technische Betreuung',
-      ],
-      duration: 'Nach Absprache',
-      calendlyParam: 'a1=3',
-      enabled: true,
-      featured: true,
-    },
-  ];
+  servicePackages: ServicePackage[] = [];
 
   processConfig = {
     sectionTitle: 'PROZESS',
@@ -211,7 +153,8 @@ export class GastroLandingSiteComponent implements OnInit {
     private seoService: SeoService,
     private renderService: RenderService,
     private calendlyService: CalendlyService,
-    private schemaService: SchemaService
+    private schemaService: SchemaService,
+    private packagesService: PackagesService
   ) {
     this.renderService.initScrollAnimation();
   }
@@ -223,9 +166,15 @@ export class GastroLandingSiteComponent implements OnInit {
       '/gastronomie'
     );
 
+    this.servicePackages = this.packagesService.getPackagesByCategory('gastro');
+
     this.schemaService.clearSchemas();
     this.schemaService.addLocalBusinessSchema();
     this.schemaService.addBranchSpecificOfferSchema('gastro');
+  }
+
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   openCalendly(packageType?: string): void {

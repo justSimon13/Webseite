@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { RenderService } from '../../../core/services/render/render.service';
+import { SchemaService } from '../../../core/services/schema/schema.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { PRIVACY_POLICY_IMPORTS } from '../privacy-policy-shared';
 
@@ -9,12 +10,13 @@ import { PRIVACY_POLICY_IMPORTS } from '../privacy-policy-shared';
   imports: [PRIVACY_POLICY_IMPORTS],
   templateUrl: './privacy-policy-site.component.html',
 })
-export class PrivacyPolicySiteComponent implements OnInit {
+export class PrivacyPolicySiteComponent implements OnInit, OnDestroy {
   activeSections: string[] = ['generalInfo'];
 
   constructor(
     private renderService: RenderService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private schemaService: SchemaService
   ) {
     this.renderService.initScrollAnimation();
   }
@@ -24,6 +26,12 @@ export class PrivacyPolicySiteComponent implements OnInit {
       'Datenschutz – Simon Fischer | DSGVO-konforme Webentwicklung',
       'Erfahre, wie Simon Fischer mit deinen Daten umgeht. Transparente Informationen zur Datenverarbeitung gemäß DSGVO für Besucher, Kunden & Interessenten.'
     );
+
+    this.schemaService.clearSchemas();
+  }
+
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   toggleSection(sectionId: string): void {

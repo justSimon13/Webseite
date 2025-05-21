@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../../core/services/calendly/calendly.service';
+import { PackagesService } from '../../../../core/services/packages/packages.service';
 import { RenderService } from '../../../../core/services/render/render.service';
 import { SchemaService } from '../../../../core/services/schema/schema.service';
 import { SeoService } from '../../../../core/services/seo/seo.service';
@@ -17,7 +18,7 @@ import { LANDING_IMPORTS } from '../../landing-shared';
   imports: [LANDING_IMPORTS],
   templateUrl: './liefer-landing-site.component.html',
 })
-export class LieferLandingSiteComponent implements OnInit {
+export class LieferLandingSiteComponent implements OnInit, OnDestroy {
   servicePackagesConfig: SectionConfig = {
     sectionTitle: 'Angebote',
     sectionSubtitle: 'Meine Angebote für <span class="text-primary">Lieferdienste</span>',
@@ -25,66 +26,7 @@ export class LieferLandingSiteComponent implements OnInit {
       'Entdecke maßgeschneiderte digitale Lösungen, die perfekt zu den Anforderungen deines Lieferdienstes passen.',
   };
 
-  servicePackages: ServicePackage[] = [
-    {
-      id: 1,
-      title: 'Lieferdienst Webseite',
-      subtitle: 'Incl. CMS/Wordpress',
-      targetUsers:
-        'Professionelle One-Pager-Webseite für Getränkelieferdienste – mobil optimiert, lokal auffindbar & schnell geladen.',
-      features: [
-        'WordPress oder statische Webseite',
-        'Komplettes Webdesign',
-        'Suchmaschinenoptimierung',
-        'Mobile Optimierung & Responsiveness',
-        'Setup von Plugins & Domain',
-        'Basis-Design & Struktur',
-        'Integration deiner Inhalte (Text & Bilder)',
-        'Einrichtung mit Admin-Zugang',
-      ],
-      duration: 'Zwischen 1-2 Wochen',
-      calendlyParam: 'a1=1',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 2,
-      title: 'Business Shop für Lieferdienste',
-      subtitle: 'Shopify oder WooCommerce',
-      targetUsers:
-        'Onlineshop mit Lieferzeit-Plugins, QR-Bestellung und Kundenverwaltung – speziell für Lieferdienste mit Produktkatalog.',
-      features: [
-        'Shopify oder WooCommerce',
-        'Produkt- & Warenmanagement',
-        'Zahlungsabwicklung & SSL',
-        'Design-Anpassungen nach Wunsch',
-        'Domain-Setup',
-      ],
-      duration: 'Zwischen 2-3 Wochen',
-      calendlyParam: 'a1=2',
-      enabled: true,
-      featured: false,
-    },
-    {
-      id: 4,
-      title: 'Digitale Lösung für Lieferdienste',
-      subtitle: 'Maßgeschneiderte Webentwicklung',
-      targetUsers:
-        'Web-App für Routenplanung, Bestellabwicklung und Live-Verfügbarkeiten – ideal für Lieferdienste mit eigenem Fuhrpark.',
-      features: [
-        'Individuelle Anforderungen & Specs',
-        'Skalierbare Architektur',
-        'Technische Beratung',
-        'Maßgeschneiderte Webentwicklung',
-        'Integration in bestehende IT-Infrastruktur',
-        'Laufende technische Betreuung',
-      ],
-      duration: 'Nach Absprache',
-      calendlyParam: 'a1=3',
-      enabled: true,
-      featured: true,
-    },
-  ];
+  servicePackages: ServicePackage[] = [];
 
   processConfig = {
     sectionTitle: 'PROZESS',
@@ -249,7 +191,8 @@ export class LieferLandingSiteComponent implements OnInit {
     private seoService: SeoService,
     private renderService: RenderService,
     private calendlyService: CalendlyService,
-    private schemaService: SchemaService
+    private schemaService: SchemaService,
+    private packagesService: PackagesService
   ) {
     this.renderService.initScrollAnimation();
   }
@@ -261,9 +204,15 @@ export class LieferLandingSiteComponent implements OnInit {
       '/lieferdienst'
     );
 
+    this.servicePackages = this.packagesService.getPackagesByCategory('delivery');
+
     this.schemaService.clearSchemas();
     this.schemaService.addLocalBusinessSchema();
-    this.schemaService.addBranchSpecificOfferSchema('lieferdienst');
+    this.schemaService.addBranchSpecificOfferSchema('delivery');
+  }
+
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   openCalendly(packageType?: string): void {
