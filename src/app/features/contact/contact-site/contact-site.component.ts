@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { environment } from '../../../../environments/environment';
-import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { RenderService } from '../../../core/services/render/render.service';
+import { SchemaService } from '../../../core/services/schema/schema.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { CONTACT_IMPORTS } from '../contact-shared';
 
@@ -12,37 +13,37 @@ import { CONTACT_IMPORTS } from '../contact-shared';
   imports: [CONTACT_IMPORTS],
   templateUrl: './contact-site.component.html',
 })
-export class ContactSiteComponent implements AfterViewInit, OnInit {
-  private readonly timeout = 100;
-
-  name: string = '';
-  email: string = '';
-  subject: string = '';
-  message: string = '';
-  privacy: boolean = false;
-  contactCode: string = '';
-
-  sending: boolean = false;
-  sendSuccess: boolean = false;
-  sendError: boolean = false;
+export class ContactSiteComponent implements OnInit, OnDestroy {
+  name = '';
+  email = '';
+  subject = '';
+  message = '';
+  contactCode = '';
+  privacy = false;
+  sending = false;
+  sendSuccess = false;
+  sendError = false;
 
   constructor(
+    private http: HttpClient,
     private seoService: SeoService,
-    private scrollAnimationService: ScrollAnimationService,
-    private http: HttpClient
-  ) {}
+    private renderService: RenderService,
+    private schemaService: SchemaService
+  ) {
+    this.renderService.initScrollAnimation();
+  }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Kontakt – Simon Fischer | Jetzt Projekt anfragen oder unverbindlich beraten lassen',
       'Du hast Fragen oder möchtest ein Projekt starten? Hier erreichst du Simon Fischer – für individuelle Webseiten, Onlineshops oder Softwarelösungen. Schnell & unkompliziert.'
     );
+
+    this.schemaService.clearSchemas();
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.scrollAnimationService.initScrollObserver();
-    }, this.timeout);
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   onSubmit(form: NgForm): void {

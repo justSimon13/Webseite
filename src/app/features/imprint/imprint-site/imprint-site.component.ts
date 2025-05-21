@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { ScrollAnimationService } from '../../../core/services/scroll-animation/scroll-animation.service';
+import { RenderService } from '../../../core/services/render/render.service';
+import { SchemaService } from '../../../core/services/schema/schema.service';
 import { SeoService } from '../../../core/services/seo/seo.service';
 import { IMPRINT_IMPORTS } from '../imprint-shared';
 
@@ -9,25 +10,28 @@ import { IMPRINT_IMPORTS } from '../imprint-shared';
   imports: [IMPRINT_IMPORTS],
   templateUrl: './imprint-site.component.html',
 })
-export class ImprintSiteComponent implements AfterViewInit, OnInit {
+export class ImprintSiteComponent implements OnInit, OnDestroy {
   activeSections: string[] = ['companyData'];
 
   constructor(
-    private scrollAnimationService: ScrollAnimationService,
-    private seoService: SeoService
-  ) {}
+    private renderService: RenderService,
+    private seoService: SeoService,
+    private schemaService: SchemaService
+  ) {
+    this.renderService.initScrollAnimation();
+  }
 
   ngOnInit(): void {
     this.seoService.updateMeta(
       'Impressum – Simon Fischer | Webentwicklung & IT-Dienstleistungen',
       'Angaben gemäß § 5 TMG zu Simon Fischer – Webentwickler für Webseiten, Onlineshops & individuelle Softwarelösungen. Hier findest du die gesetzlich vorgeschriebenen Kontaktinformationen.'
     );
+
+    this.schemaService.clearSchemas();
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.scrollAnimationService.initScrollObserver();
-    }, 100);
+  ngOnDestroy(): void {
+    this.renderService.destroyScrollAnimation();
   }
 
   toggleSection(section: string): void {
