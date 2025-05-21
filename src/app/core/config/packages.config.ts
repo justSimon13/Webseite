@@ -1,4 +1,4 @@
-import { ServicePackage } from '../models/package.model';
+import { ServicePackage } from '../../shared/models/service-package';
 
 export const packagesConfig: ServicePackage[] = [
   {
