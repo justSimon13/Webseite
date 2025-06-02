@@ -1,7 +1,7 @@
 ##########################
 # Stage: Base (shared)
 ##########################
-FROM node:23-slim AS base
+FROM node:22.16-alpine AS base
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -24,7 +24,7 @@ RUN npm run build -- --configuration production
 ##########################
 # Stage: Nginx Serve
 ##########################
-FROM nginx:alpine AS prod
+FROM nginx:1.28.0-alpine AS prod
 COPY --from=build /app/dist/webseite/browser /usr/share/nginx/html
 COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./src/errors /usr/share/nginx/html/errors
