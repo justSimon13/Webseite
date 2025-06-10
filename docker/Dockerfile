@@ -1,10 +1,10 @@
 ##########################
-# Stage: Base
+# Stage: Base (shared)
 ##########################
 FROM node:22.16-alpine AS base
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --prefer-off
+RUN npm install
 
 ##########################
 # Stage: Dev
