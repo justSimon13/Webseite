@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { afterNextRender, Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { environment } from '../../../../environments/environment';
@@ -30,7 +30,9 @@ export class ContactSiteComponent implements OnInit, OnDestroy {
     private renderService: RenderService,
     private schemaService: SchemaService
   ) {
-    this.renderService.initScrollAnimation();
+    afterNextRender(() => {
+      this.renderService.reinitScrollObserver();
+    });
   }
 
   ngOnInit(): void {

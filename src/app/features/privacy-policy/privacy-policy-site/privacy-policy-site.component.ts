@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { afterNextRender, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { RenderService } from '../../../core/services/render/render.service';
 import { SchemaService } from '../../../core/services/schema/schema.service';
@@ -18,7 +18,9 @@ export class PrivacyPolicySiteComponent implements OnInit, OnDestroy {
     private seoService: SeoService,
     private schemaService: SchemaService
   ) {
-    this.renderService.initScrollAnimation();
+    afterNextRender(() => {
+      this.renderService.reinitScrollObserver();
+    });
   }
 
   ngOnInit(): void {
