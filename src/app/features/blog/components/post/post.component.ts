@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, afterNextRender } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -21,7 +21,9 @@ export class PostComponent implements OnInit, OnDestroy {
     private strapiService: StrapiService,
     private renderService: RenderService
   ) {
-    this.renderService.initScrollAnimation();
+    afterNextRender(() => {
+      this.renderService.reinitScrollObserver();
+    });
   }
 
   ngOnInit(): void {

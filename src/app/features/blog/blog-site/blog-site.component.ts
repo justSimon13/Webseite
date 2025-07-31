@@ -1,6 +1,8 @@
+// Notwendige Imports hinzufügen oder anpassen
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy, Injector, runInInjectionContext } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Subject } from 'rxjs'; // 👈 WICHTIG: Subject importieren
 
 import { environment } from '../../../../environments/environment';
 import { RenderService } from '../../../core/services/render/render.service';
@@ -14,22 +16,30 @@ import { StrapiService } from '../../../core/services/strapi/strapi-service.serv
 export class BlogSiteComponent implements OnInit, OnDestroy {
   posts: any = [];
 
+  // 1. Subject erstellen, das als Signalgeber dient.
+  private postsRendered$ = new Subject<void>();
+
   constructor(
     private strapiService: StrapiService,
-    private renderService: RenderService,
-    private injector: Injector
-  ) {}
+    private renderService: RenderService
+  ) {
+    this.postsRendered$.subscribe(() => {
+      this.renderService.reinitScrollObserver();
+    });
+  }
 
   ngOnInit(): void {
     this.strapiService.getContentType('beitrags').subscribe((data: any) => {
       this.posts = data;
-      runInInjectionContext(this.injector, () => {
-        this.renderService.initScrollAnimation();
-      });
+      setTimeout(() => {
+        this.postsRendered$.next();
+      }, 100);
     });
   }
 
   ngOnDestroy(): void {
+    // Es ist gute Praxis, auch Subjects zu schließen, um Speicherlecks zu vermeiden.
+    this.postsRendered$.complete();
     this.renderService.destroyScrollAnimation();
   }
 
