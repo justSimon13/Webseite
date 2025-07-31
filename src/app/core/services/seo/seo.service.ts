@@ -27,18 +27,22 @@ export class SeoService {
     titleText: string,
     description: string,
     path: string = '',
-    imageUrl: string = 'assets/og-image.jpg'
+    imageUrl: string = 'assets/og-image.jpg',
+    ogType: 'website' | 'article' = 'website'
   ): void {
-    // Basis Meta-Tags
     this.title.setTitle(titleText);
     this.meta.updateTag({ name: 'description', content: description });
+
+    const fullImageUrl = imageUrl.startsWith('http')
+      ? imageUrl
+      : `${this.baseUrl}/${imageUrl.startsWith('/') ? imageUrl.substring(1) : imageUrl}`;
 
     // Open Graph Tags
     this.meta.updateTag({ property: 'og:title', content: titleText });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: `${this.baseUrl}${path}` });
-    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/${imageUrl}` });
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:image', content: fullImageUrl });
+    this.meta.updateTag({ property: 'og:type', content: ogType });
 
     // Twitter Tags
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });

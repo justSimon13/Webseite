@@ -1,5 +1,7 @@
 <div class="w-full bg-content p-16">
+  <!-- Zustand 1: Beitrag ist erfolgreich geladen (post ist ein Objekt) -->
   <div *ngIf="post" class="max-w-5xl mx-auto py-16 px-4 md:px-0">
+    <!-- Dein bisheriger Code für den angezeigten Beitrag. Keine Änderungen hier. -->
     <a
       [routerLink]="['/blog']"
       class="inline-flex items-center gap-2 border-2 border-primary text-primary px-5 py-2 rounded-lg uppercase text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
@@ -21,14 +23,12 @@
       </svg>
       Zurück zum Blog
     </a>
-
     <img
       *ngIf="post.coverImage?.formats?.large?.url"
       [src]="getImageUrl(post.coverImage.formats.large.url)"
       [alt]="post.title"
       class="w-full h-96 object-cover rounded-xl my-12"
     />
-
     <header>
       <div class="flex flex-wrap gap-2 mb-4">
         <span
@@ -37,15 +37,12 @@
           >{{ cat.name }}</span
         >
       </div>
-
       <h1 class="text-title-page font-bold text-white mb-2">{{ post.title }}</h1>
-
       <div class="flex items-center gap-3 text-sm text-text-muted mb-6">
         <span>Von {{ post.author?.name }}</span>
         <span>•</span>
         <span>{{ post.publishedAt | date: 'dd.MM.yyyy' }}</span>
       </div>
-
       <div class="flex flex-wrap gap-2">
         <span
           *ngFor="let tag of post.tags"
@@ -54,11 +51,41 @@
         >
       </div>
     </header>
-
     <hr class="border-border/30 my-8" />
-
-    <markdown [data]="processedContent" class="prose prose-lg max-w-none text-white/90"> </markdown>
+    <markdown [data]="processedContent" class="prose prose-lg max-w-none text-white/90"></markdown>
   </div>
 
-  <div *ngIf="!post" class="text-center py-20 text-text-muted">Beitrag nicht gefunden.</div>
+  <!-- Zustand 2: Beitrag lädt gerade (post ist undefined) -->
+  <div *ngIf="post === undefined" class="max-w-5xl mx-auto py-16 px-4 md:px-0 animate-pulse">
+    <!-- Skeleton-UI für die Detailseite -->
+    <div class="h-11 w-48 bg-border/20 rounded-lg"></div>
+    <div class="w-full h-96 bg-border/20 rounded-xl my-12"></div>
+    <div class="h-6 w-24 bg-border/20 rounded-full mb-4"></div>
+    <div class="h-10 w-full bg-border/20 rounded-md mb-2"></div>
+    <div class="h-10 w-3/4 bg-border/20 rounded-md mb-6"></div>
+    <div class="h-5 w-1/2 bg-border/20 rounded-md mb-8"></div>
+    <hr class="border-border/30 my-8" />
+    <div class="space-y-4">
+      <div class="h-4 bg-border/20 rounded-md"></div>
+      <div class="h-4 bg-border/20 rounded-md"></div>
+      <div class="h-4 w-5/6 bg-border/20 rounded-md"></div>
+      <div class="h-4 w-3/4 bg-border/20 rounded-md mb-6"></div>
+      <div class="h-4 bg-border/20 rounded-md"></div>
+      <div class="h-4 w-5/6 bg-border/20 rounded-md"></div>
+    </div>
+  </div>
+
+  <!-- Zustand 3: Beitrag nicht gefunden / Fehler (post ist null) -->
+  <div *ngIf="post === null" class="max-w-5xl mx-auto py-16 px-4 md:px-0">
+    <div class="text-center py-20 text-text-muted">
+      <h2 class="text-2xl font-semibold text-white mb-4">Beitrag nicht gefunden</h2>
+      <p>Der angeforderte Beitrag konnte nicht geladen werden oder existiert nicht.</p>
+      <a
+        [routerLink]="['/blog']"
+        class="mt-8 inline-flex items-center gap-2 border-2 border-primary text-primary px-5 py-2 rounded-lg uppercase text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+      >
+        Zurück zum Blog
+      </a>
+    </div>
+  </div>
 </div>
