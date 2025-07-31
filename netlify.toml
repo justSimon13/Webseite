@@ -1,0 +1,11 @@
+[build]
+  command = "ng build"
+  
+  publish = "dist/webseite/browser"
+  
+  functions = "dist/webseite/server"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
