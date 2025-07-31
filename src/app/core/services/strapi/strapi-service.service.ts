@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -10,17 +10,46 @@ import { environment } from '../../../../environments/environment';
 export class StrapiService {
   private strapiUrl = environment.strapiUrl;
 
+  /**
+   * VERBESSERT: Zentrale Konfiguration für alle Standard-Populates.
+   * Das vermeidet Redundanz und ist leichter zu warten.
+   */
+  private defaultPopulateFields = ['author', 'coverImage', 'categories', 'tags', 'seo'];
+
   constructor(private http: HttpClient) {}
 
   getContentType(contentType: string): Observable<any> {
-    return this.http.get(
-      `${this.strapiUrl}/api/${contentType}?populate[author]=true&populate[seo]=true&populate[coverImage]=true&populate[categories]=true&populate[tags]=true`
-    );
+    let params = new HttpParams();
+    this.defaultPopulateFields.forEach((field) => {
+      params = params.append(`populate[${field}]`, 'true');
+    });
+
+    return this.http.get(`${this.strapiUrl}/api/${contentType}`, { params });
   }
 
   getSingleItem(contentType: string, id: string): Observable<any> {
-    return this.http.get(
-      `${this.strapiUrl}/api/${contentType}/${id}?populate[author]=true&populate[seo]=true&populate[coverImage]=true&populate[categories]=true&populate[tags]=true`
-    );
+    let params = new HttpParams();
+    this.defaultPopulateFields
+      .filter((field) => field !== 'seo')
+      .forEach((field) => {
+        params = params.append(`populate[${field}]`, 'true');
+      });
+
+    params = params.append('populate[seo][populate]', 'ogImage');
+
+    return this.http.get(`${this.strapiUrl}/api/${contentType}/${id}`, { params });
+  }
+
+  getFeaturedPosts(limit: number = 3): Observable<any> {
+    let params = new HttpParams()
+      .set('filters[featured][$eq]', 'true')
+      .set('pagination[limit]', limit.toString())
+      .set('sort[0]', 'publishedAt:desc');
+
+    this.defaultPopulateFields.forEach((field) => {
+      params = params.append(`populate[${field}]`, 'true');
+    });
+
+    return this.http.get(`${this.strapiUrl}/api/beitrags`, { params });
   }
 }
