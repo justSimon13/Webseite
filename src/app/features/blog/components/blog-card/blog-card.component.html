@@ -1,0 +1,51 @@
+<ng-container *ngIf="post; else skeleton">
+  <div
+    class="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-500 hover:transform hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-primary/5 hover:bg-card/80 hover:border-border/30 reveal-on-scroll group h-full"
+  >
+    <div class="relative overflow-hidden">
+      <img
+        *ngIf="post.coverImage?.formats?.medium?.url"
+        [src]="getImageUrl(post.coverImage.formats.medium.url)"
+        [alt]="post.title"
+        class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    </div>
+
+    <div class="p-8 flex flex-col flex-1">
+      <div class="flex items-center gap-2 mb-3">
+        <span
+          *ngFor="let cat of post.categories"
+          class="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full font-medium border border-primary/20"
+          >{{ cat.name }}</span
+        >
+      </div>
+
+      <h2
+        class="text-lg font-semibold mb-3 text-white group-hover:text-primary transition-colors duration-300 leading-relaxed"
+      >
+        {{ post.title }}
+      </h2>
+
+      <p class="text-sm text-text-muted mb-6 flex-1 leading-relaxed line-clamp-3">
+        {{ post.excerpt }}
+      </p>
+
+      <a [routerLink]="['/blog', post.documentId]">Lesen</a>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #skeleton>
+  <div
+    class="bg-card/30 border border-border/10 rounded-2xl overflow-hidden flex flex-col animate-pulse h-full"
+  >
+    <div class="w-full h-48 bg-border/20"></div>
+    <div class="p-8 flex flex-col flex-1">
+      <div class="h-6 w-24 bg-border/20 rounded-full mb-3"></div>
+      <div class="h-5 w-full bg-border/20 rounded-md mb-2"></div>
+      <div class="h-5 w-3/4 bg-border/20 rounded-md mb-4"></div>
+      <div class="h-4 w-full bg-border/20 rounded-md mb-2"></div>
+      <div class="h-4 w-1/2 bg-border/20 rounded-md mb-6 flex-1"></div>
+    </div>
+  </div>
+</ng-template>

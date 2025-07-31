@@ -12,33 +12,28 @@ export class RenderService {
 
   constructor(private scrollAnimationService: ScrollAnimationService) {}
 
-  /**
-   * Prüft, ob die Anwendung im Browser läuft
-   */
   isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);
   }
 
   /**
-   * Initialisiert die Scroll-Animation nach dem nächsten Render
-   * @param timeout Optional: Verzögerung in Millisekunden (Standard: 100)
+   * Initialisiert den Scroll-Observer neu.
+   * Diese Methode wird jetzt direkt aus der Komponente aufgerufen.
    */
-  initScrollAnimation(timeout: number = this.defaultTimeout): void {
+  reinitScrollObserver(): void {
     if (!this.isBrowser()) return;
 
-    afterNextRender(() => {
-      setTimeout(() => {
-        this.scrollAnimationService.initScrollObserver();
-      }, timeout);
-    });
+    // Zerstöre einen eventuell alten Observer, um Speicherlecks zu vermeiden
+    this.scrollAnimationService.destroyScrollObserver();
+    // Initialisiere den Observer neu
+    this.scrollAnimationService.initScrollObserver();
   }
 
   /**
-   * Destroys the scroll animation
+   * Zerstört den Scroll-Observer.
    */
   destroyScrollAnimation(): void {
     if (!this.isBrowser()) return;
-
     this.scrollAnimationService.destroyScrollObserver();
   }
 

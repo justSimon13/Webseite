@@ -1,0 +1,18 @@
+[build]
+  command = "ng build"
+  publish = "dist/webseite/browser"
+
+# Dieser Abschnitt definiert explizit, wie die Server-Funktion zu behandeln ist.
+[functions]
+  # Der Name "server" muss mit dem Namen der Funktion in der Umleitung übereinstimmen.
+  [functions.server]
+    # Hiermit sagen wir Netlify, dass dies die Hauptdatei ist.
+    # Netlify wird dann alle nötigen Abhängigkeiten selbst bündeln.
+    main_file = "dist/webseite/server/server.mjs"
+    node_bundler = "esbuild"
+
+# Diese Umleitung bleibt unverändert.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200

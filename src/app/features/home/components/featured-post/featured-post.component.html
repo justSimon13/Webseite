@@ -1,0 +1,34 @@
+<section class="container mx-auto">
+  <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+    <p class="text-primary font-medium tracking-wider uppercase text-sm mb-3">Einblicke & Wissen</p>
+    <h2 class="text-heading md:text-subtitle mb-5">
+      Aktuelles aus dem <span class="text-primary">Blog</span>
+    </h2>
+    <p class="text-body-base md:text-subheading text-text-muted">
+      Hier teile ich meine Gedanken zu modernen Technologien, Best Practices und Erfahrungen aus
+      meinen Projekten.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div
+      *ngFor="let post of featuredPosts; let i = index"
+      class="reveal-on-scroll"
+      [ngStyle]="{ 'transition-delay': i * 0.1 + 's' }"
+    >
+      <app-blog-card [post]="post"></app-blog-card>
+    </div>
+  </div>
+
+  <div class="mt-10 md:mt-16 text-center">
+    <p class="text-body-base text-text-muted">
+      Interessiert an weiteren Artikeln?
+      <a
+        routerLink="/blog"
+        class="font-medium text-primary hover:underline underline-offset-4 transition-colors"
+      >
+        Alle Beiträge ansehen.
+      </a>
+    </p>
+  </div>
+</section>

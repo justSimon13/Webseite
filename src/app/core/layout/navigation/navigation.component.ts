@@ -17,5 +17,6 @@ export class NavigationComponent {
   navItems = [
     { label: 'Home', path: '/', exact: true },
     { label: 'Mein Angebot', path: '/mein-angebot', exact: false },
+    { label: 'Blog', path: '/blog', exact: false },
   ];
 }
