@@ -31,3 +31,95 @@
   --color-card-hover: #252a36;
   --color-icon-hover: #4fc3f7;
 }
+
+/* ========================================================== */
+/* FINALES PROSE-STYLING v4 (inkl. aller Elemente)            */
+/* ========================================================== */
+
+.prose {
+  /* 1. Farben für dein dunkles Theme */
+  --tw-prose-body: theme(colors.text-muted);
+  --tw-prose-headings: theme(colors.white);
+  --tw-prose-links: theme(colors.primary);
+  --tw-prose-bold: theme(colors.white);
+  --tw-prose-hr: theme(colors.border);
+  --tw-prose-bullets: theme(colors.primary);
+  --tw-prose-quotes: theme(colors.text-muted);
+  --tw-prose-quote-borders: theme(colors.primary);
+  --tw-prose-code: theme(colors.white);
+}
+
+/* 2. Vertikale Abstände für alle Block-Elemente */
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote,
+.prose hr,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose pre {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+/* 3. Listen, Zitate und Linien */
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+}
+.prose ul {
+  list-style-type: disc;
+}
+.prose ol {
+  list-style-type: decimal;
+}
+.prose blockquote {
+  border-left-width: 0.25rem;
+  padding-left: 1em;
+}
+.prose hr {
+  border-top-width: 1px;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+/* 4. Code-Blöcke */
+.prose pre {
+  background-color: theme(colors.body);
+  border: 1px solid theme(colors.border);
+  border-radius: 0.5rem;
+  padding: 1.5em;
+  overflow-x: auto;
+}
+.prose code:not(pre > code) {
+  background-color: theme(colors.card-hover);
+  border-radius: 0.25rem;
+  padding: 0.15em 0.4em;
+  font-weight: 600;
+}
+
+/* 5. NEU: Abgestufte Überschriften 🏆 */
+/* Wir verwenden die von dir in @theme definierten CSS-Variablen. */
+.prose h1 {
+  font-size: var(--text-subtitle); /* 32px */
+  line-height: var(--text-subtitle--line-height);
+  font-weight: 700;
+}
+.prose h2 {
+  font-size: var(--text-heading); /* 24px */
+  line-height: var(--text-heading--line-height);
+  font-weight: 700;
+}
+.prose h3 {
+  font-size: var(--text-subheading); /* 20px */
+  line-height: var(--text-subheading--line-height);
+  font-weight: 600;
+}
+.prose h4 {
+  font-size: var(--text-body-base); /* 16px */
+  line-height: var(--text-body-base--line-height);
+  font-weight: 600;
+  color: theme(colors.primary); /* Heben wir sie farblich etwas ab */
+}

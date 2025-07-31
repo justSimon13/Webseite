@@ -15,6 +15,16 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'blog',
+    loadComponent: () =>
+      import('./features/blog/blog-site/blog-site.component').then((m) => m.BlogSiteComponent),
+  },
+  {
+    path: 'blog/:documentId',
+    loadComponent: () =>
+      import('./features/blog/components/post/post.component').then((m) => m.PostComponent),
+  },
+  {
     path: 'kontakt',
     loadComponent: () =>
       import('./features/contact/contact-site/contact-site.component').then(
