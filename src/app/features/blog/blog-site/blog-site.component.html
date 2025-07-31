@@ -1,0 +1,57 @@
+<!-- Header bleibt unverändert -->
+<section class="w-full py-16 md:py-24 lg:py-32 px-6">
+  <div class="container mx-auto flex flex-col items-center text-center">
+    <div class="flex flex-col gap-6 lg:gap-8 max-w-3xl animate-fade-in">
+      <p class="text-primary font-medium tracking-wider uppercase text-sm mb-2">Blog</p>
+      <h1 class="text-subtitle md:text-title-hero text-white font-bold">
+        Code & <span class="text-primary">Coffee</span>
+      </h1>
+      <p class="text-body-base md:text-subheading text-text-muted">
+        Ein Blog für moderne Softwareentwickler
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Übergangsbereich bleibt gleich -->
+<div class="w-full relative">
+  <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-body to-transparent"></div>
+  <div
+    class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-content border border-border/30"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-primary animate-bounce-gentle"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>
+
+<div class="w-full bg-content">
+  <div class="container mx-auto py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="mx-auto text-center max-w-2xl mb-16 reveal-on-scroll">
+        <h2
+          class="text-heading md:text-subtitle mb-6 animate-fade-in"
+          style="animation-delay: 0.2s"
+        >
+          Aktuelle Artikel & <span class="text-primary">Einblicke</span>
+        </h2>
+      </div>
+
+      <div class="space-y-24">
+        <div class="mb-16" *ngFor="let group of groupedPosts">
+          <app-blog-group [groupName]="group.categoryName" [posts]="group.posts"></app-blog-group>
+        </div>
+      </div>
+
+      <div *ngIf="groupedPosts.length === 0" class="text-center col-span-full py-16">
+        <p class="text-text-muted">Es wurden leider keine Beiträge gefunden.</p>
+      </div>
+    </div>
+  </div>
+</div>

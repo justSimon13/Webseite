@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { afterNextRender, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { CalendlyService } from '../../../core/services/calendly/calendly.service';
 import { PackagesService } from '../../../core/services/packages/packages.service';
@@ -86,7 +86,9 @@ export class MyOfferSiteComponent implements OnInit, OnDestroy {
     private schemaService: SchemaService,
     private packagesService: PackagesService
   ) {
-    this.renderService.initScrollAnimation();
+    afterNextRender(() => {
+      this.renderService.reinitScrollObserver();
+    });
   }
 
   ngOnInit(): void {
