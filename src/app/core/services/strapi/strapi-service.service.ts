@@ -10,10 +10,6 @@ import { environment } from '../../../../environments/environment';
 export class StrapiService {
   private strapiUrl = environment.strapiUrl;
 
-  /**
-   * VERBESSERT: Zentrale Konfiguration für alle Standard-Populates.
-   * Das vermeidet Redundanz und ist leichter zu warten.
-   */
   private defaultPopulateFields = ['author', 'coverImage', 'categories', 'tags', 'seo'];
 
   constructor(private http: HttpClient) {}
