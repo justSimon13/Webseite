@@ -42,12 +42,10 @@ export class PostComponent implements OnInit, OnDestroy {
               this.processedContent = this.demoteHeadings(this.post.content);
             }
 
-            // GEÄNDERT: Kompletter SEO-Block
             if (this.post?.seo) {
               const postUrl = `/blog/${this.post.documentId}`;
-              const imageUrl = this.getImageUrl(this.post.seo?.ogImage.formats?.large?.url);
+              const imageUrl = this.getImageUrl(this.post.seo?.ogImage?.formats?.large?.url);
 
-              // Meta-Tags setzen
               this.seoService.updateMeta(
                 this.post.seo.metaTitle,
                 this.post.seo.metaDescription,
