@@ -14,10 +14,8 @@ import { BlogGroupComponent } from '../components/blog-group/blog-group.componen
   templateUrl: './blog-site.component.html',
 })
 export class BlogSiteComponent implements OnInit, OnDestroy {
-  groupedPosts: { categoryName: string; posts: any[] }[] = [
-    { categoryName: 'Featured', posts: Array(2).fill(undefined) },
-    { categoryName: '...', posts: Array(3).fill(undefined) },
-  ];
+  groupedPosts: { categoryName: string; posts: any[] }[] = [];
+  isLoading = true;
 
   private postsRendered$ = new Subject<void>();
 
@@ -43,6 +41,7 @@ export class BlogSiteComponent implements OnInit, OnDestroy {
         const allPosts = response.data;
         if (!allPosts || allPosts.length === 0) {
           this.groupedPosts = [];
+          this.isLoading = false;
           return;
         }
 
@@ -57,6 +56,7 @@ export class BlogSiteComponent implements OnInit, OnDestroy {
         }
 
         this.groupedPosts = [...finalGroups, ...categoryGroups];
+        this.isLoading = false;
 
         setTimeout(() => {
           this.postsRendered$.next();
@@ -65,6 +65,7 @@ export class BlogSiteComponent implements OnInit, OnDestroy {
       error: (err) => {
         console.error(err);
         this.groupedPosts = [];
+        this.isLoading = false;
       },
     });
   }
