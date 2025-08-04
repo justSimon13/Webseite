@@ -1,5 +1,5 @@
-<div class="w-full bg-content p-16">
-  <div *ngIf="post" class="max-w-4xl mx-auto py-16 px-4 md:px-0">
+<div class="w-full bg-content md:p-16 px-6">
+  <div *ngIf="post" class="w-full md:max-w-4xl mx-auto py-16 px-4 md:px-0">
     <a
       [routerLink]="['/blog']"
       class="inline-flex items-center gap-2 border-2 border-primary text-primary px-5 py-2 rounded-lg uppercase text-sm font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
@@ -53,7 +53,10 @@
     <markdown [data]="processedContent" class="prose prose-lg max-w-none text-white/90"></markdown>
   </div>
 
-  <div *ngIf="post === undefined" class="max-w-5xl mx-auto py-16 px-4 md:px-0 animate-pulse">
+  <div
+    *ngIf="post === undefined"
+    class="w-full md:max-w-4xl mx-auto py-16 px-4 md:px-0 animate-pulse"
+  >
     <div class="h-11 w-48 bg-border/20 rounded-lg"></div>
     <div class="w-full h-96 bg-border/20 rounded-xl my-12"></div>
     <div class="h-6 w-24 bg-border/20 rounded-full mb-4"></div>
@@ -71,7 +74,7 @@
     </div>
   </div>
 
-  <div *ngIf="post === null" class="max-w-5xl mx-auto py-16 px-4 md:px-0">
+  <div *ngIf="post === null" class="w-full md:max-w-4xl mx-auto py-16 px-4 md:px-0">
     <div class="text-center py-20 text-text-muted">
       <h2 class="text-2xl font-semibold text-white mb-4">Beitrag nicht gefunden</h2>
       <p>Der angeforderte Beitrag konnte nicht geladen werden oder existiert nicht.</p>
