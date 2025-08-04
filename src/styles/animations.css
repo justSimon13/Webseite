@@ -53,6 +53,10 @@
   .logo-container:hover {
     animation: glow-pulse 2s infinite;
   }
+
+  .animate-slime-jump {
+    animation: slime-jump 2.5s infinite;
+  }
 }
 
 @keyframes fadeIn {
@@ -174,5 +178,30 @@
   }
   50% {
     box-shadow: 0 0 10px 0 rgba(79, 195, 247, 0.4);
+  }
+}
+
+@keyframes slime-jump {
+  0%,
+  20% {
+    /* Phase 1: Am Boden warten */
+    transform: scale(1, 1) translateY(0);
+  }
+  30% {
+    /* Phase 2: Zusammendrücken (squash) vor dem Sprung */
+    transform: scale(1.2, 0.8) translateY(5px);
+  }
+  50% {
+    /* Phase 3: Hochspringen und strecken (stretch) */
+    transform: scale(0.9, 1.2) translateY(-60px);
+  }
+  70% {
+    /* Phase 4: Landen und wieder zusammendrücken */
+    transform: scale(1.2, 0.8) translateY(5px);
+  }
+  90%,
+  100% {
+    /* Phase 5: Zurück zur Normalform am Boden */
+    transform: scale(1, 1) translateY(0);
   }
 }
