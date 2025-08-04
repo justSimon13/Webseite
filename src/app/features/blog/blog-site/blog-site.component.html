@@ -1,4 +1,3 @@
-<!-- Header bleibt unverändert -->
 <section class="w-full py-16 md:py-24 lg:py-32 px-6">
   <div class="container mx-auto flex flex-col items-center text-center">
     <div class="flex flex-col gap-6 lg:gap-8 max-w-3xl animate-fade-in">
@@ -13,7 +12,6 @@
   </div>
 </section>
 
-<!-- Übergangsbereich bleibt gleich -->
 <div class="w-full relative">
   <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-body to-transparent"></div>
   <div
@@ -44,13 +42,29 @@
       </div>
 
       <div class="space-y-24">
-        <div class="mb-16" *ngFor="let group of groupedPosts">
-          <app-blog-group [groupName]="group.categoryName" [posts]="group.posts"></app-blog-group>
-        </div>
-      </div>
+        <div *ngIf="isLoading" class="text-center col-span-full py-16">
+          <div class="h-20 flex justify-center items-end">
+            <img
+              src="assets/strapi-icon.png"
+              alt="Lade-Icon"
+              class="h-12 w-12 animate-slime-jump"
+            />
+          </div>
 
-      <div *ngIf="groupedPosts.length === 0" class="text-center col-span-full py-16">
-        <p class="text-text-muted">Es wurden leider keine Beiträge gefunden.</p>
+          <p class="mt-6 text-lg text-text-muted">
+            Strapi muss erst aufwachen, einen Moment bitte ... heute schon Caffee getrunken?
+          </p>
+        </div>
+
+        <ng-container *ngIf="!isLoading">
+          <div class="mb-16" *ngFor="let group of groupedPosts">
+            <app-blog-group [groupName]="group.categoryName" [posts]="group.posts"></app-blog-group>
+          </div>
+
+          <div *ngIf="groupedPosts.length === 0" class="text-center col-span-full py-16">
+            <p class="text-text-muted">Es wurden leider keine Beiträge gefunden.</p>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>
