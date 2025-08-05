@@ -1,0 +1,5 @@
+# Spezifische Regel für die Sitemap
+/sitemap.xml   /.netlify/functions/sitemap   200
+
+# Allgemeine "Catch-All"-Regel für die Angular App
+/* /.netlify/functions/server    200
