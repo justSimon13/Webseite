@@ -1,8 +1,32 @@
+# 1. Build-Konfiguration
 [build]
   command = "ng build"
   publish = "dist/webseite/browser"
 
+# 2. Konfiguration für die Server-Side-Rendering Function
 [functions]
   [functions.server]
     main_file = "dist/webseite/server/server.mjs"
     node_bundler = "esbuild"
+
+# -------------------------------------------------------------------
+# ALLE REGELN DIREKT HIER DEFINIEREN
+# -------------------------------------------------------------------
+
+# 1. Spezifische Header-Regel für unseren Test
+[[headers]]
+  for = "/test-header.html"
+  [headers.values]
+    X-Test-Header = "Mein-Header-Funktioniert"
+
+# 2. Spezifische Umleitung für die Sitemap (als "redirect" mit Status 200)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
+  status = 200
+
+# 3. Allgemeine "Catch-All"-Regel für die Angular App
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
